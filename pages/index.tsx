@@ -21,7 +21,6 @@ export default function Home() {
           referrerPolicy="no-referrer"
         />
       </Head>
-      <Navbar />
       <main className={styles.container}>
         <Image
           className={styles.landImage}
@@ -36,7 +35,6 @@ export default function Home() {
           <p>Evidencias</p>
         </section>
       </main>
-      <Footer />
     </>
   );
 }
