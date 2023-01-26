@@ -1,12 +1,50 @@
-import { RedSocial } from "@/types"
+import { Link, PageContent, RedSocial } from "@/types";
 
-export const Trabajos = [
-  "Producto 1",
-  "Producto 2",
-  "Producto 3",
-  "Producto 4",
-  "Proyecto Final"
-]
+export const Trabajos: Link[] = [
+  {
+    title: "Inicio",
+    url: "/",
+  },
+  {
+    title: "Producto 1",
+    url: "/producto-1",
+  },
+  {
+    title: "Producto 2",
+    url: "",
+  },
+  {
+    title: "Producto 3",
+    url: "",
+  },
+  {
+    title: "Producto 4",
+    url: "",
+  },
+  {
+    title: "Proyecto final",
+    url: "",
+  },
+  
+  // "Producto 1",
+  // "Producto 2",
+  // "Producto 3",
+  // "Producto 4",
+  // "Proyecto Final",
+];
+
+export const producto_1_contenido: PageContent[] = [
+  {
+    title: "¿Qué es una estructura de dato?",
+    content:
+      "Son un modo de representar información en una computadora, que cuentan con un comportamiento interno, este mismo se rige por determinadas reglas/restricciones que han sido dadas por la forma en que está construida internamente.",
+  },
+  {
+    title: "¿Qué es un contenedor?",
+    content: "",
+    image: ""
+  }
+];
 
 export const RedesSociales: RedSocial[] = [
   {
