@@ -7,7 +7,7 @@ export type RedSocial = {
 export type PageContent = {
   title: string,
   content: string
-  image?: string
+  image: string
 }
 
 export type Link = {

@@ -25,7 +25,7 @@ export const Trabajos: Link[] = [
     title: "Proyecto final",
     url: "",
   },
-  
+
   // "Producto 1",
   // "Producto 2",
   // "Producto 3",
@@ -41,9 +41,10 @@ export const producto_1_contenido: PageContent[] = [
   },
   {
     title: "¿Qué es un contenedor?",
-    content: "",
-    image: ""
-  }
+    content:
+      "Es un objeto en el cual pueden guardarse otros objetos (arreglos listas, colas, etc).",
+    image: "",
+  },
 ];
 
 export const RedesSociales: RedSocial[] = [
