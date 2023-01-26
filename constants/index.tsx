@@ -38,12 +38,32 @@ export const producto_1_contenido: PageContent[] = [
     title: "¿Qué es una estructura de dato?",
     content:
       "Son un modo de representar información en una computadora, que cuentan con un comportamiento interno, este mismo se rige por determinadas reglas/restricciones que han sido dadas por la forma en que está construida internamente.",
-      image: ""
+    image: "",
   },
   {
     title: "¿Qué es un contenedor?",
     content:
       "Es un objeto en el cual pueden guardarse otros objetos (arreglos listas, colas, etc).",
+    image: "/images/contenedor.png",
+  },
+  {
+    title: "Tipos de estructuras de datos",
+    content: "Existen dos tipos de estructuras de datos y son las siguientes:",
+    image: "",
+  },
+];
+
+export const producto_1_tipos: PageContent[] = [
+  {
+    title: "Estáticas",
+    content:
+      "son aquellas en las que el tamaño ocupado es definido en memoria antes de que el programa es ejecutado, este no puede modificarse durante la ejecución del programa.",
+    image: "",
+  },
+  {
+    title: "Dinámicas",
+    content:
+      "en este tipo el tamaño ocupado en memoria puede ser modificado durante la ejecución del programa.",
     image: "",
   },
 ];
