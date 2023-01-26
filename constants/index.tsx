@@ -38,6 +38,7 @@ export const producto_1_contenido: PageContent[] = [
     title: "¿Qué es una estructura de dato?",
     content:
       "Son un modo de representar información en una computadora, que cuentan con un comportamiento interno, este mismo se rige por determinadas reglas/restricciones que han sido dadas por la forma en que está construida internamente.",
+      image: ""
   },
   {
     title: "¿Qué es un contenedor?",
