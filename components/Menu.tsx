@@ -3,6 +3,7 @@ import styles from "styles/Menu.module.css";
 import react, { AnimationEventHandler, useCallback, useEffect } from "react";
 import { CheckIsDesktop } from "@/hooks/Desktop";
 import React from "react";
+import Link from "next/link";
 
 type MenuProps = {
   IsVisible: boolean;
@@ -19,6 +20,9 @@ export const Menu = ({ IsVisible }: MenuProps) => {
       data-visible={IsVisible}
     >
       <ul className={styles.menu}>
+        <li>
+          <Link className={styles.menuItem} href="/" >Inicio</Link>
+        </li>
         {Trabajos.map((trabajo, index) => {
           return (
             <li key={index}>
