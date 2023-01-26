@@ -20,14 +20,11 @@ export const Menu = ({ IsVisible }: MenuProps) => {
       data-visible={IsVisible}
     >
       <ul className={styles.menu}>
-        <li>
-          <Link className={styles.menuItem} href="/" >Inicio</Link>
-        </li>
         {Trabajos.map((trabajo, index) => {
           return (
             <li key={index}>
-              <a className={styles.menuItem} href="#">
-                {trabajo}
+              <a className={styles.menuItem} href={trabajo.url}>
+                {trabajo.title}
               </a>
             </li>
           );
