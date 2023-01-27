@@ -4,7 +4,8 @@ const nextConfig = {
   images: {
     loader: 'akamai',
     path: ''
-  }
+  },
+  basePath: "Estructuras-de-datos"
 }
 
 module.exports = nextConfig
