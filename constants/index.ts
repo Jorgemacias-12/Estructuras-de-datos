@@ -345,6 +345,39 @@ if __name__ == '__main__':
     main()
 `;
 
+export const CodeEvidences: PageContent[] = [
+  {
+    title: "Insercion",
+    content: "",
+    image: "/images/Insercion.png",
+  },
+  {
+    title: "Recorrido",
+    content: "",
+    image: "/images/Recorrido.png",
+  },
+  {
+    title: "Busqueda",
+    content: "",
+    image: "/images/Busqueda.png",
+  },
+  {
+    title: "Eliminacion",
+    content: "",
+    image: "/images/Eliminacion.png",
+  },
+  {
+    title: "Ordenacion",
+    content: "",
+    image: "/images/Ordenacion.png",
+  },
+  {
+    title: "Mezcla",
+    content: "",
+    image: "/images/Mezcla.png",
+  },
+];
+
 export const env = process.env.NODE_ENV
 
 export const downloadLink =
