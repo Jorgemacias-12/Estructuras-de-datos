@@ -23,9 +23,9 @@ export const Menu = ({ IsVisible }: MenuProps) => {
         {Trabajos.map((trabajo, index) => {
           return (
             <li key={index}>
-              <a className={styles.menuItem} href={trabajo.url}>
+              <Link className={styles.menuItem} href={trabajo.url}>
                 {trabajo.title}
-              </a>
+              </Link>
             </li>
           );
         })}
