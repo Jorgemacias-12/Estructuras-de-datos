@@ -18,6 +18,46 @@
   font-size: 8vw;
 }
 
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.operationsContainer {
+  padding: 1rem;
+}
+
+.referencesContainer {
+  padding: 2rem;
+}
+
+.referencesTitle {
+  color: var(--error-bg);
+  font-size: 2rem;
+}
+
+.referencesList {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.referenceItem {
+  padding: 1rem;
+}
+
+.referenceLink {
+  color: var(--separator-bg);
+  text-decoration: none;
+}
+
+.referenceLink:hover {
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 960px) {
   .title {
     font-size: 5vw;
