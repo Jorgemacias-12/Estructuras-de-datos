@@ -169,6 +169,15 @@ export const producto_1_referencias = [
   },
 ];
 
+export const producto_2_operations = [
+  "Inserción",
+  "Recorrido",
+  "Búsqueda",
+  "Eliminación",
+  "Ordenación",
+  "Mezcla",
+];
+
 export const RedesSociales: RedSocial[] = [
   {
     name: "GitHub",
