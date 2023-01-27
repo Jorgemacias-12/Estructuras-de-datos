@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: .2rem;
+  height: min-content;
+}
+
+.image {
+  width: auto;
+  border: none;
+  height: fit-content;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.title {
+
+}
+
+.content {
+
+}

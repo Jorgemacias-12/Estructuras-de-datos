@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  padding: 1rem;
+  height: calc(100vh - 270px);
+}
+
+.icon {
+  font-size: 10vw;
+  color: var(--error-bg);
+}
+
+.message {
+  font-size: 4vw;
+}
+
+.messageContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}

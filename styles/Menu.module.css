@@ -1,0 +1,76 @@
+.container.mobile.hidden[data-visible="false"] {
+  animation: hide 0.2s linear;
+  animation-fill-mode: forwards;
+}
+
+.container.mobile[data-visible="true"] {
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  animation: show 0.2s linear;
+}
+
+
+@keyframes hide {
+  from {
+    height: 9.075rem;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+
+@keyframes show {
+  0% {
+    height: 3.025rem;
+  }
+
+  25% {
+    height: 6.05rem;
+  }
+
+  50% {
+    height: 9.075rem;
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 1rem;
+}
+
+.menuItem {
+  text-align: center;
+  display: block;
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.menuItem:hover,
+.menuItem:active {
+  color: var(--link-hover-bg);
+}
+
+@media screen and (min-width: 960px) {
+  .navigation {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 4rem;
+  }
+
+  .menu {
+    flex-direction: row;
+  }
+
+  .menuItem {
+    text-align: center;
+  }
+
+
+}
