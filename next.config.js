@@ -5,7 +5,7 @@ const nextConfig = {
     loader: 'akamai',
     path: ''
   },
-  basePath: "Estructuras-de-datos"
+  basePath: `/${process.env.NEXT_PUBLIC_BASE_PATH}`
 }
 
 module.exports = nextConfig
