@@ -11,7 +11,7 @@ export const Trabajos: Link[] = [
   },
   {
     title: "Producto 2",
-    url: "",
+    url: "/producto-2",
   },
   {
     title: "Producto 3",
