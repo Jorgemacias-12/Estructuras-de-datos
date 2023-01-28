@@ -28,6 +28,13 @@
   font-size: 2rem;
 }
 
+.imagesContainer {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 1rem;
+}
+
 @media screen and (min-width: 960px) {
   .button {
     width: 200px;
