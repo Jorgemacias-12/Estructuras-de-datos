@@ -1,4 +1,5 @@
 import { Link, PageContent, RedSocial } from "@/types";
+import { title } from "process";
 
 export const Trabajos: Link[] = [
   {
@@ -348,43 +349,57 @@ if __name__ == '__main__':
 export const CodeEvidences: PageContent[] = [
   {
     title: "Insercion",
-    content: "",
-    image: "/images/Insercion.png",
+    content:
+      "El programa pregunta al usuario, que producto desea añadir a su lista de compras.",
+    image: "./images/Insercion.png",
   },
   {
     title: "Recorrido",
-    content: "",
-    image: "/images/Recorrido.png",
+    content:
+      "El programa le muestra al usuario su lista de compras actualizada elemento por elemento.",
+    image: "./images/Recorrer.png",
   },
   {
     title: "Busqueda",
-    content: "",
-    image: "/images/Busqueda.png",
+    content:
+      "Pregunta al usuario el nombre de un objeto para buscarlo en la lista de compras, si encuentra el objeto retornara el indice donde se encuentra este, caso contario emite un mensaje.",
+    image: "./images/Busqueda.png",
   },
   {
     title: "Eliminacion",
-    content: "",
-    image: "/images/Eliminacion.png",
+    content:
+      "El usuario puede eliminar un elemento de su lista utilizando su nombre, nuevamente si no existe se le hará saber al usuario.",
+    image: "./images/Eliminar.png",
   },
   {
     title: "Ordenacion",
-    content: "",
-    image: "/images/Ordenacion.png",
+    content:
+      "El programa ordena la lista de compras en orden alfabetico para posteriormente mostrar.",
+    image: "./images/Ordenar.png",
   },
   {
     title: "Mezcla",
-    content: "",
-    image: "/images/Mezcla.png",
+    content:
+      "Nuevamente, para mezclar utilizamos la funcion suffle de la libreria random, esta funcion recibe una lista como parámetro, y modifica la lista moviendo los elementos de forma aleatoria, luego el programa muestra la mezcla al usuario.",
+    image: "./images/Mezcla.png",
   },
 ];
 
-export const env = process.env.NODE_ENV
+
+export const producto_2_referencias = [
+  {
+    title: "UA2-TDA Estáticas",
+    content: "",
+    link: "https://sites.google.com/academicos.udg.mx/drlizcano/il354-estructura-datos/ua2-tda-est%C3%A1ticas?authuser=0",
+  },
+];
+
+export const env = process.env.NODE_ENV;
 
 export const downloadLink =
   env === "development"
     ? "/code/JAMZ-TDA-ListaEstatica.py"
     : "Estructuras-de-datos/code/JAMZ-TDA-ListaEstatica.py";
-
 
 export const RedesSociales: RedSocial[] = [
   {
