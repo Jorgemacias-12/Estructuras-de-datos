@@ -385,7 +385,6 @@ export const CodeEvidences: PageContent[] = [
   },
 ];
 
-
 export const producto_2_referencias = [
   {
     title: "UA2-TDA Estáticas",
@@ -396,10 +395,7 @@ export const producto_2_referencias = [
 
 export const env = process.env.NODE_ENV;
 
-export const downloadLink =
-  env === "development"
-    ? "/code/JAMZ-TDA-ListaEstatica.py"
-    : "Estructuras-de-datos/code/JAMZ-TDA-ListaEstatica.py";
+export const downloadLink = "/code/JAMZ-TDA-ListaEstatica.py";
 
 export const RedesSociales: RedSocial[] = [
   {
