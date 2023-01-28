@@ -16,7 +16,7 @@ import { Header } from "@/components/header/Header";
 const producto_1 = () => {
   return (
     <>
-      <Header title="Producto 1"/>
+      <Header title="Producto 1" />
 
       {producto_1_contenido.map(({ title, content, image }, index) => {
         return (
@@ -47,30 +47,34 @@ const producto_1 = () => {
       </section>
 
       <section className={styles.operationsContainer}>
-        {
-          producto_1_operations.map( ({title, content}, index) => {
-            return <TextParagraph title={title} content={content} url={""} key={index}/>
-          })
-        }
+        {producto_1_operations.map(({ title, content }, index) => {
+          return (
+            <TextParagraph
+              title={title}
+              content={content}
+              url={""}
+              key={index}
+            />
+          );
+        })}
       </section>
 
       <section className={styles.referencesContainer}>
-        <h3 className={styles.referencesTitle}>
-          Referencias
-        </h3>
+        <h3 className={styles.referencesTitle}>Referencias</h3>
 
         <ul className={styles.referencesList}>
-          {
-            producto_1_referencias.map(({title, content, link}, index) => {
-              return <li className={styles.referenceItem} key={index}>
-                {title} {content} <a className={styles.referenceLink} href={link}>{link}</a>
+          {producto_1_referencias.map(({ title, content, link }, index) => {
+            return (
+              <li className={styles.referenceItem} key={index}>
+                {title} {content}{" "}
+                <a className={styles.referenceLink} href={link}>
+                  {link}
+                </a>
               </li>
-            })
-          }
+            );
+          })}
         </ul>
-
       </section>
-
     </>
   );
 };
