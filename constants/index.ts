@@ -45,7 +45,7 @@ export const producto_1_contenido: PageContent[] = [
     title: "¿Qué es un contenedor?",
     content:
       "Es un objeto en el cual pueden guardarse otros objetos (arreglos listas, colas, etc).",
-    image: "/images/contenedor.png",
+    image: "./images/contenedor.png",
   },
   {
     title: "Tipos de estructuras de datos",

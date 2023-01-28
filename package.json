@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
+    "deploy": "touch ./_next/.nojekyll && gh-pages -d _next -t true",
     "start": "next start",
     "lint": "next lint"
   },
