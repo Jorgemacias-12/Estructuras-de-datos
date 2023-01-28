@@ -1,4 +1,5 @@
 import { Link, PageContent, RedSocial } from "@/types";
+import { title } from "process";
 
 export const Trabajos: Link[] = [
   {
@@ -73,37 +74,37 @@ export const producto_1_data_structures: PageContent[] = [
     title: "Arreglo",
     content:
       "son una estructura que almacena los datos un elemento al lado del otro, de tamaño fijo y no puede guardar datos de diferentes tipos, es decir no puedo guardar valores numéricos y booleanos al mismo tiempo.",
-    image: "/images/array.jpg",
+    image: "./images/array.jpg",
   },
   {
     title: "Lista enlazada",
     content:
       "Similar a los arrays con la diferencia de que por defecto no tenemos por qué saber la cantidad de lementos que va a contener.",
-    image: "/images/linkedList.jpg",
+    image: "./images/linkedList.jpg",
   },
   {
     title: "Pila",
     content:
       "Tipo de listas que tienen la particularidad de sólo poder eliminar o insertar en la cima de las mismas.",
-    image: "/images/pila.png",
+    image: "./images/pila.png",
   },
   {
     title: "Cola",
     content:
       "Tipo de lista que nos permite emular el comportamiento de una fila o cola en la vida real donde el primer elemento en ingresar es el primero en salir",
-    image: "/images/cola.svg",
+    image: "./images/cola.svg",
   },
   {
     title: "Arbol binario",
     content:
       "se componen de un nodo, donde cada uno contiene un ítem o un valor, una referencia a un nodo que será el hijo izquierdo y otra referencia para el nodo derecho.",
-    image: "/images/arbolBinario.png",
+    image: "./images/arbolBinario.png",
   },
   {
     title: "Grafo",
     content:
       "Tipo no lineal de estructura matemática formada por un conjunto de puntos, y de líneas, cada una de las cuales une un punto a otro.",
-    image: "/images/grafo.png",
+    image: "./images/grafo.png",
   },
 ];
 
@@ -344,6 +345,61 @@ def main():
 if __name__ == '__main__':
     main()
 `;
+
+export const CodeEvidences: PageContent[] = [
+  {
+    title: "Insercion",
+    content:
+      "El programa pregunta al usuario, que producto desea añadir a su lista de compras.",
+    image: "./images/Insercion.png",
+  },
+  {
+    title: "Recorrido",
+    content:
+      "El programa le muestra al usuario su lista de compras actualizada elemento por elemento.",
+    image: "./images/Recorrer.png",
+  },
+  {
+    title: "Busqueda",
+    content:
+      "Pregunta al usuario el nombre de un objeto para buscarlo en la lista de compras, si encuentra el objeto retornara el indice donde se encuentra este, caso contario emite un mensaje.",
+    image: "./images/Busqueda.png",
+  },
+  {
+    title: "Eliminacion",
+    content:
+      "El usuario puede eliminar un elemento de su lista utilizando su nombre, nuevamente si no existe se le hará saber al usuario.",
+    image: "./images/Eliminar.png",
+  },
+  {
+    title: "Ordenacion",
+    content:
+      "El programa ordena la lista de compras en orden alfabetico para posteriormente mostrar.",
+    image: "./images/Ordenar.png",
+  },
+  {
+    title: "Mezcla",
+    content:
+      "Nuevamente, para mezclar utilizamos la funcion suffle de la libreria random, esta funcion recibe una lista como parámetro, y modifica la lista moviendo los elementos de forma aleatoria, luego el programa muestra la mezcla al usuario.",
+    image: "./images/Mezcla.png",
+  },
+];
+
+
+export const producto_2_referencias = [
+  {
+    title: "UA2-TDA Estáticas",
+    content: "",
+    link: "https://sites.google.com/academicos.udg.mx/drlizcano/il354-estructura-datos/ua2-tda-est%C3%A1ticas?authuser=0",
+  },
+];
+
+export const env = process.env.NODE_ENV;
+
+export const downloadLink =
+  env === "development"
+    ? "/code/JAMZ-TDA-ListaEstatica.py"
+    : "Estructuras-de-datos/code/JAMZ-TDA-ListaEstatica.py";
 
 export const RedesSociales: RedSocial[] = [
   {

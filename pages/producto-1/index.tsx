@@ -11,18 +11,12 @@ import {
 import { TextParagraph } from "@/components/text/TextParagraph";
 import TextPoints from "@/components/text/TextPoints";
 import { CardItem } from "@/components/card/CardItem";
+import { Header } from "@/components/header/Header";
 
 const producto_1 = () => {
   return (
     <>
-      <section className={styles.header}>
-        <Image
-          src={headerImage}
-          className={styles.image}
-          alt="gradiente de colores para el fondo"
-        />
-        <h1 className={styles.title}>Producto 1</h1>
-      </section>
+      <Header title="Producto 1"/>
 
       {producto_1_contenido.map(({ title, content, image }, index) => {
         return (
