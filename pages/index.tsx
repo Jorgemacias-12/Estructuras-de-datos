@@ -1,5 +1,3 @@
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
 import styles from "styles/Index.module.css";
 import LandingImage from "public/code.png";
 import Head from "next/head";
@@ -24,6 +22,7 @@ export default function Home() {
       <main className={styles.container}>
         <Image
           className={styles.landImage}
+          unoptimized
           src={LandingImage}
           alt="Imagen de código como portada"
           priority
