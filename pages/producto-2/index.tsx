@@ -52,6 +52,10 @@ const Producto_2 = () => {
           Descargar código
         </a>
 
+        <h3 className={styles.sectionTitle}>
+          Referencias
+        </h3>
+
         {producto_2_referencias.map(({ title, content, link }, index) => {
           return (
             <li className={styles.referenceItem} key={index}>
