@@ -1,8 +1,8 @@
 import { Header } from "@/components/header/Header";
 import styles from "styles/Producto-2.module.css";
-import { producto_2_codigo, producto_2_operations } from "@/constants";
+import { CodeEvidences, downloadLink, producto_2_codigo, producto_2_operations, producto_2_referencias } from "@/constants";
 import { JEditor } from "@/components/editor/JEditor";
-import { useState, useEffect } from "react";
+import { CardItem } from "@/components/card/CardItem";
 
 const Producto_2 = () => {
 
@@ -32,9 +32,36 @@ const Producto_2 = () => {
         <h3 className={styles.sectionTitle}>Previsualización del código:</h3>
 
         <JEditor data={producto_2_codigo} />
-        <a className={styles.button} href="/code/JAMZ-TDA-ListaEstatica.py">
+
+        <h3 className={styles.sectionTitle}>Evidencia</h3>
+
+        <section className={styles.imagesContainer}>
+          {CodeEvidences.map(({ title, content, image }, index) => {
+            return (
+              <CardItem
+                title={title}
+                content={content}
+                imageURL={image}
+                key={index}
+              />
+            );
+          })}
+        </section>
+
+        <a className={styles.button} href={downloadLink}>
           Descargar código
         </a>
+
+        {producto_2_referencias.map(({ title, content, link }, index) => {
+          return (
+            <li className={styles.referenceItem} key={index}>
+              {title} {content}{" "}
+              <a className={styles.referenceLink} href={link}>
+                {link}
+              </a>
+            </li>
+          );
+        })}
       </section>
     </div>
   );
