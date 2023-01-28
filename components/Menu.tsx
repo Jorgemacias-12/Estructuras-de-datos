@@ -1,6 +1,5 @@
 import { Trabajos } from "@/constants";
 import styles from "styles/Menu.module.css";
-import react, { AnimationEventHandler, useCallback, useEffect } from "react";
 import { CheckIsDesktop } from "@/hooks/Desktop";
 import React from "react";
 import Link from "next/link";
