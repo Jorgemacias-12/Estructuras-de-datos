@@ -18,14 +18,12 @@
 
 .image {
   width: 100%;
-  /* width: calc(fit-content - 4rem); */
   border: .1rem solid #ccc;
   padding: 0.1rem;
 }
 
 
 .content {
-  /* padding: 0.5rem; */
   width: clamp(fit-content, 50%);
   text-align: justify;
 }
