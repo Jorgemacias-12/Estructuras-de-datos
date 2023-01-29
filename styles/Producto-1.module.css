@@ -45,19 +45,6 @@
   padding: 1rem;
 }
 
-.referenceItem {
-  padding: 1rem;
-}
-
-.referenceLink {
-  color: var(--separator-bg);
-  text-decoration: none;
-}
-
-.referenceLink:hover {
-  text-decoration: underline;
-}
-
 @media screen and (min-width: 960px) {
   .title {
     font-size: 5vw;
