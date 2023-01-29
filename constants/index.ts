@@ -348,7 +348,7 @@ if __name__ == '__main__':
 
 export const CodeEvidences: PageContent[] = [
   {
-    title: "Insercion",
+    title: "Inserción",
     content:
       "El programa pregunta al usuario, que producto desea añadir a su lista de compras.",
     image: "./images/Insercion.png",
@@ -360,19 +360,19 @@ export const CodeEvidences: PageContent[] = [
     image: "./images/Recorrer.png",
   },
   {
-    title: "Busqueda",
+    title: "Búsqueda",
     content:
       "Pregunta al usuario el nombre de un objeto para buscarlo en la lista de compras, si encuentra el objeto retornara el indice donde se encuentra este, caso contario emite un mensaje.",
     image: "./images/Busqueda.png",
   },
   {
-    title: "Eliminacion",
+    title: "Eliminación",
     content:
       "El usuario puede eliminar un elemento de su lista utilizando su nombre, nuevamente si no existe se le hará saber al usuario.",
     image: "./images/Eliminar.png",
   },
   {
-    title: "Ordenacion",
+    title: "Ordenamiento",
     content:
       "El programa ordena la lista de compras en orden alfabetico para posteriormente mostrar.",
     image: "./images/Ordenar.png",
