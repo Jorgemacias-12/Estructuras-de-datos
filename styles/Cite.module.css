@@ -1,0 +1,14 @@
+.referenceItem {
+  padding: 1rem;
+}
+
+.referenceLink {
+  color: var(--separator-bg);
+  text-decoration: none;
+  word-break: break-all;
+  text-align: justify;
+}
+
+.referenceLink:hover {
+  text-decoration: underline;
+}

@@ -12,10 +12,16 @@ import { TextParagraph } from "@/components/text/TextParagraph";
 import TextPoints from "@/components/text/TextPoints";
 import { CardItem } from "@/components/card/CardItem";
 import { Header } from "@/components/header/Header";
+import Cite from "@/components/cite/Cite";
+import Head from "next/head";
 
 const producto_1 = () => {
   return (
     <>
+      <Head>
+        <title>JAMZ - Producto 1</title>
+      </Head>
+
       <Header title="Producto 1" />
 
       {producto_1_contenido.map(({ title, content, image }, index) => {
@@ -65,12 +71,7 @@ const producto_1 = () => {
         <ul className={styles.referencesList}>
           {producto_1_referencias.map(({ title, content, link }, index) => {
             return (
-              <li className={styles.referenceItem} key={index}>
-                {title} {content}{" "}
-                <a className={styles.referenceLink} href={link}>
-                  {link}
-                </a>
-              </li>
+              <Cite key={index} title={title} content={content} link={link} />
             );
           })}
         </ul>

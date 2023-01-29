@@ -169,14 +169,202 @@ export const producto_1_referencias = [
     link: "https://blog.soyhenry.com/que-es-una-estructura-de-datos-en-programacion/",
   },
 ];
-
+// "Para insertar un elemento dentro de una lista, lo primero que necesitamos es una lista, por lo que, observando el editor de código  debajo de este texto, en la línea 8, podemos observar una lista definida de nombre <kbd>shopping_list</kbd>. Para posteriormente en la función insertar preguntar al usuario que producto desea incluir en su lista, luego insertar ese producto a la lista utilizando el metodo"
 export const producto_2_operations = [
-  "Inserción",
-  "Recorrido",
-  "Búsqueda",
-  "Eliminación",
-  "Ordenación",
-  "Mezcla",
+  {
+    title: "Inserción",
+    content: [
+      "Para insertar un elemento dentro de una lista, lo primero que necesitamos es una lista, por lo que, observando el editor de código  debajo de este texto, en la línea 8, podemos observar una lista definida de nombre <kbd>shopping_list</kbd>.",
+      "Para posteriormente en la función insertar preguntar al usuario que producto desea incluir en su lista, luego insertar ese producto a la lista utilizando el metodo <kbd>append</kbd>.",
+      "Por último se muestra la lista de compras al usuario (en mi caso la lista ya se encuentra llena, por lo que, habrá más contenido que el que se inserto.",
+    ],
+    code: `from colorama import init, Fore, Back
+import time
+import os
+import random
+
+# Planteamiento lista de compra del supermercado
+
+shopping_list = ["leche", "pan", "frutas", "verduras", "huevos", "carne", "pescado", "galletas", "pasta", "arroz", "jabon", "shampoo",
+                 "jabon de afeitar", "cepillo de dientes", "papel higienico", "alcohol en gel", "desinfectante", "detergente", "pañales", "shampoo para bebe"]
+
+
+def insertar():
+
+    # Insertar un producto nuevo a la lista
+
+    print()
+
+    print(Fore.LIGHTRED_EX + "Incluir producto en tu lista de compras")
+
+    print()  # Espacios en blanco para no confundir al usuario
+
+    # Preguntar al usuario el nombre del producto
+    producto = input(Fore.GREEN + "Nombre del producto: ").lower()
+
+    # Insertar producto en el arreglo
+    shopping_list.append(producto)
+
+    print()
+
+    print(Fore.YELLOW + "Lista del usuario actual ->")
+
+    print()
+
+    print(Fore.LIGHTCYAN_EX + f"{shopping_list}")
+
+    print()
+
+    print()  # Espacio en blanco para añadir espaciado
+
+    print(Fore.RED + f"La nueva lista es: {shopping_list}")
+
+    print()
+
+    print(Fore.LIGHTMAGENTA_EX +
+          f"El producto {producto} esta localizado en el indice {shopping_list.index(producto)}")
+
+    pass`,
+  },
+  {
+    title: "Recorrido",
+    content: [
+      "Para la funcionalidad de recorrido, utilice un blucle for donde obtuve el valor y el índice de este dentro de la lista, podemos observarlo en la línea <kbd>18</kbd> del código en el editor.",
+      "Por ejemplo el programa dice lo siguiente: <kbd>El producto {aquí va el producto}</kbd> se encuentra en la posición <kbd>{aquí va la posición}</kbd> de la lista.",
+      "Ahora con algo más real sería: <kbd>El producto Pasta de dientes se encuentra en la posición 12 de la lista.</kbd>",
+    ],
+    code: `from colorama import init, Fore, Back
+import time
+import os
+import random
+
+# Planteamiento lista de compra del supermercado
+
+shopping_list = ["leche", "pan", "frutas", "verduras", "huevos", "carne", "pescado", "galletas", "pasta", "arroz", "jabon", "shampoo",
+                 "jabon de afeitar", "cepillo de dientes", "papel higienico", "alcohol en gel", "desinfectante", "detergente", "pañales", "shampoo para bebe"]
+
+def recorrer():
+
+    print()
+
+    print(Fore.YELLOW + "Mostrar lista de compras")
+
+    # Imprimir la lista de compras
+    for index, value in enumerate(shopping_list):
+
+        print(
+            Fore.GREEN + f"El producto {value.capitalize()} se encuentra en la posición {index} de la lista")
+
+    pass`,
+  },
+  {
+    title: "Búsqueda",
+    content: [
+      "Para este caso en particular, hay existen dos opciones de búsqueda, por índice y por valor, en mi caso implemente la búsqueda por valor debido a que utilizo strings.",
+      "Nuevamente el programa pregunta al usuario por un producto a buscar dentro de su lista de compras.",
+      "Aquí existen dos vertientes, si encuentra el producto el resultado es: <kbd>El producto {producto} existe en la lista con índice {indice}.</kbd>",
+      "Que ya con un ejemplo real es: <kbd>El producto Pollo existe en el índice 4 de la lista.</kbd>",
+    ],
+    code: `def buscar():
+
+    print()
+
+    productoABuscar = input(Fore.YELLOW + "Producto a buscar: ").lower()
+
+    if (productoABuscar in shopping_list):
+
+        print(
+            Fore.CYAN + f"El producto {productoABuscar} existe en la lista de compra con indice {shopping_list.index(productoABuscar)}")
+
+    else:
+
+        print(Fore.RED + "El producto no esta dentro de tu lista de compras :C")
+
+    pass`,
+  },
+  {
+    title: "Eliminación",
+    content: [
+      "El programa muestra primero la lista de compras actual, para luego preguntar al usuario si necesita eliminar un producto.",
+      "Después de esto, el programa esperara 5 segundos imprimiendo el caracter <kbd>.</kbd>, y por último se confirmará si se elimino.",
+      "De hecho el método <kbd>remove</kbd> permite remover un elemento de la lista por <kbd>valor/índice</kbd> en mi caso valor.",
+    ],
+    code: `def eliminar():
+
+    print()
+
+    productoAEliminar = input(Fore.RED + "Producto a eliminar: ").lower()
+
+    print(Fore.RED + f'Removiendo {productoAEliminar} de tu lista de compras')
+
+    print()
+
+    for i in range(5):
+        time.sleep(1)
+        print(Back.WHITE + Fore.LIGHTCYAN_EX + f'.', end='')
+
+    print()
+    print()
+
+    try:
+        shopping_list.remove(productoAEliminar)
+    except ValueError:
+        print()
+        print(Fore.WHITE + Back.RED +
+              f"El producto {productoAEliminar} no esta en tu lista de compras")
+
+    print(Fore.YELLOW + f'Lista de compras actualizada: {shopping_list}')
+
+    pass`,
+  },
+  {
+    title: "Ordenación",
+    content: [
+      "El programa en esta étapa le dice al usuario que la lista se va a ordenar, se ejecuta el método <kbd>sort</kbd> de la lista, en este caso como mi lista contiene valores string se va a ordenar por orden álfabetico.",
+      "Por último, solo imprimo los valore ordenados alfabéticamente al usuario con diferentes colores.",
+    ],
+    code: `def ordenar():
+
+    print()
+
+    print(Fore.LIGHTCYAN_EX + "Ordenar lista de compras por orden alfabetico")
+
+    shopping_list.sort()
+
+    for index, item in enumerate(shopping_list):
+
+        if index % 2 == 0:
+            print(Fore.GREEN + f'{item}')
+        else:
+            print(Fore.BLUE + f'{item}')
+
+    pass`,
+  },
+  {
+    title: "Mezcla",
+    content: [
+      "Antes de finalizar el programa, este hace una mezcla de la lista de compras del usuario, esta mezcla cambia de indice todos los productos insertados anteriormente.",
+      "¿Cómo se hace esto? una forma sencilla de lograr esto es utilizando la funcion <kbd>suffle</kbd> de la libreria <kbd>random</kbd>",
+      "¿El resultado? como mencione anteriormente al usuario se le muestra una lista de productos para comprar desordenada."
+    ],
+    code: `def mezclar():
+
+    print()
+
+    print(Fore.YELLOW + "Mostrar productos de mi lista de compras aleatoriamente")
+
+    random.shuffle(shopping_list)
+
+    print(Fore.LIGHTGREEN_EX + f'{shopping_list}')
+
+    pass`,
+  },
+  // "Inserción",
+  // "Recorrido",
+  // "Búsqueda",
+  // "Eliminación",
+  // "Ordenación",
+  // "Mezcla",
 ];
 
 export const producto_2_codigo = `from colorama import init, Fore, Back
@@ -348,7 +536,7 @@ if __name__ == '__main__':
 
 export const CodeEvidences: PageContent[] = [
   {
-    title: "Insercion",
+    title: "Inserción",
     content:
       "El programa pregunta al usuario, que producto desea añadir a su lista de compras.",
     image: "./images/Insercion.png",
@@ -360,19 +548,19 @@ export const CodeEvidences: PageContent[] = [
     image: "./images/Recorrer.png",
   },
   {
-    title: "Busqueda",
+    title: "Búsqueda",
     content:
       "Pregunta al usuario el nombre de un objeto para buscarlo en la lista de compras, si encuentra el objeto retornara el indice donde se encuentra este, caso contario emite un mensaje.",
     image: "./images/Busqueda.png",
   },
   {
-    title: "Eliminacion",
+    title: "Eliminación",
     content:
       "El usuario puede eliminar un elemento de su lista utilizando su nombre, nuevamente si no existe se le hará saber al usuario.",
     image: "./images/Eliminar.png",
   },
   {
-    title: "Ordenacion",
+    title: "Ordenamiento",
     content:
       "El programa ordena la lista de compras en orden alfabetico para posteriormente mostrar.",
     image: "./images/Ordenar.png",

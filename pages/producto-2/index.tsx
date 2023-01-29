@@ -3,11 +3,18 @@ import styles from "styles/Producto-2.module.css";
 import { CodeEvidences, downloadLink, producto_2_codigo, producto_2_operations, producto_2_referencias } from "@/constants";
 import { JEditor } from "@/components/editor/JEditor";
 import { CardItem } from "@/components/card/CardItem";
+import { CodeReview } from "@/components/codeReview/CodeReview";
+import Cite from "@/components/cite/Cite";
+import Head from "next/head";
 
 const Producto_2 = () => {
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>JAMZ - Producto 2</title>
+      </Head>
+
       <Header title="Producto 2" />
 
       <section className={styles.container}>
@@ -23,17 +30,35 @@ const Producto_2 = () => {
           siguientes:
         </p>
 
-        <ul className={styles.operationsContainer}>
-          {producto_2_operations.map((operation, index) => {
-            return <li key={index}>{operation}</li>;
+        <section className={styles.operationsContainer}>
+          {producto_2_operations.map(({ title, content, code }, index) => {
+            return (
+              <CodeReview
+                title={title}
+                content={content}
+                code={code}
+                key={index}
+              />
+            );
           })}
-        </ul>
+        </section>
 
-        <h3 className={styles.sectionTitle}>Previsualización del código:</h3>
+        <h3 className={styles.sectionTitle}>Código completo:</h3>
 
         <JEditor data={producto_2_codigo} />
 
-        <h3 className={styles.sectionTitle}>Evidencia</h3>
+        <p className={styles.warning}>
+          El código tiene como dependencia la libreria <kbd>colorama</kbd>, si
+          el programa falla al ejecutarse, puedes instalar la libreria
+          utilizando el siguiente comando:
+          <kbd>pip install colorama</kbd>
+        </p>
+
+        <a className={styles.button} href={downloadLink}>
+          Descargar código
+        </a>
+
+        <h3 className={styles.sectionTitle}>Capturas de Ejecución:</h3>
 
         <section className={styles.imagesContainer}>
           {CodeEvidences.map(({ title, content, image }, index) => {
@@ -48,26 +73,15 @@ const Producto_2 = () => {
           })}
         </section>
 
-        <a className={styles.button} href={downloadLink}>
-          Descargar código
-        </a>
-
-        <h3 className={styles.sectionTitle}>
-          Referencias
-        </h3>
+        <h3 className={styles.sectionTitle}>Referencias</h3>
 
         {producto_2_referencias.map(({ title, content, link }, index) => {
           return (
-            <li className={styles.referenceItem} key={index}>
-              {title} {content}{" "}
-              <a className={styles.referenceLink} href={link}>
-                {link}
-              </a>
-            </li>
+            <Cite key={index} title={title} content={content} link={link} />
           );
         })}
       </section>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,24 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+   background-color: #ececec;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  color: var(--separator-bg);
+}
+
+.text {
+  text-align: justify;
+  line-height: 1.6rem;
+}
