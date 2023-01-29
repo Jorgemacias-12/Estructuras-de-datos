@@ -60,7 +60,8 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: 'Monserrat', Arial, Helvetica, sans-serif
+  font-family: 'Monserrat', Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
 }
 
 kbd {

@@ -56,7 +56,9 @@ const Producto_2 = () => {
           })}
         </section>
 
-        <h3 className={`${styles.sectionTitle} center-text`}>Previsualización del código y descarga:</h3>
+        <h3 className={`${styles.sectionTitle} center-text`}>
+          Previsualización del código y descarga:
+        </h3>
 
         <JEditor data={producto_2_codigo} />
 
@@ -86,8 +88,6 @@ const Producto_2 = () => {
           })}
         </section>
 
-        <hr className=" separator separator-x" />
-
         <h3 className={styles.sectionTitle}>Referencias</h3>
 
         {producto_2_referencias.map(({ title, content, link }, index) => {
@@ -95,6 +95,8 @@ const Producto_2 = () => {
             <Cite key={index} title={title} content={content} link={link} />
           );
         })}
+        
+        <hr className=" separator separator-x" />
       </section>
     </>
   );
