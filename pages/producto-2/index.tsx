@@ -19,7 +19,7 @@ const Producto_2 = () => {
       <Head>
         <title>JAMZ - Producto 2</title>
       </Head>
-
+      
       <Header title="UA2-TDA ESTÁTICAS" />
 
       <section className={styles.container}>

@@ -76,6 +76,13 @@ kbd {
   text-align: center;
 }
 
+kbd {
+  background-color: #303030;
+  color: white;
+  padding: 0.2rem;
+  border-radius: .2rem;
+}
+
 .container {
   display: flex;
 }
