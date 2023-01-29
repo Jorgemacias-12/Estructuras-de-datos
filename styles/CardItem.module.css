@@ -21,9 +21,9 @@
 }
 
 .title {
-
+  color: var(--separator-bg)
 }
 
 .content {
-
+  text-align: justify;
 }
