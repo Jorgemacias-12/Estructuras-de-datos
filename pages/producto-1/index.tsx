@@ -13,10 +13,15 @@ import TextPoints from "@/components/text/TextPoints";
 import { CardItem } from "@/components/card/CardItem";
 import { Header } from "@/components/header/Header";
 import Cite from "@/components/cite/Cite";
+import Head from "next/head";
 
 const producto_1 = () => {
   return (
     <>
+      <Head>
+        <title>JAMZ - Producto 1</title>
+      </Head>
+
       <Header title="Producto 1" />
 
       {producto_1_contenido.map(({ title, content, image }, index) => {

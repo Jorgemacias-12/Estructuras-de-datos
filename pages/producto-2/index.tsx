@@ -5,11 +5,16 @@ import { JEditor } from "@/components/editor/JEditor";
 import { CardItem } from "@/components/card/CardItem";
 import { CodeReview } from "@/components/codeReview/CodeReview";
 import Cite from "@/components/cite/Cite";
+import Head from "next/head";
 
 const Producto_2 = () => {
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>JAMZ - Producto 2</title>
+      </Head>
+
       <Header title="Producto 2" />
 
       <section className={styles.container}>
@@ -41,9 +46,11 @@ const Producto_2 = () => {
         <h3 className={styles.sectionTitle}>Código completo:</h3>
 
         <JEditor data={producto_2_codigo} />
-        
+
         <p className={styles.warning}>
-          El código tiene como dependencia la libreria <kbd>colorama</kbd>, si el programa falla al ejecutarse, puedes instalar la libreria utilizando el siguiente comando: 
+          El código tiene como dependencia la libreria <kbd>colorama</kbd>, si
+          el programa falla al ejecutarse, puedes instalar la libreria
+          utilizando el siguiente comando:
           <kbd>pip install colorama</kbd>
         </p>
 
@@ -74,7 +81,7 @@ const Producto_2 = () => {
           );
         })}
       </section>
-    </div>
+    </>
   );
 };
 
