@@ -4,6 +4,7 @@ import { CodeEvidences, downloadLink, producto_2_codigo, producto_2_operations, 
 import { JEditor } from "@/components/editor/JEditor";
 import { CardItem } from "@/components/card/CardItem";
 import { CodeReview } from "@/components/codeReview/CodeReview";
+import Cite from "@/components/cite/Cite";
 
 const Producto_2 = () => {
 
@@ -69,14 +70,7 @@ const Producto_2 = () => {
 
         {producto_2_referencias.map(({ title, content, link }, index) => {
           return (
-            <ul key={index}>
-              <li className={styles.referenceItem}>
-                {title} {content}{" "}
-                <a className={styles.referenceLink} href={link}>
-                  {link}
-                </a>
-              </li>
-            </ul>
+            <Cite key={index} title={title} content={content} link={link} />
           );
         })}
       </section>
