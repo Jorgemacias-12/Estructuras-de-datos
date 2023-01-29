@@ -1,6 +1,12 @@
 import { Header } from "@/components/header/Header";
 import styles from "styles/Producto-2.module.css";
-import { CodeEvidences, downloadLink, producto_2_codigo, producto_2_operations, producto_2_referencias } from "@/constants";
+import {
+  CodeEvidences,
+  downloadLink,
+  producto_2_codigo,
+  producto_2_operations,
+  producto_2_referencias,
+} from "@/constants";
 import { JEditor } from "@/components/editor/JEditor";
 import { CardItem } from "@/components/card/CardItem";
 import { CodeReview } from "@/components/codeReview/CodeReview";
@@ -8,27 +14,34 @@ import Cite from "@/components/cite/Cite";
 import Head from "next/head";
 
 const Producto_2 = () => {
-
   return (
     <>
       <Head>
         <title>JAMZ - Producto 2</title>
       </Head>
 
-      <Header title="Producto 2" />
+      <Header title="UA2-TDA ESTÁTICAS" />
 
       <section className={styles.container}>
-        <h2>Planteamiento</h2>
+        <h2 className="subtitle">LISTA ESTATICA</h2>
 
-        <p className="text">
-          El programa planteado para esta actividad se basa en la lista de
-          compras de una persona en una tienda.
+        <p className="text text-subtitle">
+          <b>ACTIVIDAD DE CLASE (TDALISTA ESTATICA):</b>
         </p>
 
         <p className="text">
-          Las operaciones que realiza mi programa utilizando una lista son las
-          siguientes:
+          El alumno deberá ingresar una serie de elementos en una lista estática
+          y aplicará las siguientes operaciónes utilizando el lenguaje python.
         </p>
+
+        <h3 className="text-subtitle">Planteamiento:</h3>
+
+        <p className="text">
+          En este programa me base en un supermercado, donde la persona tiene un
+          carrito de compras donde va depositando los productos.
+        </p>
+
+        <h3 className="text-subtitle">Operaciones:</h3>
 
         <section className={styles.operationsContainer}>
           {producto_2_operations.map(({ title, content, code }, index) => {
@@ -43,7 +56,7 @@ const Producto_2 = () => {
           })}
         </section>
 
-        <h3 className={styles.sectionTitle}>Código completo:</h3>
+        <h3 className={`${styles.sectionTitle} center-text`}>Previsualización del código y descarga:</h3>
 
         <JEditor data={producto_2_codigo} />
 
@@ -72,6 +85,8 @@ const Producto_2 = () => {
             );
           })}
         </section>
+
+        <hr className=" separator separator-x" />
 
         <h3 className={styles.sectionTitle}>Referencias</h3>
 

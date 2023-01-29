@@ -70,12 +70,25 @@ kbd {
   border-radius: .2rem;
 }
 
+.subtitle {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
 .container {
   display: flex;
 }
 
 .text {
   text-align: justify;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.text-subtitle {
+  font-size: 2.2rem;
 }
 
 .center {
