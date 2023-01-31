@@ -19,7 +19,7 @@ const Producto_2 = () => {
       <Head>
         <title>JAMZ - Producto 2</title>
       </Head>
-      
+
       <Header title="UA2-TDA ESTÁTICAS" />
 
       <section className={styles.container}>
@@ -73,6 +73,7 @@ const Producto_2 = () => {
           Descargar código
         </a>
 
+
         <h3 className={styles.sectionTitle}>Capturas de Ejecución:</h3>
 
         <section className={styles.imagesContainer}>
@@ -95,8 +96,34 @@ const Producto_2 = () => {
             <Cite key={index} title={title} content={content} link={link} />
           );
         })}
-        
+
         <hr className=" separator separator-x" />
+      </section>
+
+      <section className={styles.container} id="producto-2">
+        
+        <h2 className="subtitle">Pila Estática</h2>
+
+        <p className="text text-subtitle">
+          <b> Actividad de clase (TDA Pila estática):</b>
+        </p>
+
+        <p className="text">
+          El alumno deberá ingresar una serie de elementos en una TDA pila
+          estática y se aplicará las sigueintes operaciones utilizando el
+          lenguaje de Python:
+        </p>
+
+        <h3 className="text-subtitle">Planteamiento</h3>
+        
+        <a href="#" className={styles.button}>Descargar código</a>
+
+        <hr className="separator separator-x" />
+
+        <h3 className={styles.sectionTitle}>Referencias</h3>
+
+        
+
       </section>
     </>
   );
