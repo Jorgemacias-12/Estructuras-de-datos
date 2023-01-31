@@ -534,6 +534,15 @@ if __name__ == '__main__':
     main()
 `;
 
+export const producto_2_pilas_datos = [
+  "Inserción",
+  "Recorrido",
+  "Búsqueda",
+  "Eliminación",
+  "Ordenamiento",
+  "Mezcla"
+]
+
 export const CodeEvidences: PageContent[] = [
   {
     title: "Inserción",
