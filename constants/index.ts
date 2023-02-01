@@ -26,12 +26,6 @@ export const Trabajos: Link[] = [
     title: "Proyecto final",
     url: "",
   },
-
-  // "Producto 1",
-  // "Producto 2",
-  // "Producto 3",
-  // "Producto 4",
-  // "Proyecto Final",
 ];
 
 export const producto_1_contenido: PageContent[] = [
