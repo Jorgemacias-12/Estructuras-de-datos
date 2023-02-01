@@ -115,7 +115,12 @@ const Producto_2 = () => {
         </p>
 
         <h3 className="text-subtitle">Planteamiento</h3>
-        
+
+        <p className="text">
+          Una persona tiene diferentes cantidades de dinero en su bolsillo, cartera y su cuenta de banco
+          por lo que al querrer depositar/retirar dinero entre cuentas/lugar donde este el dinero.
+        </p>
+
         <a href="#" className={styles.button}>Descargar código</a>
 
         <hr className="separator separator-x" />
