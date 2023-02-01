@@ -69,6 +69,39 @@ export const producto_1_tipos: PageContent[] = [
   },
 ];
 
+export const producto_2_pila = [
+  {
+    title: "Inserción",
+    content:"",
+    code: ""
+  },
+  {
+    title: "Recorrido",
+    content:"",
+    code: ""
+  },
+  {
+    title: "Búsqueda",
+    content:"",
+    code: ""
+  },
+  {
+    title: "Eliminación",
+    content:"",
+    code: ""
+  },
+  {
+    title: "Ordenación",
+    content:"",
+    code: ""
+  },
+  {
+    title: "Mezcla",
+    content:"",
+    code: ""
+  },
+]
+
 export const producto_1_data_structures: PageContent[] = [
   {
     title: "Arreglo",
