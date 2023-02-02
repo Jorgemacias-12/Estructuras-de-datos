@@ -3,8 +3,11 @@ import styles from "styles/Producto-2.module.css";
 import {
   CodeEvidences,
   downloadLink,
+  pilaDownloadLink,
+  pila_codeCaptures,
   producto_2_codigo,
   producto_2_operations,
+  producto_2_pila_operations,
   producto_2_referencias,
 } from "@/constants";
 import { JEditor } from "@/components/editor/JEditor";
@@ -12,8 +15,19 @@ import { CardItem } from "@/components/card/CardItem";
 import { CodeReview } from "@/components/codeReview/CodeReview";
 import Cite from "@/components/cite/Cite";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 
 const Producto_2 = () => {
+  
+  const [code, setCode] = useState("");
+
+  useEffect( () => {
+    fetch(pilaDownloadLink)
+      .then( response => response.text())
+      .then( text => setCode(text))
+      .catch( err => console.log(err))
+  },[])
+
   return (
     <>
       <Head>
@@ -121,13 +135,41 @@ const Producto_2 = () => {
           por lo que al querrer depositar/retirar dinero entre cuentas/lugar donde este el dinero.
         </p>
 
-        <a href="#" className={styles.button}>Descargar código</a>
+        <h3 className="text-subtitle">
+          Operaciones:
+        </h3>
+
+        {
+          producto_2_pila_operations.map(({title, content, code}, index)=> {
+            return <CodeReview title={title} key={index} content={content} code={code}/>
+          })
+        }
+
+        <h3 className={styles.sectionTitle}>
+          Código fuente:
+        </h3>
+
+        <JEditor data={code} />
+
+        <a href={pilaDownloadLink} className={styles.button}>Descargar código</a>
+
+        <h3 className={styles.sectionTitle}>Capturas de ejecución</h3>
+        
+        {
+          pila_codeCaptures.map(({title, content, image }, index)=>{
+            return <CardItem title={title} content={content} imageURL={image} key={index}/>
+          })
+        }
 
         <hr className="separator separator-x" />
 
         <h3 className={styles.sectionTitle}>Referencias</h3>
 
-        
+        {
+          producto_2_referencias.map(({title, content, link}, index)=> {
+            return <Cite title={title} content={content} link={link} key={index}/>
+          })
+        }
 
       </section>
     </>
