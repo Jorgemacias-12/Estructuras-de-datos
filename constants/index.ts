@@ -63,35 +63,47 @@ export const producto_1_tipos: PageContent[] = [
   },
 ];
 
-export const producto_2_pila = [
+export const producto_2_pila_operations = [
   {
     title: "Inserción",
-    content:"",
+    content:[
+      ""
+    ],
     code: ""
   },
   {
     title: "Recorrido",
-    content:"",
+    content:[
+      ""
+    ],
     code: ""
   },
   {
     title: "Búsqueda",
-    content:"",
+    content:[
+      ""
+    ],
     code: ""
   },
   {
     title: "Eliminación",
-    content:"",
+    content:[
+      ""
+    ],
     code: ""
   },
   {
     title: "Ordenación",
-    content:"",
+    content:[
+      ""
+    ],
     code: ""
   },
   {
     title: "Mezcla",
-    content:"",
+    content:[
+      ""
+    ],
     code: ""
   },
 ]
@@ -609,10 +621,48 @@ export const CodeEvidences: PageContent[] = [
   },
 ];
 
+export const pila_codeCaptures: PageContent[] = [
+  {
+    title: "Inserción",
+    content:"Una vez el ",
+    image: "./images/pila/Insercion.png",
+  },
+  {
+    title: "Recorrido",
+    content:
+      "El programa le muestra al usuario su lista de compras actualizada elemento por elemento.",
+    image: "./images/pila/Recorrer.png",
+  },
+  {
+    title: "Búsqueda",
+    content:
+      "Pregunta al usuario el nombre de un objeto para buscarlo en la lista de compras, si encuentra el objeto retornara el indice donde se encuentra este, caso contario emite un mensaje.",
+    image: "./images/pila/Busqueda.png",
+  },
+  {
+    title: "Eliminación",
+    content:
+      "El usuario puede eliminar un elemento de su lista utilizando su nombre, nuevamente si no existe se le hará saber al usuario.",
+    image: "./images/pila/Eliminar.png",
+  },
+  {
+    title: "Ordenamiento",
+    content:
+      "El programa ordena la lista de compras en orden alfabetico para posteriormente mostrar.",
+    image: "./images/pila/Ordenar.png",
+  },
+  {
+    title: "Mezcla",
+    content:
+      "Nuevamente, para mezclar utilizamos la funcion suffle de la libreria random, esta funcion recibe una lista como parámetro, y modifica la lista moviendo los elementos de forma aleatoria, luego el programa muestra la mezcla al usuario.",
+    image: "./images/pila/Mezcla.png",
+  },
+];
+
 export const producto_2_referencias = [
   {
     title: "UA2-TDA Estáticas",
-    content: "",
+    content: "Recuperado 1 de febrero de 2023, de",
     link: "https://sites.google.com/academicos.udg.mx/drlizcano/il354-estructura-datos/ua2-tda-est%C3%A1ticas?authuser=0",
   },
 ];
@@ -620,6 +670,7 @@ export const producto_2_referencias = [
 export const env = process.env.NODE_ENV;
 
 export const downloadLink = "code/JAMZ-TDA-ListaEstatica.py";
+export const pilaDownloadLink = "code/JAMZ-TDA-PilaEstatica.py";
 
 export const RedesSociales: RedSocial[] = [
   {
