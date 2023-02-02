@@ -26,7 +26,7 @@ const Producto_2 = () => {
       .then((text) => setCode(text))
       .catch((err) => console.log(err));
   }, []);
-
+  
   return (
     <>
       <Head>
@@ -108,7 +108,6 @@ const Producto_2 = () => {
             <Cite key={index} title={title} content={content} link={link} />
           );
         })}
-
         <hr className=" separator separator-x" />
       </section>
 
@@ -189,6 +188,7 @@ const Producto_2 = () => {
         })}
 
         <hr className="separator separator-x" />
+
       </section>
     </>
   );
