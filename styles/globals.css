@@ -13,6 +13,7 @@
   --separator-bg: #0139cc;
   --error-bg: #bb2929;
   --card-bg: #e5e5e5;
+  --info-bg: #177dfc;
 }
 
 * {
@@ -88,6 +89,17 @@ kbd {
 }
 
 .text {
+  text-align: justify;
+}
+
+.info {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  background-color: var(--info-bg);
+  color: white;
+  padding: 0.5rem;
+  border-radius: .2rem;
   text-align: justify;
 }
 
