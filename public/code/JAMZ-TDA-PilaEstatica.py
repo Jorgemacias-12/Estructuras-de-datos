@@ -81,15 +81,25 @@ def recorrer():
 
     clear()
 
+    global DineroEnCuenta
+
     print("Mostrando saldo actual total de la cuenta")
 
     suma = 0
 
+    AuxPila =[]
+
     while DineroEnCuenta:
 
         dinero = DineroEnCuenta.pop()
+
+        AuxPila.append(dinero)
+
         print(f"Cantidad: {dinero}")
         suma += dinero
+
+    if not DineroEnCuenta:
+        DineroEnCuenta = AuxPila
 
     print()
 
