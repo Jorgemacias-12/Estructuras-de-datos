@@ -79,6 +79,8 @@ def insertar():
 
 def recorrer():
 
+    clear()
+
     print("Mostrando saldo actual total de la cuenta")
 
     suma = 0
