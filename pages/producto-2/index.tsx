@@ -18,15 +18,14 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 
 const Producto_2 = () => {
-  
   const [code, setCode] = useState("");
 
-  useEffect( () => {
+  useEffect(() => {
     fetch(pilaDownloadLink)
-      .then( response => response.text())
-      .then( text => setCode(text))
-      .catch( err => console.log(err))
-  },[])
+      .then((response) => response.text())
+      .then((text) => setCode(text))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <>
@@ -87,7 +86,6 @@ const Producto_2 = () => {
           Descargar código
         </a>
 
-
         <h3 className={styles.sectionTitle}>Capturas de Ejecución:</h3>
 
         <section className={styles.imagesContainer}>
@@ -114,8 +112,7 @@ const Producto_2 = () => {
         <hr className=" separator separator-x" />
       </section>
 
-      <section className={styles.container} id="producto-2">
-        
+      <section className={styles.container} id="pila">
         <h2 className="subtitle">Pila Estática</h2>
 
         <p className="text text-subtitle">
@@ -131,46 +128,67 @@ const Producto_2 = () => {
         <h3 className="text-subtitle">Planteamiento</h3>
 
         <p className="text">
-          Una persona tiene diferentes cantidades de dinero en su bolsillo, cartera y su cuenta de banco
-          por lo que al querrer depositar/retirar dinero entre cuentas/lugar donde este el dinero.
+          Una persona tiene diferentes cantidades de dinero en su bolsillo,
+          cartera y su cuenta de banco por lo que al querrer depositar/retirar
+          dinero entre cuentas/lugar donde este el dinero.
         </p>
 
-        <h3 className="text-subtitle">
-          Operaciones:
-        </h3>
+        <h3 className="text-subtitle">Operaciones:</h3>
 
-        {
-          producto_2_pila_operations.map(({title, content, code}, index)=> {
-            return <CodeReview title={title} key={index} content={content} code={code}/>
-          })
-        }
+        <section className={styles.operationsContainer}>
+          {producto_2_pila_operations.map(({ title, content, code }, index) => {
+            return (
+              <CodeReview
+                title={title}
+                key={index}
+                content={content}
+                code={code}
+              />
+            );
+          })}
+        </section>
 
-        <h3 className={styles.sectionTitle}>
-          Código fuente:
-        </h3>
+        <p className="info">
+          <i className="fas fa-circle-info"></i>
+          Más abajo se encuentran las evidencias de ejecución, en caso de que el código no funcione.
+        </p>
+
+        <p className={styles.warning}>
+          Algunas partes del código aquí han sido ignoradas para evitar saturar la vista, si tiene problemás ejecutando el código. Haz una copia el código fuente más abajo o descargalo.
+        </p>
+
+        <h3 className={styles.sectionTitle}>Código fuente:</h3>
 
         <JEditor data={code} />
 
-        <a href={pilaDownloadLink} className={styles.button}>Descargar código</a>
+        <a href={pilaDownloadLink} className={styles.button}>
+          Descargar código
+        </a>
 
         <h3 className={styles.sectionTitle}>Capturas de ejecución</h3>
-        
-        {
-          pila_codeCaptures.map(({title, content, image }, index)=>{
-            return <CardItem title={title} content={content} imageURL={image} key={index}/>
-          })
-        }
 
-        <hr className="separator separator-x" />
+        <section className={styles.imagesContainer} id="capturas">
+          {pila_codeCaptures.map(({ title, content, image }, index) => {
+            return (
+              <CardItem
+                title={title}
+                content={content}
+                imageURL={image}
+                key={index}
+              />
+            );
+          })}
+        </section>
 
         <h3 className={styles.sectionTitle}>Referencias</h3>
 
-        {
-          producto_2_referencias.map(({title, content, link}, index)=> {
-            return <Cite title={title} content={content} link={link} key={index}/>
-          })
-        }
+        {producto_2_referencias.map(({ title, content, link }, index) => {
+          return (
+            <Cite title={title} content={content} link={link} key={index} />
+          );
+        })}
 
+        <hr className="separator separator-x" />
       </section>
     </>
   );
