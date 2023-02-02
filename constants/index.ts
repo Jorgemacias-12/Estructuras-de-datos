@@ -26,12 +26,6 @@ export const Trabajos: Link[] = [
     title: "Proyecto final",
     url: "",
   },
-
-  // "Producto 1",
-  // "Producto 2",
-  // "Producto 3",
-  // "Producto 4",
-  // "Proyecto Final",
 ];
 
 export const producto_1_contenido: PageContent[] = [
@@ -66,6 +60,272 @@ export const producto_1_tipos: PageContent[] = [
     content:
       "en este tipo el tamaño ocupado en memoria puede ser modificado durante la ejecución del programa.",
     image: "",
+  },
+];
+
+export const producto_2_pila_operations = [
+  {
+    title: "Inserción",
+    content: [
+      "La operación consta en utilizar dos pilas con nombres <kbd>DinerEnCuenta</kbd> y <kbd>DineroEnCartera</kbd> al usuario se le muestra el dinero disponible en las dos pilas.",
+      "Cuenta con validaciones en caso de no encontrar una cantidad dada o dar como un numero no válido o string.",
+      "Para el proceso de inserción hago una pregunta al usuario de cuanto quiere depositar al banco, para posteriormente utilizando un <kbd>for in </kbd> recorrer cada elemento dispónible en la pila, y con la logica de <kbd>if item == cantidad a depositar</kbd> si esta condición se cumple se utiliza el método <kbd>remove</kbd> para remover el dinero de la pila <kbd>DineroEnCartera</kbd> e insertarlo con append en <kbd>DineroEnCuenta</kbd>.",
+    ],
+    code: `import os
+import random
+
+Ejecucion = True
+Opcion = None
+
+DineroEnCuenta = [500, 200, 12, 44, 234]
+DineroEnCartera = [200, 100, 50, 20, 15, 30]
+
+def insertar():
+
+    global DineroEnCuenta
+    global DineroEnCartera
+
+    clear()
+
+    print("Fondos disponibles: ")
+    print(DineroEnCuenta)
+
+    print()
+
+    print("Toco depositar dinero al banco")
+    print(
+        f"Tengo {DineroEnCartera} en billetes y monedas en mi cartera disponibles para depositar")
+
+    print()
+
+    if not DineroEnCartera:
+        print("Ya no tengo dinero, toco ir a a trabajar")
+        print("Regresando al menú!")
+        pausa()
+        menu()
+
+    try:
+        canitdadADepositar = int(input("Cantidad a depositar ==> "))
+    except:
+        pausa()
+        insertar()
+
+    if not canitdadADepositar in DineroEnCartera:
+        print("No tengo esa cantidad de dinero para depositarla, toco trabajar!")
+        pausa()
+        insertar()
+
+    for item in DineroEnCartera:
+
+        if item == canitdadADepositar:
+            DineroEnCartera.remove(item)
+            DineroEnCuenta.append(item)
+
+    print()
+
+    print(f"He depositado {canitdadADepositar} a mi cuenta de banco")
+
+    print()
+
+    print(f"saldo actual {DineroEnCuenta}")
+    print(f"dinero en mi cartera: {DineroEnCartera}")
+
+    pausa()
+    menu()
+
+    pass
+
+`,
+  },
+  {
+    title: "Recorrido",
+    content: [
+      "Para implementar el recorrido fue sencillo, solo escogi que pila queria recorrer en este caso <kbd>DineroEnCartera</kbd>.",
+      "En el cual mediante un bucle <kbd>while</kbd> para que se ejecute hasta que la pila este vacia, utilice el método <kbd>pop</kbd>.",
+      "Esto con la finalidad de sacar el último elemento de la pila, luego para no perder esta información guarde el <kbd>dinero</kbd> en una pila auxiliar, para después imprimir el dinero al usuario junto con el total de dinero en la cartera.",
+    ],
+    code: `def recorrer():
+
+    clear()
+
+    global DineroEnCartera
+
+    print("¿Cuánto dinero tengo en la cartera?")
+
+    suma = 0
+
+    AuxPila =[]
+
+    while DineroEnCartera:
+
+        dinero = DineroEnCartera.pop()
+
+        AuxPila.append(dinero)
+
+        print(f"Cantidad: {dinero}")
+        suma += dinero
+
+    if not DineroEnCartera:
+     DineroEnCartera = AuxPila
+
+    print()
+
+    print(f"Dinero total: \${suma} pesos")
+
+    pausa()
+
+    pass
+`,
+  },
+  {
+    title: "Búsqueda",
+    content: [
+      "Para la busqueda se utilizo el for de enumeración, para enumerar y obtener el elemento además del índice de la pila <kbd>DineroEnCuenta</kbd>.",
+      "El criterio utilizado para buscar la cantidad de dinero fue preguntar al usuario previamente antes mostrandole que dinero habia disponible.",
+      "Una vez hecho esto el programa hace una comprobación lógica como: <kbd>if dinero == cantidadABuscar</kbd> esto dentro del bucle de enumeración, por lo que si esta se cumple, muestro al usuario la información de la cantidad.",
+      "",
+    ],
+    code: `def busqueda():
+
+    clear()
+
+    print("Buscar una canitdad de dinero en cuenta bancaria")
+
+    print()
+
+    print(f"Dinero en cuenta: {DineroEnCuenta}")
+
+    cantidadABuscar = int(input("Cantidad a buscar ==> "))
+
+    encontrado = False
+
+    print()
+
+    for i, dinero in enumerate(DineroEnCuenta):
+
+        if dinero == cantidadABuscar:
+
+            print()
+
+            print(
+                f"La cantidad {cantidadABuscar} existe en la posición {i} de la cuenta bancaria")
+
+            encontrado = True
+
+    if not encontrado:
+        print(f"La cantidad {cantidadABuscar} no esta en la cuenta bancaria")
+
+    pausa()
+    menu()
+
+    pass`,
+  },
+  {
+    title: "Eliminación",
+    content: [
+      'El proceso de eliminación, concebido como retirar dinero del banco, como plantamiento es sacar de la pila o "Eliminar" el dinero deseado introducido por el usuario, por lo qué obviando el uso de <kbd>input()</kbd> se hizo lo siguiente:',
+      "Declaramos una pila auxiliar, se valida calidad de datos o si la cuenta de banco tiene suficientes fondos, si todo esto no se cumple se sigue con lo siguiente:",
+      "Para eliminar o hacer la transacción de retiro de efectivo utilice un <kbd>for in</kbd> utilizando las variables <kbd>DineroEnCuenta</kbd> que es la pila de la cual eliminaremos, para insertar la cantidad en la Cartera la cantidad retirada nuevamente con el método <kbd>append()</kbd>.",
+    ],
+    code: `def eliminar():
+
+    global DineroEnCuenta
+    global DineroEnCartera
+
+    clear()
+
+    print("Fondos disponibles en la cuenta")
+
+    print(DineroEnCuenta)
+
+    print()
+
+    print("Introduce una cantidad a retirar")
+
+    try:
+        cantidadARetirar = int(input(" ==> "))
+    except:
+        clear()
+        eliminar()
+
+    if not cantidadARetirar in DineroEnCuenta:
+        print("La cuenta no tiene saldo suficiente :C")
+        insertar()  # Te envia a insertar dinero en la cuenta
+
+    # Fila auxiliar
+    DineroEncuentaAux = []
+
+    # Depositar dinero en la cuenta bancaria
+    for dinero in DineroEnCuenta:
+
+        if dinero == cantidadARetirar:
+            DineroEnCartera.append(dinero)
+
+        if dinero != cantidadARetirar:
+            DineroEncuentaAux.append(dinero)
+
+    DineroEnCuenta = DineroEncuentaAux
+
+    print(f"Nuevo saldo {DineroEnCuenta} en la cuenta")
+
+    print()
+
+    print(f"Ahora en mi cartera tengo {DineroEnCartera}")
+
+    pausa()
+
+    pass
+`,
+  },
+  {
+    title: "Ordenación",
+    content: [
+      "Para ordenar la pila por la cantidad menor a mayor, utilice el método <kbd>sort</kbd> disponible en cada pila, en este caso ordene de mayor a menor la pila con nombre <kbd>DineroEnCartera.</kbd>",
+    ],
+    code: `def ordenar():
+
+    clear()
+
+    print("Ordenar dinero en la cartera por cantidad")
+
+    print()
+
+    print(f"Dinero en mi cartera sin ordenar {DineroEnCartera}")
+
+    print()
+    DineroEnCartera.sort()
+
+    print(f"Dinero en mi cartera ordenado {DineroEnCartera}")
+
+    pausa()
+
+    pass`,
+  },
+  {
+    title: "Mezcla",
+    content: [
+      "Por último, para mezclar (desordenar) el dinero dentro de la cartera del usuario, utice el método <kbd>shuffle</kbd> del paquete <kbd>random</kbd> de python.",
+      "El cual en cada ejecución desordenaba la posicion que el dinero tomaba.",
+    ],
+    code: `def mezclar():
+
+    clear()
+
+    print("Mezclar dinero de mi cartera")
+
+    print()
+
+    print(f"Dinero en mi cartera sin mezclar: {DineroEnCartera}")
+
+    print()
+    random.shuffle(DineroEnCartera)
+
+    print(f"Dinero en mi cartera mezclado: {DineroEnCartera}")
+
+    pausa()
+
+    pass
+`,
   },
 ];
 
@@ -345,7 +605,7 @@ def recorrer():
     content: [
       "Antes de finalizar el programa, este hace una mezcla de la lista de compras del usuario, esta mezcla cambia de indice todos los productos insertados anteriormente.",
       "¿Cómo se hace esto? una forma sencilla de lograr esto es utilizando la funcion <kbd>suffle</kbd> de la libreria <kbd>random</kbd>",
-      "¿El resultado? como mencione anteriormente al usuario se le muestra una lista de productos para comprar desordenada."
+      "¿El resultado? como mencione anteriormente al usuario se le muestra una lista de productos para comprar desordenada.",
     ],
     code: `def mezclar():
 
@@ -534,6 +794,15 @@ if __name__ == '__main__':
     main()
 `;
 
+export const producto_2_pilas_datos = [
+  "Inserción",
+  "Recorrido",
+  "Búsqueda",
+  "Eliminación",
+  "Ordenamiento",
+  "Mezcla",
+];
+
 export const CodeEvidences: PageContent[] = [
   {
     title: "Inserción",
@@ -573,10 +842,55 @@ export const CodeEvidences: PageContent[] = [
   },
 ];
 
+export const pila_codeCaptures: PageContent[] = [
+  {
+    title: "Menú",
+    content:
+      "Este es el menú del programa donde el usuario interactúa, aquí se utilizando dos pilas para llevar a cabo la transacción.",
+    image: "./images/pila/Menu.png",
+  },
+  {
+    title: "Inserción",
+    content:
+      "Emula una transacción entre una persona depositando dinero físico en una cuenta bancaria.",
+    image: "./images/pila/Insercion.png",
+  },
+  {
+    title: "Recorrido",
+    content:
+      "El programa emula como la persona conta su dinero en la cartera, para posteriormente sumarlo y decir la cantidad total de dinero.",
+    image: "./images/pila/Recorrer.png",
+  },
+  {
+    title: "Búsqueda",
+    content:
+      "El programa simula la acción donde el usuario busca una cantidad de dinero en la cuenta bancaria, si se encuentra, se emite un mensaje donde se confirma su existencia, y en que posicion de la pila o en este caso 'cuenta bancaria'. ",
+    image: "./images/pila/Busqueda.png",
+  },
+  {
+    title: "Eliminación",
+    content:
+      "En esta operación el programa emula que la persona, utilizando su cuenta bancaria puede retirar dinero y comprar cosas, para esto se imprime la pila 'cuenta bancaria', si la cantidad coincide con algún elemento disponible en la cuenta del usuario se procede a continuar la 'transacción', y se muestra el nuevo saldo. ",
+    image: "./images/pila/Eliminar.png",
+  },
+  {
+    title: "Ordenamiento",
+    content:
+      "El programa emula una persona ordenando su dinero por cantidad, primero muestra su cartera con el dinero sin ordenar, para posteriormente ordenarlo y mostrar el resultado.",
+    image: "./images/pila/Ordenar.png",
+  },
+  {
+    title: "Mezcla",
+    content:
+      "Aquí el programa emula nuevamente que la cartera de nuestro usuario se revuelve, y como consecuencia el dinero se desordena, primero se imprime en buen estado para posteriormente mostrarse desordenado o mezclado.",
+    image: "./images/pila/Mezcla.png",
+  },
+];
+
 export const producto_2_referencias = [
   {
     title: "UA2-TDA Estáticas",
-    content: "",
+    content: "Recuperado 1 de febrero de 2023, de",
     link: "https://sites.google.com/academicos.udg.mx/drlizcano/il354-estructura-datos/ua2-tda-est%C3%A1ticas?authuser=0",
   },
 ];
@@ -584,6 +898,7 @@ export const producto_2_referencias = [
 export const env = process.env.NODE_ENV;
 
 export const downloadLink = "code/JAMZ-TDA-ListaEstatica.py";
+export const pilaDownloadLink = "code/JAMZ-TDA-PilaEstatica.py";
 
 export const RedesSociales: RedSocial[] = [
   {

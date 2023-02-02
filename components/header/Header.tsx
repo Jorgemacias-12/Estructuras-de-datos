@@ -1,6 +1,5 @@
 import styles from "styles/Header.module.css"
 import Image from "next/image"
-import IMG from "public/images/product-1-header.jpg"
 
 type HeaderProps = {
   title: string;
