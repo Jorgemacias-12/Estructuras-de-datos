@@ -1,5 +1,19 @@
 import { Link, PageContent, RedSocial } from "@/types";
-import { title } from "process";
+
+export const UA2_workList = [
+  {
+    title: "Lista",
+    link: "#lista"
+  },
+  {
+    title: "Pila",
+    link: "#pila"
+  },
+  {
+    title: "Cola",
+    link: "#cola"
+  },
+]
 
 export const Trabajos: Link[] = [
   {
