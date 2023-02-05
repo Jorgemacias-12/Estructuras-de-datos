@@ -14,6 +14,7 @@
   --error-bg: #bb2929;
   --card-bg: #e5e5e5;
   --info-bg: #177dfc;
+  --list-indicator-bg: #48A9A6;
 }
 
 * {
@@ -88,6 +89,8 @@ kbd {
   display: flex;
 }
 
+
+
 .text {
   text-align: justify;
 }
@@ -112,12 +115,12 @@ kbd {
 }
 
 .center {
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
 }
 
 .center-x {
-  justify-content: center; 
+  justify-content: center;
 }
 
 .center-y {
