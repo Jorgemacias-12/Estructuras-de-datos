@@ -1,0 +1,61 @@
+.container {
+  /* border: .1rem solid #ccc; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  gap: .5rem;
+}
+
+.listIndicator {
+  border-radius: .2rem;
+  width: minmax(200px, 1fr);
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 1rem;
+}
+
+.listItem {
+  list-style-type: none;
+  background-color: var(--list-indicator-bg);
+  padding: 1rem;
+}
+
+.listLink {
+  color: white;
+  text-decoration: none;
+}
+
+.listLink:hover {
+  text-decoration: underline;
+}
+
+.scrollToTopContainer {
+  bottom: 0;
+  right: 0;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  position: fixed;
+  z-index: 2;
+}
+
+.scrollToTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: background 400ms;
+  color: #fff;
+  font-size: 1.6rem;
+  outline: 0;
+  background-color: black;
+  background-color: var(--list-indicator-bg);
+  border: 0;
+  border-radius: 100%;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  width: 64px;
+  height: 64px;
+}

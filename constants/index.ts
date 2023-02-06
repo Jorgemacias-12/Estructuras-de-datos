@@ -1,5 +1,19 @@
 import { Link, PageContent, RedSocial } from "@/types";
-import { title } from "process";
+
+export const UA2_workList = [
+  {
+    title: "Lista",
+    link: "#lista",
+  },
+  {
+    title: "Pila",
+    link: "#pila",
+  },
+  {
+    title: "Cola",
+    link: "#cola",
+  },
+];
 
 export const Trabajos: Link[] = [
   {
@@ -326,6 +340,287 @@ def insertar():
 
     pass
 `,
+  },
+];
+
+export const producto_2_cola_operations = [
+  {
+    title: "Inserción",
+    content: [
+      "En esta función, el programa genera un tope aleatorio de clientes entre 4 y 6.",
+      "Posteriormente, genero un cliente utilizando ese valor, y lo inserto en una cola de nombre <kbd>Clientes</kbd>, ademásd de implementar un filtro basado en el <kbd>tipo de cliente</kbd>",
+      "Por último, la inserción es realizada cuando se muestra en pantalla los datos del cliente y a que cola de prioridad es asignado(a).",
+    ],
+    code: `def insertar():
+
+    # global TopeDeCientes
+
+    clear()
+
+    print("+-----------------------+")
+    print("|Simulación de inserción|")
+    print("+-----------------------+")
+
+    print()
+
+    print("Clientes llegando a colas...")
+
+    # TopeDeCientes = random.randrange(4, 6)
+
+    print(f"Tope de clientes: {TopeDeClientes}")
+
+    print()
+
+    for i in range(TopeDeClientes):
+
+        cliente = Cliente()
+
+        print(f'Cliente No. {i + 1}')
+        print(f'Nombre: {cliente.nombre}')
+        print(f'Tipo de cliente: {cliente.tipo_de_cliente}')
+        print(f'Antigüedad: {cliente.antiguedad} años')
+
+        if cliente.tipo_de_cliente == "Básico":
+
+            print(f"Cliente {cliente.nombre} asignado a cola Básica")
+
+            ColaNormal.append(cliente)
+        elif cliente.tipo_de_cliente == "Premium":
+
+            print(f"Cliente {cliente.nombre} asignado a cola prioritaria")
+
+            ColaPrioritaria.append(cliente)
+
+        elif cliente.tipo_de_cliente == "Platinum":
+            print(f"Cliente {cliente.nombre} asignado a cola exclusiva")
+            ColaExclusiva.append(cliente)
+
+        print()
+
+    pause()`,
+  },
+  {
+    title: "Recorrido",
+    content: [
+      "En esta funcionalidad, para emular el concepto de recorrido, imprimi la cantidad de clientes actuales, el tope o máximo que pueden generarse por entrar en la funcionalidad.",
+      "Además de mostrar las colas de prioridad, y los clientes junto con sus datos, para emular los datos personales de los clientes utilice una clase.",
+    ],
+    code: `def recorrer():
+
+    global TopeDeClientes
+
+    clear()
+
+    if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
+        Cliente().generar_clientes(TopeDeClientes)
+
+    print(f"Recorrer clientes")
+
+    print()
+
+    totalClientes = len(ColaNormal) + len(ColaExclusiva) + len(ColaPrioritaria)
+
+    print(f"Tope de clientes: {TopeDeClientes}")
+
+    print()
+
+    print(f"Clientes actuales: {totalClientes}")
+
+    print()
+
+    print("+-------------+")
+    print("| Cola normal |")
+    print("+-------------+")
+    for cliente in ColaNormal:
+        print(cliente)
+
+    print()
+
+    print("+------------------+")
+    print("| Cola prioritaria |")
+    print("+------------------+")
+    for cliente in ColaPrioritaria:
+        print(cliente)
+
+    print()
+
+    print("+----------------+")
+    print("| Cola exclusiva |")
+    print("+----------------+")
+    for cliente in ColaExclusiva:
+        print(cliente)
+
+    print()
+
+    pause()`,
+  },
+  {
+    title: "Búsqueda",
+    content: [
+      "Para esta funcionalidad, decidi tomar como concepto en saber, ¿Qué número de turno tiene X cliente?",
+      "Por lo que, con esta idea en mente, utilice condicionales para verificar que las colas contenieran clientes, si no, generar algunos.",
+      "Pidiendo el nombre de un cliente como entrada, obviamente mostrando la cola de clientes en pantalla, pero no sabemos qeu turno tienen.",
+      "Entonces lo que hice fue utilicar un for enumerador para hacer un statement de confirmacion de valor, y para finalizar imprimir el nombre del ciente, y su turno en la cola (junto al nombre de la cola).",
+    ],
+    code: `def busqueda():
+
+    clear()
+
+    if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
+        Cliente().generar_clientes(TopeDeClientes)
+
+    print("Buscar cliente en cola")
+
+    print("Clientes: ")
+
+    print([cliente for cliente in ColaNormal])
+    print([cliente for cliente in ColaPrioritaria])
+    print([cliente for cliente in ColaExclusiva])
+
+    print()
+
+    clienteABuscar = input("Cliente a buscar ==> ")
+
+    Encontrado = False
+
+    print()
+
+    for i, cliente in enumerate(ColaNormal):
+
+        if clienteABuscar == cliente.nombre:
+            Encontrado = True
+
+            print(
+                f"El cliente {cliente.nombre} tiene el turno {i} en la cola normal")
+
+    for i, cliente in enumerate(ColaPrioritaria):
+
+        if clienteABuscar == cliente.nombre:
+            Encontrado = True
+
+            print(
+                f"El cliente {cliente.nombre} tiene el turno {i} en la cola prioritaria")
+
+    for i, cliente in enumerate(ColaExclusiva):
+
+        if clienteABuscar == cliente.nombre:
+            Encontrado = True
+
+            print(
+                f"El cliente {cliente.nombre} tiene el turno {i} en la cola exclusiva")
+
+    if not Encontrado:
+        print("El cliente que busca no se encuentra en ninguna cola")
+
+    pause()`,
+  },
+  {
+    title: "Eliminación",
+    content: [
+      "Para la eliminación, emule la acción de una transacción, por lo que el cliente en las colas (dependiendo de la prioridad) va a tardar más o menos que otros.",
+      "El programa antes de eliminar al cliente de la cola imprime los siguientes datos: <kbd>nombre, operacion a realizar, tipo de cliente.</kbd>",
+    ],
+    code: `def eliminar():
+
+    clear()
+
+    if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
+        Cliente().generar_clientes(TopeDeClientes)
+
+    print("Atendiendo a los clientes \n")
+
+    for cliente in ColaExclusiva:
+        print(f"Nombre: {cliente.nombre}")
+        print(f"Operación: {cliente.operacion}")
+        print(f"Priorioridad: {cliente.tipo_de_cliente}")
+        print("\n")
+
+    for cliente in ColaPrioritaria:
+        time.sleep(2)
+        print(f"Nombre: {cliente.nombre}")
+        print(f"Operación: {cliente.operacion}")
+        print(f"Priorioridad: {cliente.tipo_de_cliente}")
+        print("\n")
+
+    for cliente in ColaNormal:
+        time.sleep(4)
+        print(f"Nombre: {cliente.nombre}")
+        print(f"Operación: {cliente.operacion}")
+        print(f"Priorioridad: {cliente.tipo_de_cliente}")
+        print("\n")
+
+    print("¡Todos los clientes han sido atendidos!")
+
+    print()
+
+    pause()`,
+  },
+  {
+    title: "Ordenación",
+    content: [
+      "Ordenar la cola principal (sin separar por prioridad) de clientes por orden alfabetico de nombre, esto utilizando el método <kbd>sort</kbd> solo que esta vez fue más desafiante.",
+      "Esto debido a que tuve que proporcionar argumentos extra debido a que la cola de clientes, y los clientes como tal son un objeto, por lo tanto, no puedo comprar objetos y obtener un resultado satisfactorio.",
+      'Así que utilizando el argumento <kbd>key</kbd>, en la función <kbd>sort</kbd> pasamos como argumento lo siguiente: <kbd>operator.attrgetter("nombre")</kbd>,',
+    ],
+    code: `def ordenar():
+
+    clear()
+
+    if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
+        Cliente().generar_clientes(TopeDeClientes)
+
+    print("Ordenar cola de clientes por orden alfabetico")
+
+    print()
+
+    print(f"Cola de clientes: \n\n{Clientes} (sin prioridades)")
+
+    Clientes.sort(key=operator.attrgetter("nombre"))
+
+    print()
+
+    print(f"Los clientes han sido acomodados según su nombre (de forma alfabetica)")
+
+    print()
+
+    print(f"Cola de clientes: {Clientes}")
+
+    pause()`,
+  },
+  {
+    title: "Mezclar",
+    content: [
+      'Para este caso utilice una excusa, para desarrollar este concepto de "Nos quieren robar pero no sabemos quien así que..."',
+      "Para esta funcionalidad, se obte por mezclar la cola de clientes en una sola alterando el orden, en este caso no importa si eres premium o platinum, va saliendo el primero que toco gracias a la mezcla de clientes en la cola, esto fue facil de implementar utilizando la función <kbd>shuffle</kbd> desde el paquete/libreria <kbd>random.</kbd>",
+    ],
+    code: `def mezclar():
+
+    clear()
+
+    if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
+        Cliente().generar_clientes(TopeDeClientes)
+
+    print("Hoy hay sospecha de robo emitida por la policia")
+    print("Mezclaremos la cola de clientes para indentificar ")
+    print("a alguien sospechoso.")
+
+    print()
+
+    print(f"Cola de clientes: \n\n{Clientes}")
+
+    print("\nCombinando cola\n")
+
+    for i in range(5):
+        time.sleep(1)
+        print(".", end=" ")
+
+    random.shuffle(Clientes)
+
+    print("\n")
+
+    print(f"Nueva cola de clientes: \n\n{Clientes}")
+
+    pause()`,
   },
 ];
 
@@ -887,6 +1182,51 @@ export const pila_codeCaptures: PageContent[] = [
   },
 ];
 
+export const cola_codeCaptures: PageContent[] = [
+  {
+    title: "Menú",
+    content:
+      "Este es el menú del programa donde el usuario interactúa, aquí podras elegir que simulación de operación(es) deseas ver.",
+    image: "./images/cola/Menu.png",
+  },
+  {
+    title: "Inserción",
+    content:
+      "Se emula las personas llegando al establecimiento, para posteriormente, mostrar sus datos, y el programa les asigna una prioridad en funcion de su tipo de cliente.",
+    image: "./images/cola/Insercion.png",
+  },
+  {
+    title: "Recorrido",
+    content:
+      "El programa muestra al usuario los clientes esperando en las colas, imprimiendo sus datos",
+    image: "./images/cola/Recorrer.png",
+  },
+  {
+    title: "Búsqueda",
+    content:
+      "Se emula la búsqueda de la posición en la fila de un cliente en especifico.",
+    image: "./images/cola/Busqueda.png",
+  },
+  {
+    title: "Eliminación",
+    content:
+      'Para emular aquí la eliminación, se tomo como concepto el de hacer una transacción, por lo que, cada transacción tardara segundos o nada dependiendo del tipo de cliente que sea la persona o en este caso una "Membresia".',
+    image: "./images/cola/Eliminar.png",
+  },
+  {
+    title: "Ordenamiento",
+    content:
+      "El programa emula una persona ordenando su dinero por cantidad, primero muestra su cartera con el dinero sin ordenar, para posteriormente ordenarlo y mostrar el resultado.",
+    image: "./images/cola/Ordenar.png",
+  },
+  {
+    title: "Mezcla",
+    content:
+      'Al usuario se le muestra un aviso, como "Historia", para posteriormente imprimir la cola de clientes, luego mezclar los clientes, y por último, mostrar de nuevo la cola.',
+    image: "./images/cola/Mezcla.png",
+  },
+];
+
 export const producto_2_referencias = [
   {
     title: "UA2-TDA Estáticas",
@@ -897,8 +1237,9 @@ export const producto_2_referencias = [
 
 export const env = process.env.NODE_ENV;
 
-export const downloadLink = "code/JAMZ-TDA-ListaEstatica.py";
+export const listaDownloadLink = "code/JAMZ-TDA-ListaEstatica.py";
 export const pilaDownloadLink = "code/JAMZ-TDA-PilaEstatica.py";
+export const colaDownloadLink = "code/JAMZ-TDA-ColaEstatica.py";
 
 export const RedesSociales: RedSocial[] = [
   {
