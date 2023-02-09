@@ -30,7 +30,7 @@ export const Trabajos: Link[] = [
   },
   {
     title: "Producto 3",
-    url: "",
+    url: "/producto-3",
   },
   {
     title: "Producto 4",
