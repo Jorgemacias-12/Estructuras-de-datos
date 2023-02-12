@@ -26,22 +26,6 @@
   background-color: var(--list-indicator-bg);
 }
 
-/* .listItem:hover {
-  cursor: pointer;
-  background-color: var(--list-indicator-bg);
-} */
-
-
-
-/* .listItem:hover > .listLink:not() */
-
-/* .listItem:hover > .listLink:not(:empty) {
-  color: white;
-}
- */
-
-
-
 .listItem:hover>.listLink {
   color: white;
 }
