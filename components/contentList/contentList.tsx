@@ -29,6 +29,9 @@ export const ContentList = ({ items }: contentListProps) => {
 
       <ul className={styles.listIndicator}>
         {items.map(({ title, link }, index) => {
+
+          if (title == "") return;
+ 
           return (
             <li
               onClick={() => goToArticle(link)}
