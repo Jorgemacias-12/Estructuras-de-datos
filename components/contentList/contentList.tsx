@@ -1,7 +1,8 @@
 import { cleanURL } from "@/utils";
-import React, { RefObject, useId, useRef } from "react";
-import useNavigation from "react"
+import Link from "next/link";
+import React, { useId } from "react";
 import styles from "styles/ContentList.module.css";
+import { useRouter } from "next/router";
 
 type contentListProps = {
   items: Array<any>;
@@ -9,18 +10,16 @@ type contentListProps = {
 
 export const ContentList = ({ items }: contentListProps) => {
   const GoToList = useId();
+  const url = cleanURL();
 
   const scrollToHeader = (event: React.MouseEvent<HTMLButtonElement>) => {
-
     window.history.pushState("", document.title, window.location.pathname)
 
-    window.scrollTo(0, 0);
+    document.body.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const goToArticle = (link: string) => {
-    const route = cleanURL();
-
-    window.location.href = route + link;
+    window.location.href = url + link;
   };
 
   return (
@@ -29,9 +28,8 @@ export const ContentList = ({ items }: contentListProps) => {
 
       <ul className={styles.listIndicator}>
         {items.map(({ title, link }, index) => {
-
           if (title == "") return;
- 
+
           return (
             <li
               onClick={() => goToArticle(link)}
@@ -50,8 +48,7 @@ export const ContentList = ({ items }: contentListProps) => {
         <i
           className={`fas fa-angle-up ${styles.scrollToTop}`}
           onClick={scrollToHeader}
-        >
-        </i>
+        ></i>
       </section>
     </section>
   );
