@@ -43,7 +43,7 @@ const Producto_2 = () => {
 
     fetchData();
       
-  },[codes])
+  },[])
 
   return (
     <>
