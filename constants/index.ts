@@ -15,6 +15,73 @@ export const UA2_workList = [
   },
 ];
 
+export const UA3_workList = [
+  {
+    title: "Búsqueda lineal",
+    content: [
+      "Algoritmo de búsqueda caracterizado por recorrer una estructura de datos, elemento por elemento, de inicio a fin comparando cada valor existente en la estructura con el valor que se está buscando.",
+      "Cuándo el valor buscado es encontrado, es devuelta su posición en la estructura, en caso contario es devuelto un indicador, seguido de un mensaje de <kbd>El valor no ha sido encontrado.</kbd>",
+      "Como desventaja tiene una complejidad temperoal de <kbd>O(n)</kbd>, lo que quiere decir que entre más elementos existentes en la estructura más tiempo tomará encontrar el dato a buscar.",
+      "Ahora a continuación un ejemplo de implementación de este método en python:",
+      "En el ejemplo, el usuario introduce el nombre de alguien para buscarlo en la cola de clientes, luego se ejecuta la búsqueda lineal, que empieza en la línea 7, y termina en la 16.",
+    ],
+    images: [""],
+    code: `clienteABuscar = input("Cliente a buscar ==> ")
+
+    Encontrado = False
+
+    print()
+
+    for i, cliente in enumerate(ColaNormal):
+
+        if clienteABuscar == cliente.nombre:
+            Encontrado = True
+
+            print(
+                f"El cliente {cliente.nombre} tiene el turno {i} en la cola normal")
+                
+    if not Encontrado:
+        print("El cliente que busca no se encuentra en ninguna cola")
+        `,
+    link: "#lineal",
+  },
+  {
+    title: "Búsqueda binaria",
+    content: [""],
+    images: [""],
+    code: ``,
+    link: "#binaria",
+  },
+  {
+    title: "Ordenamiento selección",
+    content: [""],
+    images: [""],
+    code: ``,
+    link: "#seleccion",
+  },
+  {
+    title: "Ordenamiento iterativo",
+    content: [""],
+    images: [""],
+    code: ``,
+    link: "#iterativo",
+  },
+  {
+    title: "Ordenamiento iterativo por inserción",
+    content: [""],
+    images: [""],
+    code: ``,
+    link: "#insercion",
+  },
+  {
+    title: "Ordenamiento iterativo burbuja",
+    content: [""],
+    images: [""],
+    code: ``,
+    link: "#burbuja",
+  },
+];
+
 export const Trabajos: Link[] = [
   {
     title: "Inicio",
