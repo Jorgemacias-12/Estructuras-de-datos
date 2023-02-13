@@ -4,7 +4,34 @@ import random
 import time
 import operator
 
+# sección algoritmos de ordenamiento y búsqueda
+
+
+def busqueda_binaria(conjunto, elementoABuscar):
+
+    # low = 0
+    # high = len(conjunto) - 1
+    # mid = 0
+
+    # while low <= high:
+
+    #     mid = (high + low) / 2
+
+    #     if conjunto[mid] < elementoABuscar:
+    #         low = mid + 1
+
+    #     elif conjunto[mid] > elementoABuscar:
+    #         low = mid - 1
+    #     else:
+    #         return mid
+
+    # return -1
+
+    pass
+
 # sección clases para práctica
+
+
 class Cliente:
     def __init__(self):
         self.nombre = self.generar_nombre()
@@ -14,6 +41,17 @@ class Cliente:
 
     def __repr__(self) -> str:
         return str(self)
+
+    def __eq__(self, objectToCompare):
+        if isinstance(objectToCompare, Cliente):
+            return self.nombre == objectToCompare.nombre and self.tipo_de_cliente == objectToCompare.tipo_de_cliente
+        
+        return False
+
+    def __lt__(self, objectToCompare):
+        if isinstance(objectToCompare, Cliente):
+            return self.antiguedad < objectToCompare.antiguedad
+        return None
 
     def __str__(self):
 
@@ -61,6 +99,7 @@ class Cliente:
             elif cliente.tipo_de_cliente == "Platinum":
                 ColaExclusiva.append(cliente)
 
+
 # Variables para almacenar los datos simulados y colas
 TopeDeClientes = 0
 ColaExclusiva = []
@@ -83,8 +122,9 @@ def pause():
 
 # aquí termina
 
-
 # Funcionalidad de la aplicación
+
+
 def insertar():
 
     # global TopeDeCientes
@@ -341,6 +381,23 @@ def mezclar():
     pass
 
 
+def metodos_busqueda():
+
+    clear()
+
+    print("+-----------------------------------------------+")
+    print("|                                               |")
+    print("|          ALGORITMOS DE ORDENAMIENTO           |")
+    print("|                                               |")
+    print("+-----------------------------------------------+")
+
+    print()
+
+    print("Búsqueda binaria")
+
+    pass
+
+
 def menu():
 
     clear()
@@ -359,7 +416,8 @@ def menu():
     print("| 4.- Eliminación                                   |")
     print("| 5.- Ordenamiento                                  |")
     print("| 6.- Mezcla                                        |")
-    print("| 7.- Salir                                         |")
+    print("| 7.- Métodos de búsqueda                           |")
+    print("| 8.- Salir                                         |")
     print("+---------------------------------------------------+")
 
     try:
@@ -393,12 +451,13 @@ def menu():
         menu()
         pass
     if Opcion == 7:
+        metodos_busqueda()
+        menu()
+    if Opcion == 8:
         clear()
-        exit()
+        os._exit(1)
     else:
         menu()
-
-    pass
 
 
 def main():
