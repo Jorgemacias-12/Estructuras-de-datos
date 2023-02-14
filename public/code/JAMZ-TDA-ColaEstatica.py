@@ -9,25 +9,21 @@ import operator
 
 def busqueda_binaria(conjunto, elementoABuscar):
 
-    # low = 0
-    # high = len(conjunto) - 1
-    # mid = 0
+    low = 0
+    high = len(conjunto) - 1
+    mid = 0
 
-    # while low <= high:
+    while low <= high: 
+        mid = (high + low) / 2
 
-    #     mid = (high + low) / 2
+        if conjunto[mid] < elementoABuscar:
+            low = mid + 1
+        elif conjunto[mid] > elementoABuscar:
+            high = mid - 1
+        else:
+            return conjunto[mid]
 
-    #     if conjunto[mid] < elementoABuscar:
-    #         low = mid + 1
-
-    #     elif conjunto[mid] > elementoABuscar:
-    #         low = mid - 1
-    #     else:
-    #         return mid
-
-    # return -1
-
-    pass
+    return "Error: algo salio mal pa"
 
 # sección clases para práctica
 
@@ -395,6 +391,20 @@ def metodos_busqueda():
 
     print("Búsqueda binaria")
 
+    clienteABuscar = input("==> ")
+
+    cliente = busqueda_binaria(Clientes, clienteABuscar)
+
+    print(Clientes)
+
+    print()
+
+    print(f"{cliente}")
+
+    pause()
+
+    # busqueda_binaria()
+
     pass
 
 
@@ -405,7 +415,7 @@ def menu():
     # Generar tope de clientes aquí
     global TopeDeClientes
 
-    TopeDeClientes = random.randrange(4, 6)
+    TopeDeClientes = random.randrange(10, 100)
 
     print("+---------------------------------------------------+")
     print("|      Simulación de una cola del supermercado      |")
