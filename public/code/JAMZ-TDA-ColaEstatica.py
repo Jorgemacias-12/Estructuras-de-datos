@@ -17,8 +17,6 @@ def busqueda_lineal(lista_de_clientes, nombre_cliente):
 
         if cliente.nombre == nombre_cliente:
 
-            print(cliente)
-
             coincidencias.append(cliente)
 
     return coincidencias
@@ -46,7 +44,7 @@ def busqueda_binaria(lista_de_clientes, idCliente):
 
 def lineal():
     
-    clear()
+    print()
 
     print("##### Búsqueda lineal #####")
 
@@ -66,13 +64,17 @@ def lineal():
         pause()
         lineal()
 
+    print()
+
     print(f"Coincidencias: {resultados}")
 
     elapsedTime = time.time()
 
+    elapsedTime = calculateTime(Time, elapsedTime)
+
     print()
 
-    print(f"El algoritmo binario ha tardado {Time:.2f}segundos")
+    print(f"El algoritmo binario ha tardado {elapsedTime} segundos")
 
     print()
 
@@ -457,29 +459,31 @@ def metodos_busqueda():
 
     lineal()
 
-    print("Búsqueda binaria")
-
-    print(Clientes)
-
     print()
 
-    print("Introduce el ID del cliente a encontrar")
+    # print("Búsqueda binaria")
 
-    clienteABuscar = int(input("==> "))
+    # print(Clientes)
 
-    Time = time.time()
+    # print()
 
-    cliente = busqueda_binaria(Clientes, clienteABuscar)
+    # print("Introduce el ID del cliente a encontrar")
 
-    elapsedTime = time.time()
+    # clienteABuscar = int(input("==> "))
 
-    Time = calculateTime(Time, elapsedTime)
+    # Time = time.time()
 
-    print(f"El algoritmo binario ha tardado {Time} segundos")
+    # cliente = busqueda_binaria(Clientes, clienteABuscar)
 
-    print()
+    # elapsedTime = time.time()
 
-    print(f"{cliente}")
+    # Time = calculateTime(Time, elapsedTime)
+
+    # print(f"El algoritmo binario ha tardado {Time} segundos")
+
+    # print()
+
+    # print(f"{cliente}")
 
     pause()
 
@@ -495,7 +499,7 @@ def menu():
     # Generar tope de clientes aquí
     global TopeDeClientes
 
-    TopeDeClientes = random.randrange(10, 100)
+    TopeDeClientes = 100000  # Temporal quitar en producción
 
     print("+---------------------------------------------------+")
     print("|      Simulación de una cola del supermercado      |")
