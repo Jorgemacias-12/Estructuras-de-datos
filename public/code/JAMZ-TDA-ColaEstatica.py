@@ -2,31 +2,82 @@
 import os
 import random
 import time
-import datetime
 import operator
 
 
 # sección algoritmos de ordenamiento y búsqueda
 
+def busqueda_lineal(lista_de_clientes, nombre_cliente):
+    coincidencias = []
+    
+    if len(lista_de_clientes) == 0:
+        return "Lista vacia"
 
-def busqueda_binaria(conjunto, elementoABuscar):
-   left = 0
-   right = len(conjunto) - 1
+    for cliente in lista_de_clientes:
 
-   while left <= right:
+        if cliente.nombre == nombre_cliente:
 
-    center = (left + right) // 2
+            print(cliente)
 
-    if conjunto[center].id == elementoABuscar:
-        return conjunto[center] 
-    elif conjunto[center].id < elementoABuscar:
-        left = center + 1
-    else:
-        right = center - 1
+            coincidencias.append(cliente)
+
+    return coincidencias
+
+def busqueda_binaria(lista_de_clientes, idCliente):        
+
+    left = 0
+    right = len(lista_de_clientes) - 1
+
+    while left <= right:
+        center = (left + right) // 2
+        cliente_medio = lista_de_clientes[center]
+
+        if cliente_medio.id == idCliente:
+            return cliente_medio
+        elif cliente_medio.id < idCliente:
+            left = center + 1
+        else:
+            right = center - 1
+
 
     return "Error: algo salio mal pa"
 
+# sección de métodos para la UA3
+
+def lineal():
+    
+    clear()
+
+    print("##### Búsqueda lineal #####")
+
+    Time = time.time()
+
+    print("Introduzca el nombre del cliente a búscar")
+
+    try:
+        nombre = input("==> ")
+    except ValueError:
+        print("El cliente no existe")
+
+    resultados = busqueda_lineal(Clientes, nombre)
+
+    if len(resultados) == 0:
+        print(f"Ningun cliente tiene el nombre {nombre}")
+        pause()
+        lineal()
+
+    print(f"Coincidencias: {resultados}")
+
+    elapsedTime = time.time()
+
+    print()
+
+    print(f"El algoritmo binario ha tardado {Time:.2f}segundos")
+
+    print()
+
 # sección clases para práctica
+
 
 class Cliente:
     def __init__(self):
@@ -40,22 +91,22 @@ class Cliente:
         return str(self)
 
     def __eq__(self, objectToCompare):
-        
+
         if isinstance(objectToCompare, Cliente):
             return self.id == objectToCompare.id
-        
+
         return False
 
     def __lt__(self, objectToCompare):
 
-       return  self.id < objectToCompare.id
+        return self.id < objectToCompare.id
 
     def __str__(self):
 
         return f"ID:{self.id}\nNombre: {self.nombre}\nTipo de cliente: {self.tipo_de_cliente}\nAntigüedad: {self.antiguedad}\n"
 
     def generar_id(self):
-        return random.randint(1000000000, 9999999999)
+        return random.randint(100000, 999999)
 
     def generar_nombre(self):
         nombres = ["Juan", "Pedro", "María", "Jorge", "Ana", "Carlos", "Sofía", "Lucas", "Isabel", "Miguel", "Marta",
@@ -120,9 +171,10 @@ def pause():
     if os.name == "nt":
         os.system("pause")
 
-def printTime(start, end):
 
-    timeElapsed = start - end
+def calculateTime(start, end):
+
+    timeElapsed = end - start
 
     return timeElapsed
 
@@ -288,6 +340,7 @@ def busqueda():
 
     pass
 
+
 def eliminar():
 
     clear()
@@ -392,21 +445,27 @@ def metodos_busqueda():
 
     print("+-----------------------------------------------+")
     print("|                                               |")
-    print("|          ALGORITMOS DE ORDENAMIENTO           |")
-    print("|                                               |")
+    print("|          ALGORITMOS DE BÚSQUEDA               |")
+    print("|                      Y                        |")
+    print("|                 ORDENAMIENTO                  |")
     print("+-----------------------------------------------+")
-
-    print()
-
-
-    print("Búsqueda binaria")
 
     if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
         Cliente().generar_clientes(TopeDeClientes)
 
+    print()
+
+    lineal()
+
+    print("Búsqueda binaria")
+
     print(Clientes)
 
-    clienteABuscar = Clientes[Clientes.index(int(input("==> ")))]
+    print()
+
+    print("Introduce el ID del cliente a encontrar")
+
+    clienteABuscar = int(input("==> "))
 
     Time = time.time()
 
@@ -414,7 +473,9 @@ def metodos_busqueda():
 
     elapsedTime = time.time()
 
-    print(printTime(Time, elapsedTime))
+    Time = calculateTime(Time, elapsedTime)
+
+    print(f"El algoritmo binario ha tardado {Time} segundos")
 
     print()
 
@@ -434,7 +495,7 @@ def menu():
     # Generar tope de clientes aquí
     global TopeDeClientes
 
-    TopeDeClientes = random.randrange(2, 5)
+    TopeDeClientes = random.randrange(10, 100)
 
     print("+---------------------------------------------------+")
     print("|      Simulación de una cola del supermercado      |")
