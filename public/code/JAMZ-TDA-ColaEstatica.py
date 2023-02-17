@@ -2,31 +2,31 @@
 import os
 import random
 import time
+import datetime
 import operator
+
 
 # sección algoritmos de ordenamiento y búsqueda
 
 
 def busqueda_binaria(conjunto, elementoABuscar):
+   left = 0
+   right = len(conjunto) - 1
 
-    low = 0
-    high = len(conjunto) - 1
-    mid = 0
+   while left <= right:
 
-    while low <= high: 
-        mid = (high + low) / 2
+    center = (left + right) // 2
 
-        if conjunto[mid] < elementoABuscar:
-            low = mid + 1
-        elif conjunto[mid] > elementoABuscar:
-            high = mid - 1
-        else:
-            return conjunto[mid]
+    if conjunto[center].id == elementoABuscar:
+        return conjunto[center] 
+    elif conjunto[center].id < elementoABuscar:
+        left = center + 1
+    else:
+        right = center - 1
 
     return "Error: algo salio mal pa"
 
 # sección clases para práctica
-
 
 class Cliente:
     def __init__(self):
@@ -34,24 +34,28 @@ class Cliente:
         self.tipo_de_cliente = self.generar_tipo_de_cliente()
         self.antiguedad = self.generar_antiguedad()
         self.operacion = self.generar_operacion()
+        self.id = self.generar_id()
 
     def __repr__(self) -> str:
         return str(self)
 
     def __eq__(self, objectToCompare):
+        
         if isinstance(objectToCompare, Cliente):
-            return self.nombre == objectToCompare.nombre and self.tipo_de_cliente == objectToCompare.tipo_de_cliente
+            return self.id == objectToCompare.id
         
         return False
 
     def __lt__(self, objectToCompare):
-        if isinstance(objectToCompare, Cliente):
-            return self.antiguedad < objectToCompare.antiguedad
-        return None
+
+       return  self.id < objectToCompare.id
 
     def __str__(self):
 
-        return f"Nombre: {self.nombre}\nTipo de cliente: {self.tipo_de_cliente}\nAntigüedad: {self.antiguedad}\n"
+        return f"ID:{self.id}\nNombre: {self.nombre}\nTipo de cliente: {self.tipo_de_cliente}\nAntigüedad: {self.antiguedad}\n"
+
+    def generar_id(self):
+        return random.randint(1000000000, 9999999999)
 
     def generar_nombre(self):
         nombres = ["Juan", "Pedro", "María", "Jorge", "Ana", "Carlos", "Sofía", "Lucas", "Isabel", "Miguel", "Marta",
@@ -115,6 +119,12 @@ def clear():
 def pause():
     if os.name == "nt":
         os.system("pause")
+
+def printTime(start, end):
+
+    timeElapsed = start - end
+
+    return timeElapsed
 
 # aquí termina
 
@@ -278,7 +288,6 @@ def busqueda():
 
     pass
 
-
 def eliminar():
 
     clear()
@@ -389,13 +398,23 @@ def metodos_busqueda():
 
     print()
 
+
     print("Búsqueda binaria")
 
-    clienteABuscar = input("==> ")
+    if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
+        Cliente().generar_clientes(TopeDeClientes)
+
+    print(Clientes)
+
+    clienteABuscar = Clientes[Clientes.index(int(input("==> ")))]
+
+    Time = time.time()
 
     cliente = busqueda_binaria(Clientes, clienteABuscar)
 
-    print(Clientes)
+    elapsedTime = time.time()
+
+    print(printTime(Time, elapsedTime))
 
     print()
 
@@ -415,7 +434,7 @@ def menu():
     # Generar tope de clientes aquí
     global TopeDeClientes
 
-    TopeDeClientes = random.randrange(10, 100)
+    TopeDeClientes = random.randrange(2, 5)
 
     print("+---------------------------------------------------+")
     print("|      Simulación de una cola del supermercado      |")
