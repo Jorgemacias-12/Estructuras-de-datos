@@ -4,7 +4,7 @@
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-   background-color: #ececec;
+  background-color: #f2f2f2;
 }
 
 .contentContainer {
@@ -21,4 +21,16 @@
 .text {
   text-align: justify;
   line-height: 1.6rem;
+}
+
+.toggleViewButton {
+  cursor: pointer;
+  background-color: var(--code-toggler-bg);
+  border: .1rem solid transparent;
+  padding: 1rem;
+  width: 10%;
+}
+
+.toggleViewButton:active {
+  transform: scale(0.9);
 }
