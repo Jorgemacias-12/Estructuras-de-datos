@@ -21,28 +21,51 @@ def busqueda_lineal(lista_de_clientes, nombre_cliente):
 
     return coincidencias
 
-def busqueda_binaria(lista_de_clientes, idCliente):        
+def busqueda_binaria(lista_de_clientes, nombre):        
+    """
+        Devuelve una lista de todos los clientes en la lista de clientes que tienen elmismo nombre que el nombre buscado.
+        Si no se encuentra ninguna coincidencia, devuelve una lista vacía.
+        Si hay múltiples clientes con el mismo nombre, se devuelve una lista de todos ellos.
+    """
+    coincidencias = []
 
-    left = 0
-    right = len(lista_de_clientes) - 1
+    lista_de_clientes_ordenada = sorted(lista_de_clientes, key=lambda x: x.nombre)
 
-    while left <= right:
-        center = (left + right) // 2
-        cliente_medio = lista_de_clientes[center]
+    low = 0
+    high = len(lista_de_clientes_ordenada) - 1
 
-        if cliente_medio.id == idCliente:
-            return cliente_medio
-        elif cliente_medio.id < idCliente:
-            left = center + 1
+    while low <= high:
+        
+        mid = (low + high) // 2
+
+        # Normalizar las cadenas antes de compararlas para hacerlas sensibles a mayúsculas y minúsculas
+        if lista_de_clientes_ordenada[mid].nombre.lower() == nombre.lower():
+            coincidencias.append(lista_de_clientes_ordenada[mid])
+
+            # Avanzar hacia la izquierda y hacia la derecha para buscar otros clientes con el mismo nombre
+            left = mid - 1
+            right = mid + 1
+            while left >= 0 and lista_de_clientes_ordenada[left].nombre.lower() == nombre.lower():
+                coincidencias.append(lista_de_clientes_ordenada[left])
+                left -= 1
+            while right < len(lista_de_clientes_ordenada) and lista_de_clientes_ordenada[right].nombre.lower() == nombre.lower():
+                coincidencias.append(lista_de_clientes_ordenada[right])
+                right += 1
+
+            return coincidencias
+        
+        elif lista_de_clientes_ordenada[mid].nombre.lower() < nombre.lower():
+            low = mid + 1
         else:
-            right = center - 1
-
-
-    return "Error: algo salio mal pa"
+            high = mid - 1
+    
+    return "El parámetro de búsqueda no funciona"
 
 # sección de métodos para la UA3
 
 def lineal():
+
+    global Clientes
     
     print()
 
@@ -74,9 +97,49 @@ def lineal():
 
     print()
 
+    print(f"El algoritmo lineal ha tardado {elapsedTime} segundos")
+
+    print()
+
+def binaria():
+
+    global Clientes
+
+    print()
+
+    print("##### Búsqueda binaria #####")
+
+    Time = time.time()
+
+    print("Introduzca el nombre del cliente a búscar")
+
+    try:
+        nombre = input("==> ")
+    except ValueError:
+        print("El cliente no existe")
+
+    resultados = busqueda_binaria(Clientes, nombre)
+
+    if not resultados:
+        print(f"Ningun cliente tiene el nombre {nombre}")
+        pause()
+        lineal()
+
+    print()
+
+    print(f"Coincidencias: {resultados}")
+
+    elapsedTime = time.time()
+
+    elapsedTime = calculateTime(Time, elapsedTime)
+
+    print()
+
     print(f"El algoritmo binario ha tardado {elapsedTime} segundos")
 
     print()
+
+    pass
 
 # sección clases para práctica
 
@@ -458,6 +521,10 @@ def metodos_busqueda():
     print()
 
     lineal()
+
+    print()
+    
+    binaria()
 
     print()
 
