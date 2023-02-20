@@ -6,8 +6,6 @@ import time
 from time import perf_counter
 
 # Decorador de tiempo
-
-
 def time_decorator(function):
 
     def wrapper(*args, **kwargs):
@@ -331,18 +329,6 @@ class Cliente:
 
     def __lt__(self, objectToCompare):
         return self.nombre < objectToCompare.nombre
-    # def __eq__(self, objectToCompare):
-
-    #     if isinstance(objectToCompare, Cliente):
-    #         return self.id == objectToCompare.id
-
-    #     return False
-
-    # def __lt__(self, objectToCompare):
-    #     if self.nombre < objectToCompare.nombre:
-    #         return True
-    #     elif self.nombre > objectToCompare.nombre:
-    #         return False
 
     def __str__(self):
 
