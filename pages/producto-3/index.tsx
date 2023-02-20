@@ -61,7 +61,7 @@ export const Producto_3 = () => {
           </Container>
         );
       })}
-
+      
       <h2 id="code" className={styles.infoTitle}>
         Código completo
       </h2>
