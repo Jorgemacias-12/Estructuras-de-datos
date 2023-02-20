@@ -21,6 +21,16 @@
   margin: 0 auto;
 }
 
+.downloadButton {
+  display: inline-block;
+  color: white;
+  background-color: var(--list-indicator-bg);
+  text-decoration: none;
+  padding: 1rem;
+  margin-left: 1rem;
+  margin: 1rem;
+}
+
 @media screen and (min-width: 960px){
   .container {
     width: 50%;
