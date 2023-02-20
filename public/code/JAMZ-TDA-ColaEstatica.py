@@ -123,6 +123,19 @@ def ordenamiento_por_insercion(lista):
 
     return lista
 
+@time_decorator
+def bubble_sort(lista):
+
+    size = len(lista)
+
+    for i in range(size):
+
+        for j in range(0, size - i - 1):
+
+            if lista[j] > lista[j + 1]:
+                lista[j], lista[j + 1] = lista[j + 1], lista[j]
+    
+    return lista
 
 # sección de métodos para la UA3
 
@@ -266,7 +279,35 @@ def ordenamiento_insercion():
 
     pause()
 
-    pass
+def ordenamiento_burbuja():
+
+    global Clientes
+
+    print()
+
+    print("### Ordenamiento iterativo burbuja (bubblesort) ###")
+    
+    print()
+
+    print("Clientes sin ordenar: ")
+
+    print(Clientes)
+
+    Clientes, time = bubble_sort(Clientes)
+
+    print()
+
+    print("Clientes ordenados")
+
+    print(Clientes)
+
+    print()
+
+    print(f"El ordenamiento de burbuja tardó {time} segundos")
+
+    print()
+
+    pause()
 
 # sección clases para práctica
 
@@ -653,6 +694,7 @@ def metodos_busqueda():
     print("| 2.- Búsqueda binaria                          |")
     print("| 3.- Ordenamiento iterativo por selección      |")
     print("| 4.- Ordenamiento por inserción                |")
+    print("| 5.- Ordenamiento burbuja                      |")
     print("+-----------------------------------------------+")
 
     if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
@@ -684,6 +726,10 @@ def metodos_busqueda():
 
     if Opcion == 4:
         ordenamiento_insercion()
+        metodos_busqueda()
+
+    if Opcion == 5:
+        ordenamiento_burbuja()
         metodos_busqueda()
 
     else:
