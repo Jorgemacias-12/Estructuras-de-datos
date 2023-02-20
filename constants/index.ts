@@ -15,6 +15,261 @@ export const UA2_workList = [
   },
 ];
 
+export const UA3_workList = [
+  {
+    title: "Búsqueda lineal",
+    content: [
+      "Algoritmo de búsqueda caracterizado por recorrer una estructura de datos, elemento por elemento, de inicio a fin comparando cada valor existente en la estructura con el valor que se está buscando.",
+      "Cuándo el valor buscado es encontrado, es devuelta su posición en la estructura, en caso contario es devuelto un indicador, seguido de un mensaje de <kbd>El valor no ha sido encontrado.</kbd>",
+      "Como desventaja tiene una complejidad temperoal de <kbd>O(n)</kbd>, lo que quiere decir que entre más elementos existentes en la estructura más tiempo tomará encontrar el dato a buscar.",
+      "Ahora a continuación un ejemplo de implementación de este método en python:",
+      "En el ejemplo, el usuario introduce el nombre de alguien para buscarlo en la cola de clientes, luego se ejecuta la búsqueda lineal, que empieza en la línea 7, y termina en la 16.",
+    ],
+    images: [""],
+    code: `def busqueda_lineal(lista_de_clientes, nombre_cliente):
+    coincidencias = []
+    
+    if len(lista_de_clientes) == 0:
+        return "Lista vacia"
+
+    for cliente in lista_de_clientes:
+
+        if cliente.nombre == nombre_cliente:
+
+            coincidencias.append(cliente)
+
+    return coincidencias
+    
+def lineal():
+
+    global Clientes
+    
+    print()
+
+    print("##### Búsqueda lineal #####")
+
+    Time = time.time()
+
+    print("Introduzca el nombre del cliente a búscar")
+
+    try:
+        nombre = input("==> ")
+    except ValueError:
+        print("El cliente no existe")
+
+    resultados = busqueda_lineal(Clientes, nombre)
+
+    if len(resultados) == 0:
+        print(f"Ningun cliente tiene el nombre {nombre}")
+        pause()
+        lineal()
+
+    print()
+
+    print(f"Coincidencias: {resultados}")
+
+    elapsedTime = time.time()
+
+    elapsedTime = calculateTime(Time, elapsedTime)
+
+    print()
+
+    print(f"El algoritmo lineal ha tardado {elapsedTime} segundos")
+
+    print()`,
+    link: "#lineal",
+  },
+  {
+    title: "Búsqueda binaria",
+    content: [
+      "Algoritmo de búsqueda eficiente en estructuras de datos ordenadas, por ejemplo: arreglos, listas.",
+      "Su funcionamiento empieza utilizando un conjunto de datos, para posteriormente dividirlo en dos partes cada que se realiza la búsqueda hasta que el/los elemento(s)son encontrado(s).",
+      "El algoritmo comienza comparando el elemento a buscar dentro de la estructura de datos, en este caso una lista de objetos de la clase <kbd>Cliente</kbd>, si el elemento es mayor, se descarta la mitad inferior de la estructura, y se sigue buscando en la mitad superior.",
+      "Si el elemento buscado es menor, se descarta la mitad superior, y se continúa la búsqueda en la mitad inferior.",
+      "Este proceso es repetido hasta que es encontrado un elemento o se determina que no esta en la estructura de datos.",
+      "Este algoritmo es más eficiente que la búsqueda <kbd>lineal</kbd> debido a que se reduce el número de comparaciones requeridas para encontrar resultado(s)",
+    ],
+    images: [""],
+    code: `def busqueda_binaria(lista_de_clientes, nombre):        
+    """
+        Devuelve una lista de todos los clientes en la lista de clientes que tienen elmismo nombre que el nombre buscado.
+        Si no se encuentra ninguna coincidencia, devuelve una lista vacía.
+        Si hay múltiples clientes con el mismo nombre, se devuelve una lista de todos ellos.
+    """
+    coincidencias = []
+
+    lista_de_clientes_ordenada = sorted(lista_de_clientes, key=lambda x: x.nombre)
+
+    low = 0
+    high = len(lista_de_clientes_ordenada) - 1
+
+    while low <= high:
+        
+        mid = (low + high) // 2
+
+        # Normalizar las cadenas antes de compararlas para hacerlas sensibles a mayúsculas y minúsculas
+        if lista_de_clientes_ordenada[mid].nombre.lower() == nombre.lower():
+            coincidencias.append(lista_de_clientes_ordenada[mid])
+
+            # Avanzar hacia la izquierda y hacia la derecha para buscar otros clientes con el mismo nombre
+            left = mid - 1
+            right = mid + 1
+            while left >= 0 and lista_de_clientes_ordenada[left].nombre.lower() == nombre.lower():
+                coincidencias.append(lista_de_clientes_ordenada[left])
+                left -= 1
+            while right < len(lista_de_clientes_ordenada) and lista_de_clientes_ordenada[right].nombre.lower() == nombre.lower():
+                coincidencias.append(lista_de_clientes_ordenada[right])
+                right += 1
+
+            return coincidencias
+        
+        elif lista_de_clientes_ordenada[mid].nombre.lower() < nombre.lower():
+            low = mid + 1
+        else:
+            high = mid - 1
+    
+    return "El parámetro de búsqueda no funciona"`,
+    link: "#binaria",
+  },
+  {
+    title: "Ordenamiento selección",
+    content: [
+      "El funcionamiento del algoritmo rádica ordenar seleccionando cuales son los elementos menores de la lista, e ir reordenandola (insertando los elementos menores).",
+      "El método toma como argumento una lista, donde se utilizando dos bucles anidados para encontrar el elemento de la lista no ordenada, y así colocarlo en una posición correcta, en la misma lista pero reordenando los valores.",
+      "En mi caso la implementación ordena una lista de objetos, por lo que la implementación no coincide al 100% con lo básico y visto en todas partes.",
+    ],
+    images: [""],
+    code: `def busqueda_lineal(lista_de_clientes, nombre_cliente):
+    coincidencias = []
+
+    if len(lista_de_clientes) == 0:
+        return "Lista vacia"
+
+    for cliente in lista_de_clientes:
+
+        if cliente.nombre == nombre_cliente:
+
+            coincidencias.append(cliente)
+
+    return coincidencias
+  
+def ordenamiento_iterativo():
+
+    global Clientes
+
+    print()
+
+    print("##### Ordenamiento iterativo por selección #####")
+
+    print()
+
+    print("### Clientes sin ordenar ###")
+
+    print()
+
+    print(Clientes)
+
+    print()
+
+    print("### Clientes ordenados ###")
+
+    print()
+
+    Clientes, time = ordenamiento_por_seleccion(Clientes)
+
+    print(Clientes)
+
+    print(
+        f"El ordenamiento iterativo por seleecion ha tardado {time} segundos")
+
+    print()
+
+    pause()  `,
+    link: "#seleccion",
+  },
+  {
+    title: "Ordenamiento iterativo por inserción",
+    content: [
+      "Algoritmo de ordenamiento simple y eficiente para listas pequeñas.",
+      "<kbd>¿Cómo funciona?</kbd>",
+      "Empieza comparaando cada elemento de la lista con los anteriores comparando cual es menor, para posteriormente colocarlo en su posición ordenada en la lista <kbd>itercambiarlo de índice</kbd>.",
+      "Esto fue posible gracias a dos estructuras repetitivas, en este caso un <kbd>for</kbd> y un <kbd>while</kbd>, el for inicializado desde 1 hasta el tamño de la lista, y la j que es el otro bucle (el while) se decrementaba ó incrementaba dependiendo del resultado de comparar los valores de la lista.",
+    ],
+    images: [""],
+    code: `@time_decorator
+def ordenamiento_por_insercion(lista):
+
+    for i in range (1, len(lista)):
+
+        key_item = lista[i]
+
+        j = i - 1
+
+        while j >= 0 and key_item < lista[j]:
+            lista[j + 1] = lista[j]
+            j -= 1
+        
+        lista[j + 1] = key_item
+
+    return lista`,
+    link: "#insercion",
+  },
+  {
+    title: "Ordenamiento iterativo burbuja",
+    content: [
+      "Algoritmo de ordenamiento iterativo, en donde se compara un elemento de una lista dada con su vecino (<kbd>n + 1</kbd>), y los intercambia si el vecino es menor.",
+      "Este proceso se repite hasta que los elementos están en orden.",
+      "En Python el método de burbuja puede ser implementado utilizando un bucle anidado de <kbd>for</kbd>, donde el primero recorre cada elemento en la lista, y el segundo se encarga de comparar e intercambiar los índices logrando así el ordenamiento deseado."
+    ],
+    images: [""],
+    code: `@time_decorator
+def bubble_sort(lista):
+
+    size = len(lista)
+
+    for i in range(size):
+
+        for j in range(0, size - i - 1):
+
+            if lista[j] > lista[j + 1]:
+                lista[j], lista[j + 1] = lista[j + 1], lista[j]
+    
+    return lista
+
+def ordenamiento_burbuja():
+    global Clientes
+
+    print()
+
+    print("### Ordenamiento iterativo burbuja (bubblesort) ###")
+    
+    print()
+
+    print("Clientes sin ordenar: ")
+
+    print(Clientes)
+
+    Clientes, time = bubble_sort(Clientes)
+
+    print()
+
+    print("Clientes ordenados")
+
+    print(Clientes)
+
+    print()
+
+    print(f"El ordenamiento de burbuja tardó {time} segundos")
+
+    print()
+
+    pause()
+
+`,
+    link: "#burbuja",
+  },
+]
+
 export const Trabajos: Link[] = [
   {
     title: "Inicio",
@@ -30,7 +285,7 @@ export const Trabajos: Link[] = [
   },
   {
     title: "Producto 3",
-    url: "",
+    url: "/producto-3",
   },
   {
     title: "Producto 4",

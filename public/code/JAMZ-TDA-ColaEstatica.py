@@ -1,23 +1,341 @@
 # Importes
 import os
 import random
-import time
 import operator
+import time
+from time import perf_counter
+
+# Decorador de tiempo
+def time_decorator(function):
+
+    def wrapper(*args, **kwargs):
+        t1 = perf_counter()
+
+        result = function(*args, **kwargs)
+
+        end = perf_counter() - t1
+
+        end = "{:.6f}".format(end)
+
+        return result, end
+
+    return wrapper
+
+
+# sección algoritmos de ordenamiento y búsqueda
+
+@time_decorator
+def busqueda_lineal(lista_de_clientes, nombre_cliente):
+    coincidencias = []
+
+    if len(lista_de_clientes) == 0:
+        return "Lista vacia"
+
+    for cliente in lista_de_clientes:
+
+        if cliente.nombre == nombre_cliente:
+
+            coincidencias.append(cliente)
+
+    return coincidencias
+
+
+@time_decorator
+def busqueda_binaria(lista_de_clientes, nombre):
+    """
+        Devuelve una lista de todos los clientes en la lista de clientes que tienen elmismo nombre que el nombre buscado.
+        Si no se encuentra ninguna coincidencia, devuelve una lista vacía.
+        Si hay múltiples clientes con el mismo nombre, se devuelve una lista de todos ellos.
+    """
+    coincidencias = []
+
+    lista_de_clientes_ordenada = sorted(
+        lista_de_clientes, key=lambda x: x.nombre)
+
+    low = 0
+    high = len(lista_de_clientes_ordenada) - 1
+
+    while low <= high:
+
+        mid = (low + high) // 2
+
+        # Normalizar las cadenas antes de compararlas para hacerlas sensibles a mayúsculas y minúsculas
+        if lista_de_clientes_ordenada[mid].nombre.lower() == nombre.lower():
+            coincidencias.append(lista_de_clientes_ordenada[mid])
+
+            # Avanzar hacia la izquierda y hacia la derecha para buscar otros clientes con el mismo nombre
+            left = mid - 1
+            right = mid + 1
+            while left >= 0 and lista_de_clientes_ordenada[left].nombre.lower() == nombre.lower():
+                coincidencias.append(lista_de_clientes_ordenada[left])
+                left -= 1
+            while right < len(lista_de_clientes_ordenada) and lista_de_clientes_ordenada[right].nombre.lower() == nombre.lower():
+                coincidencias.append(lista_de_clientes_ordenada[right])
+                right += 1
+
+            return coincidencias
+
+        elif lista_de_clientes_ordenada[mid].nombre.lower() < nombre.lower():
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return "El parámetro de búsqueda no funciona"
+
+
+@time_decorator
+def ordenamiento_por_seleccion(lista):
+    def comparador(a, b): return a < b
+
+    # Para cada posición en la lista
+    for i in range(len(lista)):
+
+        # Buscar el índice del elemento más pequeño en la sublista que
+        # comienza en i
+        min_index = i
+
+        for j in range(i+1, len(lista)):
+
+            # Utilizar la función de comparación peronalizada
+            # para comparar los elementos
+            if comparador(lista[j], lista[min_index]):
+                min_index = j
+        lista[i], lista[min_index] = lista[min_index], lista[i]
+
+    return lista
+
+@time_decorator
+def ordenamiento_por_insercion(lista):
+
+    for i in range (1, len(lista)):
+
+        key_item = lista[i]
+
+        j = i - 1
+
+        while j >= 0 and key_item < lista[j]:
+            lista[j + 1] = lista[j]
+            j -= 1
+        
+        lista[j + 1] = key_item
+
+    return lista
+
+@time_decorator
+def bubble_sort(lista):
+
+    size = len(lista)
+
+    for i in range(size):
+
+        for j in range(0, size - i - 1):
+
+            if lista[j] > lista[j + 1]:
+                lista[j], lista[j + 1] = lista[j + 1], lista[j]
+    
+    return lista
+
+# sección de métodos para la UA3
+
+
+def lineal():
+
+    global Clientes
+
+    print()
+
+    print("##### Búsqueda lineal #####")
+
+    print("Introduzca el nombre del cliente a búscar")
+
+    try:
+        nombre = input("==> ")
+    except ValueError:
+        print("El cliente no existe")
+
+    resultados, time = busqueda_lineal(Clientes, nombre)
+
+    if len(resultados) == 0:
+        print(f"Ningun cliente tiene el nombre {nombre}")
+        pause()
+        lineal()
+
+    print()
+
+    print(f"Coincidencias: {resultados}")
+
+    print()
+
+    print(f"El algoritmo lineal ha tardado {time} segundos")
+
+    print()
+
+    pause()
+
+
+def binaria():
+
+    global Clientes
+
+    print()
+
+    print("##### Búsqueda binaria #####")
+
+    print("Introduzca el nombre del cliente a búscar")
+
+    try:
+        nombre = input("==> ")
+    except ValueError:
+        print("El cliente no existe")
+
+    resultados, time = busqueda_binaria(Clientes, nombre)
+
+    if not resultados:
+        print(f"Ningun cliente tiene el nombre {nombre}")
+        pause()
+        lineal()
+
+    print()
+
+    print(f"Coincidencias: {resultados}")
+
+    print()
+
+    print(f"El algoritmo binario ha tardado {time} segundos")
+
+    print()
+
+    pause()
+
+    pass
+
+
+def ordenamiento_iterativo():
+
+    global Clientes
+
+    print()
+
+    print("##### Ordenamiento iterativo por selección #####")
+
+    print()
+
+    print("### Clientes sin ordenar ###")
+
+    print()
+
+    print(Clientes)
+
+    print()
+
+    print("### Clientes ordenados ###")
+
+    print()
+
+    Clientes, time = ordenamiento_por_seleccion(Clientes)
+
+    print(Clientes)
+
+    print(
+        f"El ordenamiento iterativo por selección ha tardado {time} segundos")
+
+    print()
+
+    pause()
+
+def ordenamiento_insercion():
+
+    global Clientes
+
+    print()
+
+    print("### Ordenamiento por inserción ###")
+
+    print()
+
+    print("### Clientes sin ordenar ###")
+
+    print()
+
+    print(Clientes)
+
+    print()
+
+    print("### Clientes ordenados ###")
+
+    print()
+
+    Clientes, time = ordenamiento_por_insercion(Clientes)
+
+    print(Clientes)
+
+    print()
+
+    print(f"El ordenamiento por inserción tardó {time} segundos")
+    
+    print()
+
+    pause()
+
+def ordenamiento_burbuja():
+
+    global Clientes
+
+    print()
+
+    print("### Ordenamiento iterativo burbuja (bubblesort) ###")
+    
+    print()
+
+    print("Clientes sin ordenar: ")
+
+    print(Clientes)
+
+    Clientes, time = bubble_sort(Clientes)
+
+    print()
+
+    print("Clientes ordenados")
+
+    print(Clientes)
+
+    print()
+
+    print(f"El ordenamiento de burbuja tardó {time} segundos")
+
+    print()
+
+    pause()
 
 # sección clases para práctica
+
+
 class Cliente:
     def __init__(self):
         self.nombre = self.generar_nombre()
         self.tipo_de_cliente = self.generar_tipo_de_cliente()
         self.antiguedad = self.generar_antiguedad()
         self.operacion = self.generar_operacion()
+        self.id = self.generar_id()
 
     def __repr__(self) -> str:
         return str(self)
 
+    def __eq__(self, objectToCompare):
+        if isinstance(objectToCompare, Cliente):
+            return self.nombre == objectToCompare.nombre
+
+        return False
+
+    def __lt__(self, objectToCompare):
+        return self.nombre < objectToCompare.nombre
+
     def __str__(self):
 
-        return f"Nombre: {self.nombre}\nTipo de cliente: {self.tipo_de_cliente}\nAntigüedad: {self.antiguedad}\n"
+        return f"ID:{self.id}\nNombre: {self.nombre}\nTipo de cliente: {self.tipo_de_cliente}\nAntigüedad: {self.antiguedad}\n"
+
+    def generar_id(self):
+        return random.randint(100000, 999999)
 
     def generar_nombre(self):
         nombres = ["Juan", "Pedro", "María", "Jorge", "Ana", "Carlos", "Sofía", "Lucas", "Isabel", "Miguel", "Marta",
@@ -34,7 +352,7 @@ class Cliente:
         return random.choice(tipos)
 
     def generar_antiguedad(self):
-        return random.randint(1, 20)
+        return random.randint(1, 200)
 
     def generar_operacion(self):
         return random.choice(["deposito", "retiro", "transferencia"])
@@ -61,6 +379,7 @@ class Cliente:
             elif cliente.tipo_de_cliente == "Platinum":
                 ColaExclusiva.append(cliente)
 
+
 # Variables para almacenar los datos simulados y colas
 TopeDeClientes = 0
 ColaExclusiva = []
@@ -83,8 +402,9 @@ def pause():
 
 # aquí termina
 
-
 # Funcionalidad de la aplicación
+
+
 def insertar():
 
     # global TopeDeCientes
@@ -341,6 +661,68 @@ def mezclar():
     pass
 
 
+def metodos_busqueda():
+
+    clear()
+
+    print("+-----------------------------------------------+")
+    print("|                                               |")
+    print("|          ALGORITMOS DE BÚSQUEDA               |")
+    print("|                      Y                        |")
+    print("|                 ORDENAMIENTO                  |")
+    print("+-----------------------------------------------+")
+
+    print()
+
+    print("+-----------------------------------------------+")
+    print("| 0.- Regresar al menú                          |")
+    print("| 1.- Búsqueda lineal                           |")
+    print("| 2.- Búsqueda binaria                          |")
+    print("| 3.- Ordenamiento iterativo por selección      |")
+    print("| 4.- Ordenamiento por inserción                |")
+    print("| 5.- Ordenamiento burbuja                      |")
+    print("+-----------------------------------------------+")
+
+    if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
+        Cliente().generar_clientes(TopeDeClientes)
+
+    try:
+        Opcion = int(input("==> "))
+    except:
+        pause()
+        metodos_busqueda()
+
+    if Opcion == 0:
+        menu()
+
+    if Opcion == 1:
+        lineal()
+        metodos_busqueda()
+        pass
+
+    if Opcion == 2:
+        binaria()
+        metodos_busqueda()
+        pass
+
+    if Opcion == 3:
+        ordenamiento_iterativo()
+        metodos_busqueda()
+        pass
+
+    if Opcion == 4:
+        ordenamiento_insercion()
+        metodos_busqueda()
+
+    if Opcion == 5:
+        ordenamiento_burbuja()
+        metodos_busqueda()
+
+    else:
+        metodos_busqueda()
+    pass
+
+
 def menu():
 
     clear()
@@ -348,7 +730,14 @@ def menu():
     # Generar tope de clientes aquí
     global TopeDeClientes
 
-    TopeDeClientes = random.randrange(4, 6)
+    # preguntar al usuario cuantos clientes va a generar
+    if TopeDeClientes == 0:
+        try:
+            TopeDeClientes = int(input("¿Clientes a generar? ==> "))
+        except:
+            menu()
+
+    print()
 
     print("+---------------------------------------------------+")
     print("|      Simulación de una cola del supermercado      |")
@@ -359,7 +748,8 @@ def menu():
     print("| 4.- Eliminación                                   |")
     print("| 5.- Ordenamiento                                  |")
     print("| 6.- Mezcla                                        |")
-    print("| 7.- Salir                                         |")
+    print("| 7.- Métodos de búsqueda                           |")
+    print("| 8.- Salir                                         |")
     print("+---------------------------------------------------+")
 
     try:
@@ -393,12 +783,13 @@ def menu():
         menu()
         pass
     if Opcion == 7:
+        metodos_busqueda()
+        menu()
+    if Opcion == 8:
         clear()
-        exit()
+        os._exit(1)
     else:
         menu()
-
-    pass
 
 
 def main():
