@@ -1,15 +1,34 @@
 # Importes
 import os
 import random
-import time
 import operator
+from time import perf_counter
+
+# Decorador de tiempo
+
+
+def time_decorator(function):
+
+    def wrapper(*args, **kwargs):
+        t1 = perf_counter()
+
+        result = function(*args, **kwargs)
+
+        end = perf_counter() - t1
+
+        end = "{:.6f}".format(end)
+
+        return result, end
+
+    return wrapper
 
 
 # sección algoritmos de ordenamiento y búsqueda
 
+@time_decorator
 def busqueda_lineal(lista_de_clientes, nombre_cliente):
     coincidencias = []
-    
+
     if len(lista_de_clientes) == 0:
         return "Lista vacia"
 
@@ -21,7 +40,9 @@ def busqueda_lineal(lista_de_clientes, nombre_cliente):
 
     return coincidencias
 
-def busqueda_binaria(lista_de_clientes, nombre):        
+
+@time_decorator
+def busqueda_binaria(lista_de_clientes, nombre):
     """
         Devuelve una lista de todos los clientes en la lista de clientes que tienen elmismo nombre que el nombre buscado.
         Si no se encuentra ninguna coincidencia, devuelve una lista vacía.
@@ -29,13 +50,14 @@ def busqueda_binaria(lista_de_clientes, nombre):
     """
     coincidencias = []
 
-    lista_de_clientes_ordenada = sorted(lista_de_clientes, key=lambda x: x.nombre)
+    lista_de_clientes_ordenada = sorted(
+        lista_de_clientes, key=lambda x: x.nombre)
 
     low = 0
     high = len(lista_de_clientes_ordenada) - 1
 
     while low <= high:
-        
+
         mid = (low + high) // 2
 
         # Normalizar las cadenas antes de compararlas para hacerlas sensibles a mayúsculas y minúsculas
@@ -53,25 +75,46 @@ def busqueda_binaria(lista_de_clientes, nombre):
                 right += 1
 
             return coincidencias
-        
+
         elif lista_de_clientes_ordenada[mid].nombre.lower() < nombre.lower():
             low = mid + 1
         else:
             high = mid - 1
-    
+
     return "El parámetro de búsqueda no funciona"
 
+
+@time_decorator
+def ordenamiento_por_seleccion(lista):
+    def comparador(a, b): return a < b
+
+    # Para cada posición en la lista
+    for i in range(len(lista)):
+
+        # Buscar el índice del elemento más pequeño en la sublista que
+        # comienza en i
+        min_index = i
+
+        for j in range(i+1, len(lista)):
+
+            # Utilizar la función de comparación peronalizada
+            # para comparar los elementos
+            if comparador(lista[j], lista[min_index]):
+                min_index = j
+        lista[i], lista[min_index] = lista[min_index], lista[i]
+
+    return lista
+
 # sección de métodos para la UA3
+
 
 def lineal():
 
     global Clientes
-    
+
     print()
 
     print("##### Búsqueda lineal #####")
-
-    Time = time.time()
 
     print("Introduzca el nombre del cliente a búscar")
 
@@ -80,7 +123,7 @@ def lineal():
     except ValueError:
         print("El cliente no existe")
 
-    resultados = busqueda_lineal(Clientes, nombre)
+    resultados, time = busqueda_lineal(Clientes, nombre)
 
     if len(resultados) == 0:
         print(f"Ningun cliente tiene el nombre {nombre}")
@@ -91,15 +134,14 @@ def lineal():
 
     print(f"Coincidencias: {resultados}")
 
-    elapsedTime = time.time()
+    print()
 
-    elapsedTime = calculateTime(Time, elapsedTime)
+    print(f"El algoritmo lineal ha tardado {time} segundos")
 
     print()
 
-    print(f"El algoritmo lineal ha tardado {elapsedTime} segundos")
+    pause()
 
-    print()
 
 def binaria():
 
@@ -109,8 +151,6 @@ def binaria():
 
     print("##### Búsqueda binaria #####")
 
-    Time = time.time()
-
     print("Introduzca el nombre del cliente a búscar")
 
     try:
@@ -118,7 +158,7 @@ def binaria():
     except ValueError:
         print("El cliente no existe")
 
-    resultados = busqueda_binaria(Clientes, nombre)
+    resultados, time = busqueda_binaria(Clientes, nombre)
 
     if not resultados:
         print(f"Ningun cliente tiene el nombre {nombre}")
@@ -129,17 +169,49 @@ def binaria():
 
     print(f"Coincidencias: {resultados}")
 
-    elapsedTime = time.time()
+    print()
 
-    elapsedTime = calculateTime(Time, elapsedTime)
+    print(f"El algoritmo binario ha tardado {time} segundos")
 
     print()
 
-    print(f"El algoritmo binario ha tardado {elapsedTime} segundos")
-
-    print()
+    pause()
 
     pass
+
+
+def ordenamiento_iterativo():
+
+    global Clientes
+
+    print()
+
+    print("##### Ordenamiento iterativo por selección #####")
+
+    print()
+
+    print("### Clientes sin ordenar ###")
+
+    print()
+
+    print(Clientes)
+
+    print()
+
+    print("### Clientes ordenados ###")
+
+    print()
+
+    Clientes, time = ordenamiento_por_seleccion(Clientes)
+
+    print(Clientes)
+
+    print(
+        f"El ordenamiento iterativo por seleecion ha tardado {time} segundos")
+
+    print()
+
+    pause()
 
 # sección clases para práctica
 
@@ -156,15 +228,25 @@ class Cliente:
         return str(self)
 
     def __eq__(self, objectToCompare):
-
         if isinstance(objectToCompare, Cliente):
-            return self.id == objectToCompare.id
+            return self.nombre == objectToCompare.nombre
 
         return False
 
     def __lt__(self, objectToCompare):
+        return self.nombre < objectToCompare.nombre
+    # def __eq__(self, objectToCompare):
 
-        return self.id < objectToCompare.id
+    #     if isinstance(objectToCompare, Cliente):
+    #         return self.id == objectToCompare.id
+
+    #     return False
+
+    # def __lt__(self, objectToCompare):
+    #     if self.nombre < objectToCompare.nombre:
+    #         return True
+    #     elif self.nombre > objectToCompare.nombre:
+    #         return False
 
     def __str__(self):
 
@@ -188,7 +270,7 @@ class Cliente:
         return random.choice(tipos)
 
     def generar_antiguedad(self):
-        return random.randint(1, 20)
+        return random.randint(1, 200)
 
     def generar_operacion(self):
         return random.choice(["deposito", "retiro", "transferencia"])
@@ -235,13 +317,6 @@ def clear():
 def pause():
     if os.name == "nt":
         os.system("pause")
-
-
-def calculateTime(start, end):
-
-    timeElapsed = end - start
-
-    return timeElapsed
 
 # aquí termina
 
@@ -515,47 +590,44 @@ def metodos_busqueda():
     print("|                 ORDENAMIENTO                  |")
     print("+-----------------------------------------------+")
 
+    print()
+
+    print("+-----------------------------------------------+")
+    print("| 0.- Regresar al menú                          |")
+    print("| 1.- Búsqueda lineal                           |")
+    print("| 2.- Búsqueda binaria                          |")
+    print("| 3.- Ordenamiento iterativo por selección      |")
+    print("+-----------------------------------------------+")
+
     if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
         Cliente().generar_clientes(TopeDeClientes)
 
-    print()
+    try:
+        Opcion = int(input("==> "))
+    except:
+        pause()
+        metodos_busqueda()
 
-    lineal()
+    if Opcion == 0:
+        menu()
 
-    print()
-    
-    binaria()
+    if Opcion == 1:
+        lineal()
+        metodos_busqueda()
+        pass
 
-    print()
+    if Opcion == 2:
+        binaria()
+        metodos_busqueda()
+        pass
 
-    # print("Búsqueda binaria")
+    if Opcion == 3:
+        ordenamiento_iterativo()
+        metodos_busqueda()
+        pass
 
-    # print(Clientes)
-
-    # print()
-
-    # print("Introduce el ID del cliente a encontrar")
-
-    # clienteABuscar = int(input("==> "))
-
-    # Time = time.time()
-
-    # cliente = busqueda_binaria(Clientes, clienteABuscar)
-
-    # elapsedTime = time.time()
-
-    # Time = calculateTime(Time, elapsedTime)
-
-    # print(f"El algoritmo binario ha tardado {Time} segundos")
-
-    # print()
-
-    # print(f"{cliente}")
-
-    pause()
-
-    # busqueda_binaria()
-
+    else:
+        metodos_busqueda()
     pass
 
 
@@ -566,7 +638,14 @@ def menu():
     # Generar tope de clientes aquí
     global TopeDeClientes
 
-    TopeDeClientes = 100000  # Temporal quitar en producción
+    # preguntar al usuario cuantos clientes va a generar
+    if TopeDeClientes == 0:
+        try:
+            TopeDeClientes = int(input("¿Clientes a generar? ==> "))
+        except:
+            menu()
+
+    print()
 
     print("+---------------------------------------------------+")
     print("|      Simulación de una cola del supermercado      |")
