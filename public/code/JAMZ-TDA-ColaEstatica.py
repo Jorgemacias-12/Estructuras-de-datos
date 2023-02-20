@@ -2,6 +2,7 @@
 import os
 import random
 import operator
+import time
 from time import perf_counter
 
 # Decorador de tiempo
@@ -207,7 +208,7 @@ def ordenamiento_iterativo():
     print(Clientes)
 
     print(
-        f"El ordenamiento iterativo por seleecion ha tardado {time} segundos")
+        f"El ordenamiento iterativo por selección ha tardado {time} segundos")
 
     print()
 
