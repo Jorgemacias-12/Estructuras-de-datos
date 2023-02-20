@@ -106,6 +106,24 @@ def ordenamiento_por_seleccion(lista):
 
     return lista
 
+@time_decorator
+def ordenamiento_por_insercion(lista):
+
+    for i in range (1, len(lista)):
+
+        key_item = lista[i]
+
+        j = i - 1
+
+        while j >= 0 and key_item < lista[j]:
+            lista[j + 1] = lista[j]
+            j -= 1
+        
+        lista[j + 1] = key_item
+
+    return lista
+
+
 # sección de métodos para la UA3
 
 
@@ -213,6 +231,42 @@ def ordenamiento_iterativo():
     print()
 
     pause()
+
+def ordenamiento_insercion():
+
+    global Clientes
+
+    print()
+
+    print("### Ordenamiento por inserción ###")
+
+    print()
+
+    print("### Clientes sin ordenar ###")
+
+    print()
+
+    print(Clientes)
+
+    print()
+
+    print("### Clientes ordenados ###")
+
+    print()
+
+    Clientes, time = ordenamiento_por_insercion(Clientes)
+
+    print(Clientes)
+
+    print()
+
+    print(f"El ordenamiento por inserción tardó {time} segundos")
+    
+    print()
+
+    pause()
+
+    pass
 
 # sección clases para práctica
 
@@ -598,6 +652,7 @@ def metodos_busqueda():
     print("| 1.- Búsqueda lineal                           |")
     print("| 2.- Búsqueda binaria                          |")
     print("| 3.- Ordenamiento iterativo por selección      |")
+    print("| 4.- Ordenamiento por inserción                |")
     print("+-----------------------------------------------+")
 
     if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
@@ -626,6 +681,10 @@ def metodos_busqueda():
         ordenamiento_iterativo()
         metodos_busqueda()
         pass
+
+    if Opcion == 4:
+        ordenamiento_insercion()
+        metodos_busqueda()
 
     else:
         metodos_busqueda()
