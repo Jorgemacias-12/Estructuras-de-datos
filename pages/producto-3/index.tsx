@@ -1,7 +1,11 @@
 import { ContentList } from "@/components/contentList/contentList";
 import { Header } from "@/components/header/Header";
 import { Container } from "@/components/container/Container";
-import { colaDownloadLink, producto_2_referencias, UA3_workList } from "@/constants";
+import {
+  colaDownloadLink,
+  producto_2_referencias,
+  UA3_workList,
+} from "@/constants";
 import Head from "next/head";
 import styles from "styles/Producto-3.module.css";
 import { CodeViewer } from "@/components/codeViewer/codeViewer";
@@ -10,20 +14,19 @@ import { useEffect, useState } from "react";
 import { JEditor } from "@/components/editor/JEditor";
 
 export const Producto_3 = () => {
-  
   const [code, setCode] = useState("");
 
-  useEffect( () => {
-    
+  useEffect(() => {
     const fetchData = async () => {
-      const cola = await fetch(colaDownloadLink).then((response) => response.text())
+      const cola = await fetch(colaDownloadLink).then((response) =>
+        response.text()
+      );
 
       setCode(cola);
-    }
+    };
 
     fetchData();
-
-  },[]);
+  }, []);
 
   return (
     <>
@@ -59,11 +62,19 @@ export const Producto_3 = () => {
         );
       })}
 
-      <h2 id="code" className={styles.infoTitle}>Código completo</h2>
+      <h2 id="code" className={styles.infoTitle}>
+        Código completo
+      </h2>
 
-      <CodeViewer code={code}/>
+      <CodeViewer code={code} />
 
-      <h2 id="info" className={styles.infoTitle}>Fuentes de información</h2>
+      <a href={colaDownloadLink} className={styles.downloadButton} download>
+        Descargar código
+      </a>
+
+      <h2 id="info" className={styles.infoTitle}>
+        Fuentes de información
+      </h2>
 
       <Cite
         title={"UA3.- BÚSQUEDA Y ORDENAMIENTO"}
