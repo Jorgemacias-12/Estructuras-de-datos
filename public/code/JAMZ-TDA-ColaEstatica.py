@@ -135,6 +135,43 @@ def bubble_sort(lista):
     
     return lista
 
+@time_decorator
+def merge_sort(lista):
+
+    key = lambda x: x
+
+    # Caso base: si la lista tiene un solo elemento, ya está ordenada
+    if len(lista) <= 1:
+        return lista    
+
+    # Dividir la lista en mitades
+    mid = len(lista) // 2
+
+    left = lista[:mid]
+    right = lista[mid:]
+
+    # Ordenar las mitades recyrsivamente
+    left = merge_sort(left)
+    right = merge_sort(right)
+
+    # Combinar las mitades ordenadas en una lista ordenada
+    lista_ordenada = []
+    i, j = 0, 0
+
+    while i < len(left) and j < len(right):
+
+        if left[]
+            lista_ordenada.append(left[i])
+            i += 1  
+        else:
+            lista_ordenada.append(right[j])
+            j += 1
+    
+    lista_ordenada += left[i:]
+    lista_ordenada += right[j:]
+
+    return lista_ordenada
+
 # sección de métodos para la UA3
 
 
@@ -306,6 +343,42 @@ def ordenamiento_burbuja():
     print()
 
     pause()
+
+def ordenamiento_merge_sort():
+    
+    global Clientes
+    
+    print()
+
+    print("### Ordenamiento merge sort ###")
+
+    print()
+
+    print("Clientes sin ordenar: ")
+
+    print()
+
+    print(Clientes)
+
+    print()
+
+    Clientes, time = merge_sort(Clientes)
+
+    print()
+
+    print("Clientes ordenados: ")
+
+    print()
+
+    print(Clientes)
+
+    print(f"El ordenamiento de merge_sort tardó {time} segundos")
+
+    print()
+
+    pause()
+
+    pass
 
 # sección clases para práctica
 
@@ -681,6 +754,7 @@ def metodos_busqueda():
     print("| 3.- Ordenamiento iterativo por selección      |")
     print("| 4.- Ordenamiento por inserción                |")
     print("| 5.- Ordenamiento burbuja                      |")
+    print("| 6.- MergeSort recursivo                       |")
     print("+-----------------------------------------------+")
 
     if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
@@ -716,6 +790,9 @@ def metodos_busqueda():
 
     if Opcion == 5:
         ordenamiento_burbuja()
+        metodos_busqueda()
+    if Opcion == 6:
+        ordenamiento_merge_sort()
         metodos_busqueda()
 
     else:
