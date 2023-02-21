@@ -137,41 +137,45 @@ def bubble_sort(lista):
 
 @time_decorator
 def merge_sort(lista):
+    if len(lista) > 1:
+        
+        mid = len(lista) // 2
+        
+        lefthalf = lista[:mid]
+        righthalf = lista[mid:]
 
-    key = lambda x: x
+        merge_sort(lefthalf)
+        merge_sort(righthalf)
 
-    # Caso base: si la lista tiene un solo elemento, ya está ordenada
-    if len(lista) <= 1:
-        return lista    
+        i = 0
+        j = 0
+        k = 0
 
-    # Dividir la lista en mitades
-    mid = len(lista) // 2
+        while i < len(lefthalf) and j < len(righthalf):
 
-    left = lista[:mid]
-    right = lista[mid:]
+            if lefthalf[i] <= righthalf[j]:
 
-    # Ordenar las mitades recyrsivamente
-    left = merge_sort(left)
-    right = merge_sort(right)
+                lista[k] = lefthalf[i]
+                i = i + 1
+            else:
 
-    # Combinar las mitades ordenadas en una lista ordenada
-    lista_ordenada = []
-    i, j = 0, 0
+                lista[k] = righthalf[j]
+                j = j + 1
+            k = k + 1
 
-    while i < len(left) and j < len(right):
+        while i < len(lefthalf):
+            lista[k] = lefthalf[i]
+            i = i + 1
+            k = k + 1
+        
+        while j < len(righthalf):
 
-        if left[]
-            lista_ordenada.append(left[i])
-            i += 1  
-        else:
-            lista_ordenada.append(right[j])
-            j += 1
-    
-    lista_ordenada += left[i:]
-    lista_ordenada += right[j:]
+            lista[k] = righthalf[j]
+            j = j + 1
+            k = k + 1
 
-    return lista_ordenada
-
+   
+    return lista
 # sección de métodos para la UA3
 
 
@@ -399,6 +403,9 @@ class Cliente:
             return self.nombre == objectToCompare.nombre
 
         return False
+
+    def __le__(self, objectToCompare):
+        return self.nombre <= objectToCompare.nombre
 
     def __lt__(self, objectToCompare):
         return self.nombre < objectToCompare.nombre
