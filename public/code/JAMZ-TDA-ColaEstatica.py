@@ -176,8 +176,8 @@ def merge_sort(lista):
 
    
     return lista
-# sección de métodos para la UA3
 
+# sección de métodos para la UA3
 
 def lineal():
 

@@ -221,7 +221,47 @@ def ordenamiento_por_insercion(lista):
       "El proceso de división se realiza de forma recursiva hasta que cada mitad contenga solo un elemento. Luego, se utiliza el proceso de combinación para fusionar cada par de mitades ordenadas en una sola lista ordenada, que se fusiona con la siguiente mitad ordenada hasta que la lista completa esté ordenada.",
     ],
     images: [""],
-    code: ``,
+    code: `@time_decorator
+def merge_sort(lista):
+    if len(lista) > 1:
+        
+        mid = len(lista) // 2
+        
+        lefthalf = lista[:mid]
+        righthalf = lista[mid:]
+
+        merge_sort(lefthalf)
+        merge_sort(righthalf)
+
+        i = 0
+        j = 0
+        k = 0
+
+        while i < len(lefthalf) and j < len(righthalf):
+
+            if lefthalf[i] <= righthalf[j]:
+
+                lista[k] = lefthalf[i]
+                i = i + 1
+            else:
+
+                lista[k] = righthalf[j]
+                j = j + 1
+            k = k + 1
+
+        while i < len(lefthalf):
+            lista[k] = lefthalf[i]
+            i = i + 1
+            k = k + 1
+        
+        while j < len(righthalf):
+
+            lista[k] = righthalf[j]
+            j = j + 1
+            k = k + 1
+
+   
+    return lista`,
     link: "#recursivo",
   },
   {
