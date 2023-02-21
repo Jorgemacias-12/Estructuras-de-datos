@@ -215,11 +215,61 @@ def ordenamiento_por_insercion(lista):
     link: "#insercion",
   },
   {
+    title: "Ordenamiento recursivo",
+    content: [
+      'Es un algoritmo de ordenamiento recursivo que sigue el principio de "dividir y conquistar". En resumen, divide la lista a ordenar en mitades cada vez más pequeñas hasta que cada mitad solo tenga un elemento. Luego, combina las mitades de forma ordenada, creando sublistas cada vez más grandes, hasta que la lista completa esté ordenada.',
+      "El proceso de división se realiza de forma recursiva hasta que cada mitad contenga solo un elemento. Luego, se utiliza el proceso de combinación para fusionar cada par de mitades ordenadas en una sola lista ordenada, que se fusiona con la siguiente mitad ordenada hasta que la lista completa esté ordenada.",
+    ],
+    images: [""],
+    code: `@time_decorator
+def merge_sort(lista):
+    if len(lista) > 1:
+        
+        mid = len(lista) // 2
+        
+        lefthalf = lista[:mid]
+        righthalf = lista[mid:]
+
+        merge_sort(lefthalf)
+        merge_sort(righthalf)
+
+        i = 0
+        j = 0
+        k = 0
+
+        while i < len(lefthalf) and j < len(righthalf):
+
+            if lefthalf[i] <= righthalf[j]:
+
+                lista[k] = lefthalf[i]
+                i = i + 1
+            else:
+
+                lista[k] = righthalf[j]
+                j = j + 1
+            k = k + 1
+
+        while i < len(lefthalf):
+            lista[k] = lefthalf[i]
+            i = i + 1
+            k = k + 1
+        
+        while j < len(righthalf):
+
+            lista[k] = righthalf[j]
+            j = j + 1
+            k = k + 1
+
+   
+    return lista`,
+    link: "#recursivo",
+  },
+  {
     title: "Ordenamiento iterativo burbuja",
     content: [
       "Algoritmo de ordenamiento iterativo, en donde se compara un elemento de una lista dada con su vecino (<kbd>n + 1</kbd>), y los intercambia si el vecino es menor.",
       "Este proceso se repite hasta que los elementos están en orden.",
-      "En Python el método de burbuja puede ser implementado utilizando un bucle anidado de <kbd>for</kbd>, donde el primero recorre cada elemento en la lista, y el segundo se encarga de comparar e intercambiar los índices logrando así el ordenamiento deseado."
+      "En Python el método de burbuja puede ser implementado utilizando un bucle anidado de <kbd>for</kbd>, donde el primero recorre cada elemento en la lista, y el segundo se encarga de comparar e intercambiar los índices logrando así el ordenamiento deseado.",
     ],
     images: [""],
     code: `@time_decorator
@@ -268,7 +318,7 @@ def ordenamiento_burbuja():
 `,
     link: "#burbuja",
   },
-]
+];
 
 export const Trabajos: Link[] = [
   {

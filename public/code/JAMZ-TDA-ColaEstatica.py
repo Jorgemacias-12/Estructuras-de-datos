@@ -135,8 +135,49 @@ def bubble_sort(lista):
     
     return lista
 
-# sección de métodos para la UA3
+@time_decorator
+def merge_sort(lista):
+    if len(lista) > 1:
+        
+        mid = len(lista) // 2
+        
+        lefthalf = lista[:mid]
+        righthalf = lista[mid:]
 
+        merge_sort(lefthalf)
+        merge_sort(righthalf)
+
+        i = 0
+        j = 0
+        k = 0
+
+        while i < len(lefthalf) and j < len(righthalf):
+
+            if lefthalf[i] <= righthalf[j]:
+
+                lista[k] = lefthalf[i]
+                i = i + 1
+            else:
+
+                lista[k] = righthalf[j]
+                j = j + 1
+            k = k + 1
+
+        while i < len(lefthalf):
+            lista[k] = lefthalf[i]
+            i = i + 1
+            k = k + 1
+        
+        while j < len(righthalf):
+
+            lista[k] = righthalf[j]
+            j = j + 1
+            k = k + 1
+
+   
+    return lista
+
+# sección de métodos para la UA3
 
 def lineal():
 
@@ -307,6 +348,42 @@ def ordenamiento_burbuja():
 
     pause()
 
+def ordenamiento_merge_sort():
+    
+    global Clientes
+    
+    print()
+
+    print("### Ordenamiento merge sort ###")
+
+    print()
+
+    print("Clientes sin ordenar: ")
+
+    print()
+
+    print(Clientes)
+
+    print()
+
+    Clientes, time = merge_sort(Clientes)
+
+    print()
+
+    print("Clientes ordenados: ")
+
+    print()
+
+    print(Clientes)
+
+    print(f"El ordenamiento de merge_sort tardó {time} segundos")
+
+    print()
+
+    pause()
+
+    pass
+
 # sección clases para práctica
 
 
@@ -326,6 +403,9 @@ class Cliente:
             return self.nombre == objectToCompare.nombre
 
         return False
+
+    def __le__(self, objectToCompare):
+        return self.nombre <= objectToCompare.nombre
 
     def __lt__(self, objectToCompare):
         return self.nombre < objectToCompare.nombre
@@ -681,6 +761,7 @@ def metodos_busqueda():
     print("| 3.- Ordenamiento iterativo por selección      |")
     print("| 4.- Ordenamiento por inserción                |")
     print("| 5.- Ordenamiento burbuja                      |")
+    print("| 6.- MergeSort recursivo                       |")
     print("+-----------------------------------------------+")
 
     if not ColaNormal and not ColaExclusiva and not ColaPrioritaria:
@@ -716,6 +797,9 @@ def metodos_busqueda():
 
     if Opcion == 5:
         ordenamiento_burbuja()
+        metodos_busqueda()
+    if Opcion == 6:
+        ordenamiento_merge_sort()
         metodos_busqueda()
 
     else:
