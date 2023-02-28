@@ -61,12 +61,15 @@ export const Producto_3 = () => {
           </Container>
         );
       })}
-      
+
       <h2 id="code" className={styles.infoTitle}>
         Código completo
       </h2>
 
-      <CodeViewer code={code} />
+      <Container identity={"Yea"}>
+        <CodeViewer code={code} />
+
+      </Container>
 
       <a href={colaDownloadLink} className={styles.downloadButton} download>
         Descargar código
