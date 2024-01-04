@@ -23,13 +23,37 @@ const { title } = Astro.props
   </body>
 </html>
 <style is:global>
-	:root {
-		'Inter Variable', system-ui, sans-serif;
-	}
+  :root {
+    /** CSS DARK THEME PRIMARY COLORS */
+    --color-primary-100: #7678ed;
+    --color-primary-200: #8886f0;
+    --color-primary-300: #9894f2;
+    --color-primary-400: #a8a3f4;
+    --color-primary-500: #b7b2f6;
+    --color-primary-600: #c6c1f8;
+
+    /** CSS DARK THEME SURFACE COLORS */
+    --color-surface-100: #1a202c;
+    --color-surface-200: #2f3540;
+    --color-surface-300: #464b55;
+    --color-surface-400: #5e626b;
+    --color-surface-500: #777a82;
+    --color-surface-600: #90939a;
+
+    /** CSS DARK THEME MIXED SURFACE COLORS */
+    --color-surface-mixed-100: #2b304e;
+    --color-surface-mixed-200: #404460;
+    --color-surface-mixed-300: #565972;
+    --color-surface-mixed-400: #6c6e85;
+    --color-surface-mixed-500: #838599;
+    --color-surface-mixed-600: #9b9cac;
+
+    font-family: "Inter Variable", system-ui, sans-serif;
+  }
 
   * {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 </style>
