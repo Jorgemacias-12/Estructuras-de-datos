@@ -1,0 +1,95 @@
+---
+import { getI18N } from '@/i18n'
+import { LANGS } from '@/locales'
+
+const { currentLocale } = Astro
+
+const lang = getI18N({ currentLocale })
+
+const { HEADER_LINKS } = lang
+---
+
+<header id="header" class="bg-surface-100 p-4 sticky">
+  <section class="container mx-auto flex items-center justify-between">
+    <section class="flex items-center">
+      <img src="https://via.placeholder.com/32" alt="Logo" class="mr-2" />
+
+      <h1 class="">Estructuras de datos</h1>
+    </section>
+
+    <section class="flex gap-2 items-center relative">
+      <ul class="flex list-none gap-1">
+        {
+          HEADER_LINKS.map((link) => {
+            return (
+              <li>
+                <a
+                  class="hover:text-primary-100 p-2 transition"
+                  href={link.url}
+                >
+                  {link.title}
+                </a>
+              </li>
+            )
+          })
+        }
+      </ul>
+
+      <section class="lang-container relative top-0 left-0">
+        <button
+          class="button px-4 rounded-full hover:bg-primary-200 transition"
+        >
+          <spanfas class="fas fa-earth-americas"></spanfas>
+          {currentLocale}
+        </button>
+
+        <section
+          class="menu flex-col hidden absolute bg-surface-200 items-center px-2"
+        >
+          {LANGS.map((lang) => {
+            if (lang == currentLocale ) return;
+            
+            return <a class="w-full hover:bg-primary-300 p-2" href={lang !== 'es' ? `/${lang}` : '/'}>
+              <span class="fas fa-earth-americas"></span>
+              {lang}
+            </a>
+          })}
+        </section>
+      </section>
+
+      <!-- <section class="lang-selector-container">
+        <button class="button px-4 rounded-full hover:bg-primary-200 transition">
+          <span class="fas fa-earth-americas"></span>
+          {currentLocale}
+        </button>
+
+        <section class="lang-selector hidden">
+          <a href="/">Contenido</a>
+          <a href="/en">Si</a>
+        </section>
+      </section>       -->
+    </section>
+  </section>
+</header>
+
+<style>
+  .lang-container:hover .menu {
+    display: flex;
+    width: 10rem;
+  }
+
+  /* .button:hover + .lang-selector {
+    display: flex;
+    flex-direction: column;
+  } */
+
+  /* .lang-selector { */
+  /* width: fit-content;
+    background-color: var(--color-surface-200);
+    position: absolute;
+    right: 0; */
+  /* margin-top: 9rem; */
+  /* padding: 1rem; */
+  /* border: 0.1rem solid var(--color-primary-200); */
+  /* } */
+</style>
