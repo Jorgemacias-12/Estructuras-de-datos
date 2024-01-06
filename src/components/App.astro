@@ -1,12 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from '../layouts/Layout.astro'
 
-import { getI18N } from "@/i18n"
-
+import { getI18N } from '@/i18n'
 
 const { currentLocale } = Astro
 
 const lang = getI18N({ currentLocale })
+
+const { WELCOME_MESSAGE, PAGE_CREATOR, PAGE_DESCRIPTION } = lang
 ---
 
 <!-- prettier-ignore -->
@@ -15,8 +16,25 @@ const lang = getI18N({ currentLocale })
   description={lang.SEO_DESCRIPTION}
   keywords={lang.SEO_KEYWORDS}
 >
-  <main>
-    
+  <main class="flex flex-col relative">  
+
+    <img class="w-full blur-md" src="/code.png" alt="">
+
+    <section class="absolute top-0 left-1/2 -translate-x-1/2 p-4 text-center w-full gap-36 flex flex-col max-md:gap-20 max-sm:gap-10">
+      <h2 class="text-6xl font-bold max-md:text-md max-sm:text-sm">
+        {WELCOME_MESSAGE}
+      </h2>
+
+      <h3 class="text-6xl font-bold max-md:text-md max-sm:text-sm">
+        {PAGE_CREATOR}
+      </h3>
+      
+      <section class="flex flex-col gap-2">
+        {PAGE_DESCRIPTION.map(description =>{
+          return <p class="font-bold text-balance text-2xl">{description}</p>
+        })}
+      </section>
+    </section>
   </main>
 </Layout>
 
