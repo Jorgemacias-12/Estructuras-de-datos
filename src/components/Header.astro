@@ -9,15 +9,62 @@ const lang = getI18N({ currentLocale })
 const { HEADER_LINKS } = lang
 ---
 
-<header id="header" class="bg-surface-100 p-4 sticky">
-  <section class="container mx-auto flex items-center justify-between">
-    <section class="flex items-center gap-2">
-      <img alt="Logo Universidad de Guadalajara" src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Escudo_UdeG.svg" width="32" height="40">
+<header id="header" class="bg-surface-100 p-4">
+  <section
+    class="container mx-auto flex items-center justify-between max-lg:flex-col max-lg:gap-4"
+  >
+    <section class="relative flex items-center gap-4 max-md:justify-between">
+      <img
+        alt="Logo Universidad de Guadalajara"
+        src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Escudo_UdeG.svg"
+        width="32"
+        height="40"
+      />
 
       <h1 class="">Estructuras de datos</h1>
+
+      <span class="menu-opener hidden fas fa-bars fa-xl max-lg:block"></span>
+
+      <ul
+        class="activities-menu flex-col hidden absolute bg-surface-200 items-center
+          shadow-lg border-2 border-surface-300 gap-2 mt-10
+          transition top-4 right-0 rounded-md p-2 z-10"
+      >
+        {
+          HEADER_LINKS.map((link) => {
+            return (
+              <li>
+                <a
+                  class="hover:text-primary-100 p-2 transition"
+                  href={link.url}
+                >
+                  {link.title}
+                </a>
+              </li>
+            )
+          })
+        }
+        {
+          LANGS.map((lang) => {
+            if (lang == currentLocale) return
+
+            return (
+              <li>
+                <a
+                  class="text-left w-full hover:bg-primary-300 p-2 rounded-full"
+                  href={lang !== 'es' ? `/${lang}` : '/'}
+                >
+                  <span class="fas fa-earth-americas" />
+                  {lang}
+                </a>
+              </li>
+            )
+          })
+        }
+      </ul>
     </section>
 
-    <section class="flex gap-2 items-center relative">
+    <section class="flex gap-2 items-center max-lg:hidden">
       <ul class="flex list-none gap-1">
         {
           HEADER_LINKS.map((link) => {
@@ -39,35 +86,31 @@ const { HEADER_LINKS } = lang
         <button
           class="button px-4 rounded-full hover:bg-primary-200 transition"
         >
-          <spanfas class="fas fa-earth-americas"></spanfas>
-          {currentLocale}
-        </button>
-
-        <section
-          class="menu flex-col hidden absolute bg-surface-200 items-center px-2"
-        >
-          {LANGS.map((lang) => {
-            if (lang == currentLocale ) return;
-            
-            return <a class="w-full hover:bg-primary-300 p-2" href={lang !== 'es' ? `/${lang}` : '/'}>
-              <span class="fas fa-earth-americas"></span>
-              {lang}
-            </a>
-          })}
-        </section>
-      </section>
-
-      <!-- <section class="lang-selector-container">
-        <button class="button px-4 rounded-full hover:bg-primary-200 transition">
           <span class="fas fa-earth-americas"></span>
           {currentLocale}
         </button>
 
-        <section class="lang-selector hidden">
-          <a href="/">Contenido</a>
-          <a href="/en">Si</a>
+        <section
+          class="menu flex-col hidden absolute bg-surface-200 items-center
+          rounded-full border border-surface-300 z-10"
+        >
+          {
+            LANGS.map((lang) => {
+              if (lang == currentLocale) return
+
+              return (
+                <a
+                  class="w-full hover:bg-primary-300 p-2 rounded-full"
+                  href={lang !== 'es' ? `/${lang}` : '/'}
+                >
+                  <span class="fas fa-earth-americas" />
+                  {lang}
+                </a>
+              )
+            })
+          }
         </section>
-      </section>       -->
+      </section>
     </section>
   </section>
 </header>
@@ -77,19 +120,43 @@ const { HEADER_LINKS } = lang
     display: flex;
     width: 10rem;
   }
-
-  /* .button:hover + .lang-selector {
-    display: flex;
-    flex-direction: column;
-  } */
-
-  /* .lang-selector { */
-  /* width: fit-content;
-    background-color: var(--color-surface-200);
-    position: absolute;
-    right: 0; */
-  /* margin-top: 9rem; */
-  /* padding: 1rem; */
-  /* border: 0.1rem solid var(--color-primary-200); */
-  /* } */
 </style>
+
+<script>
+  const menuOpener: HTMLElement | null = document.querySelector('.menu-opener')
+  const activitiesMenu: HTMLElement | null =
+    document.querySelector('.activities-menu')
+
+  let isOpen: boolean = false
+
+  menuOpener?.addEventListener('click', () => {
+    isOpen = !isOpen
+
+    if (isOpen) {
+      showMenu()
+    } else {
+      hideMenu()
+    }
+  })
+
+  document.addEventListener('mousedown', (event: MouseEvent) => {
+    const isMenuOpener: boolean = event.target === menuOpener
+    const isInsideMenu: boolean =
+      activitiesMenu?.contains(event.target as Node) || false
+
+    if (!isMenuOpener && !isInsideMenu) {
+      hideMenu()
+    }
+  })
+
+  function showMenu() {
+    activitiesMenu?.classList.remove('hidden')
+    activitiesMenu?.classList.add('flex')
+  }
+
+  function hideMenu() {
+    isOpen = false
+    activitiesMenu?.classList.remove('flex')
+    activitiesMenu?.classList.add('hidden')
+  }
+</script>
