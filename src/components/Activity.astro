@@ -1,0 +1,109 @@
+---
+import { getI18N } from '@/i18n'
+import { buildURL } from '@/utils'
+
+type Props = {
+  id: string
+  title: string
+  description: string
+  pubDate: Date
+  updatedDate?: Date
+  heroImage?: string
+}
+
+const { id, title, description, pubDate, updatedDate, heroImage } = Astro.props
+
+const { currentLocale } = Astro
+
+const lang = getI18N({ currentLocale })
+
+const { ACTIVITIES_PAGE_CALL_TO_ACTION, ACTIVITY_LINK_CAPTION } = lang
+---
+
+<article
+  class="activity flex flex-col bg-surface-300 border border-surface-mixed-400 rounded-md w-[300px]"
+>
+  <img src={heroImage} width={300} alt="" />
+  <h3 class="text-center text-xl font-semibold mt-2">{title}</h3>
+
+  <section
+    class="flex activity__actions p-2 gap-2 items-center justify-between"
+  >
+    <a
+      class="w-1/2 text-center bg-primary-100 p-2 rounded-md hover:bg-primary-200 transition"
+      href={buildURL(currentLocale!, id, 'activities')}
+      >{ACTIVITIES_PAGE_CALL_TO_ACTION}</a
+    >
+    <button
+      class="activity__info-opener w-1/2 border-none bg-primary-100 p-2 rounded-md hover:bg-primary-200 transition"
+      >{ACTIVITY_LINK_CAPTION}</button
+    >
+  </section>
+
+  <section class="flex flex-col activity__info p-2 bg-surface-400 gap-2">
+    <p class="text-justify">{description}</p>
+    <p>{pubDate.toDateString()}</p>
+    {
+      updatedDate && <p>{updatedDate?.toDateString()}</p>
+    }
+    <!-- <p>{updatedDate?.toDateString()}</p> -->
+  </section>
+</article>
+
+<style>
+  .activity__info {
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: max-height 0.3s ease;
+  }
+
+  .activity__info.expanded {
+    height: auto;
+    padding: 0.5rem;
+  }
+</style>
+
+<script>
+  const handleClick = (event: MouseEvent) => {
+    let source = event.target as HTMLButtonElement
+    let parent = source.parentElement
+
+    let infoContainerEl = parent!.nextElementSibling
+
+    console.log(parent, infoContainerEl)
+
+    infoContainerEl?.classList.toggle('expanded')
+  }
+
+  let showMoreInfoButtons = document.querySelectorAll('.activity__info-opener')
+
+  showMoreInfoButtons.forEach((el) =>
+    el.addEventListener('click', handleClick as EventListener),
+  )
+
+  // const handleClick = (event: MouseEvent) => {
+  //   let source = event.target as HTMLButtonElement;
+  //   let parent = source.parentNode;
+
+  //   if (!parent) return;
+
+  //   let hideableContent = parent?.nextSibling as HTMLDivElement;
+
+  //   hideableContent = hideableContent.nextSibling;
+
+  //   if (!hideableContent)  return;
+
+  //   console.log(hideableContent);
+
+  //   hideableContent.classList.toggle('hidden');
+  // }
+
+  // let activities = document.querySelectorAll('.activity')
+
+  // console.log(activities)
+
+  // activities.forEach((el) => {
+  //   el.addEventListener('click', handleClick as EventListener)
+  // })
+</script>
