@@ -1,0 +1,17 @@
+---
+type Props = {
+  text: string,
+  url: string
+}
+
+const {text, url} = Astro.props
+
+---
+<p class="">
+  {text}
+  <a class="text-emerald-500 hover:underline" href={url} target="_blank">{url}</a>
+</p>
+
+<style>
+
+</style>
