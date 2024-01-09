@@ -1,0 +1,42 @@
+{
+  "SEO_TITLE": "JAMZ - Data Structures Portfolio",
+  "SEO_DESCRIPTION": "Portfolio of activities from the Data Structures course in the Computer Engineering program at Centro Universitario de la Costa (CUCOSTA), University of Guadalajara.",
+  "WELCOME_MESSAGE": "Welcome to my portfolio of evidence!",
+  "PAGE_DESCRIPTION": [
+    "On this page, you will find the activities I did in the Data Structures course.",
+    "In the 2023A period, with Professor Miguel Lizcano.",
+    "I am studying Computer Engineering at the University of Guadalajara at the CUCOSTA Campus."
+  ],
+  "PAGE_CREATOR": "╰(*°▽°*)╯ I am Jorge Macias ╰(*°▽°*)╯",
+  "PAGE_CALL_TO_ACTION_TITLE": "Looking for something else?",
+  "PAGE_CALL_TO_ACTIONS": [
+    {
+      "title": "Explore my repositories on GitHub",
+      "description": "Discover more about my projects and contributions to explore the source code and activities I have undertaken.",
+      "icon": "fa-brands fa-github",
+      "url": "https://github.com/Jorgemacias-12?tab=repositories"
+    },
+    {
+      "title": "Connect on LinkedIn",
+      "description": "Connect with me to stay updated on my personal and professional activities and achievements.",
+      "icon": "fa-brands fa-linkedin",
+      "url": "https://www.linkedin.com/in/JAMZ3"
+    }
+  ],
+  "SEO_KEYWORDS": "data structures, cucosta, udg",
+  "HEADER_LINKS": [
+    {
+      "title": "Home",
+      "url": "/"
+    },
+    {
+      "title": "Product 1",
+      "url": "#"
+    }
+  ],
+  "ACTIVITITES_PAGE_TITLE": "Actividades",
+  "ACTIVITIES_PAGE_CALL_TO_ACTION": "Ver actividad",
+  "ACTIVITY_LINK_CAPTION": "Ver más",
+  "FOOTER_TITLE": "Made with ❤️ by Jorge Macias",
+  "FOOTER_SOCIAL_MEDIA_SECTION_TITLE": "Social Media"
+}
