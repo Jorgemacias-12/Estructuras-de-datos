@@ -1,0 +1,30 @@
+---
+import BaseHead from '@/components/BaseHead.astro'
+import Footer from '@/components/Footer.astro'
+import Header from '@/components/Header.astro'
+
+import '@fontsource-variable/inter'
+
+interface Props {
+  title: string
+  description: string
+  keywords: string
+}
+
+const { title, description, keywords } = Astro.props
+const { currentLocale } = Astro
+---
+
+<!doctype html>
+<html lang={currentLocale}>
+  <head>
+    <BaseHead title={title} description={description} image="" />
+    <title>Document</title>
+  </head>
+
+  <body class="app dark:bg-surface-200 min-h-screen dark:text-white">
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>
