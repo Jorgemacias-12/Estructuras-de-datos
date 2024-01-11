@@ -7,7 +7,6 @@ heroImage: '/images/defaultHeroImage.jpg'
 
 import Question from '@/components/Question.astro'
 import Title from '@/components/Title.astro'
-import List from '@/components/List.astro'
 import Card from '@/components/Card.astro'
 import Reference from '@/components/Reference.astro'
 
@@ -21,19 +20,19 @@ Son un modo de representar información en una computadora, que cuentan con un c
 
 Es un objeto en el cual pueden guardarse otros objetos (arreglos listas, colas, etc).
 
-<Title>Tipos de estructuras de datos</Title>
+<Title title="Tipos de estructuras de datos" size="2xl" />
 
 Existen dos tipos de estructuras de datos y son las siguientes:
 
-- <Title>Estáticas</Title>
+<Title title="Estáticas" size="2xl" />
 
   son aquellas en las que el tamaño ocupado es definido en memoria antes de que el programa es ejecutado, este no puede modificarse durante la ejecución del programa.
 
-- <Title>Dinámicas</Title>
 
+<Title title="Dinámicas" size="2xl" />
   en este tipo el tamaño ocupado en memoria puede ser modificado durante la ejecución del programa.
 
-<Title>Estructuras de datos</Title>
+<Title title="Estructuras de datos" size="2xl" />
 
 <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4">
   <Card
@@ -68,28 +67,27 @@ Existen dos tipos de estructuras de datos y son las siguientes:
   />
 </section>
 
-<Title> Operaciones con Estructuras de datos: </Title>
+<Title title="Operaciones con Estructuras de datos:" size="2xl" center={true}/> 
 
-<Title>Recorrido</Title>
-
+<Title title="Recorrido" size="2xl"/>
 Implica el acceder a cada registro una única vez, aunque uno o más ítems del registro sean procesados. (Este acceso o procesamiento también se denomina a veces por el término «visitar» el registro).
 
-<Title>Búsqueda</Title>
+<Title title="Búsqueda" size="2xl"/>
 Implica la localización de un registro caracterizado por una determinada clave o
 también el acceso a todos los registros que cumplan una o más condiciones.
 
-<Title>Insersión</Title>
+<Title title="Insersión" size="2xl"/>
 Cuando añadimos nuevos registros a la estructura.
 
-<Title>Eliminación</Title>
+<Title title="Eliminación" size="2xl"/>
 Operación de borrado de un registro de la estructura.
 
-<Title>Ordenación</Title>
+<Title title="Ordenación" size="2xl"/>
 Es la operación de clasificar los registros conforme a un orden lógico determinado
 (por ejemplo, alfabéticamente, de acuerdo con una clave de nombre, o numérica, de
 acuerdo con alguna clave de número).
 
-<Title>Referencias</Title>
+<Title title="Referencias" size="4xl" />
 
 <section class="flex flex-col gap-2">
   <Reference
