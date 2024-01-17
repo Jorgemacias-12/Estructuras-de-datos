@@ -52,6 +52,10 @@ body {
 	font-family: 'Inter Variable', sans-serif;
 }
 
+kbd {
+	@apply bg-slate-800 text-white rounded-md p-1 inline-flex mt-1;
+}
+
 .app {
 	min-height: 100vh;
 	min-height: 100dvh;
