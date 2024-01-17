@@ -1,9 +1,20 @@
 ---
+type Props = {
+  title?: string
+  size?: string
+  center?: boolean
+}
+
+const { title, size, center } = Astro.props
+
+const sizeClass = size ? `text-${size}` : `text-base`;
+const centerClass = center ? 'text-center' : '';
 ---
-<h2 class="font-bold text-2xl">
-  <slot />
+
+
+<h2 class={`font-bold ${sizeClass} ${centerClass}`}>
+  {title !== null && title !== undefined ? title : <slot />}
 </h2>
 
-<style>
 
-</style>
+<style></style>
