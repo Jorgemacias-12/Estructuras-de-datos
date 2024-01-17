@@ -5,8 +5,152 @@ pubDate: '2023-01-21'
 heroImage: '/images/defaultHeroImage.jpg'
 ---
 
-import Question from '@/components/Question.astro'
 import Title from '@/components/Title.astro'
 import List from '@/components/List.astro'
 import Card from '@/components/Card.astro'
 import Reference from '@/components/Reference.astro'
+import ContentList from '@/components/ContentList.astro'
+import Info from '@/components/Info.astro'
+import { Operation } from '@/components/Operation'
+import { Capture } from '@/components/Capture'
+
+<Title title="Lista de Contenido" size="4xl" center={true} />
+
+<ContentList />
+
+<section class="content gap-2 flex flex-col" data-section-title="Lista" id="list">
+  <Title title="Lista estática" size="2xl" center={true} />
+
+  <Title title="Actividad de clase - Lista estática" size="2xl" />
+
+  El alumno deberá ingresar una serie de elementos en una lista estática y aplicará las siguientes operaciónes: insersión, recorrido, búsqueda, eliminación, ordenación mezcla. utilizando el lenguaje de programación python.
+
+  <Title title="Planteamiento" size="2xl" />
+
+  En este programa me base en un supermercado, donde la persona tiene un carrito de compras donde va depositando los productos.
+
+  <Title title="Operaciones" size="2xl" />
+
+  <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start" id="operations">
+    <Operation 
+      title="Inserción" 
+      description="Para insertar un elemento dentro de una lista, lo primero que necesitamos es una lista, por lo que, observando el editor de código debajo de este texto, en la línea 8, podemos observar una lista definida de nombre <kbd>shopping_list</kbd>.#
+
+      Para posteriormente en la función insertar preguntar al usuario que producto desea incluir en su lista, luego insertar ese producto a la lista utilizando el metodo <kbd>append</kbd>.#
+
+      Por último se muestra la lista de compras al usuario (en mi caso la lista ya se encuentra llena, por lo que, habrá más contenido que el que se inserto.#"
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      client:load
+    />
+    <Operation 
+      title="Recorrido" 
+      description="Para la funcionalidad de recorrido, utilice un bucle for, donde obtuve el valor y el índice de este dentro de la lista, podemos observarlo en la línea <kbd>18</kbd> del código en el editor.#
+      
+      Por ejemplo, el programa dice lo siguiente <kbd>El producto (producto)</kbd> se encuentra en la posición <kbd>(posición)</kbd> de la lista.#
+
+      Ahora con algo más real sería: <kbd>El producto Pasta de dientes se encuentra en la posición 12 de la lista.</kbd>"
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      client:load
+    />
+    <Operation 
+      title="Búsqueda"
+      description="Para este caso en particular, existen dos opciones de búsqueda: por índice y por valor. En mi implementación, opté por la búsqueda por valor, ya que utilizo strings.#
+
+      Nuestro programa solicita al usuario el nombre de un producto para buscarlo dentro de su lista de compras. Si encuentra el producto, el resultado es: <kbd>El producto {producto} existe en la lista con índice {índice}.</kbd>
+
+      Un ejemplo práctico sería: <kbd>El producto Pollo existe en el índice 4 de la lista.</kbd>"
+      codeURL='../code/JAMZ-BusquedaProducto.py'
+      client:load
+    />
+
+    <Operation 
+      title="Eliminación"
+      description="El programa muestra primero la lista de compras actual, posteriormente pregunta al usuario si necesita eliminar un producto.#
+      Después de esto, el programa esperara 5 segundos imprimiendo el caracter <kbd>.</kbd>, y por último se confirmará si se elimino.#
+      De hecho el método <kbd>remove</kbd> permite remover un elemento de la lista. En mi caso utiliznando <kbd>valor/índice</kbd>.#"
+      codeURL='../code/JAMZ-EliminacionProducto.py'
+      client:load
+    />
+
+    <Operation 
+      title="Ordenación"
+      description="El programa informa al usuario que la lista se va a ordenar y ejecuta el método <kbd>sort</kbd>. Dado que la lista contiene valores de tipo string, la ordenación se realiza alfabéticamente.
+      Después, se imprime la lista ordenada alfabéticamente, destacando cada elemento con colores diferentes."
+      codeURL='../code/JAMZ-OrdenacionLista.py'
+      client:load
+    />
+
+    <Operation 
+      title="Mezcla"
+      description="Antes de finalizar el programa, se realiza una mezcla de la lista de compras del usuario. La mezcla cambia los índices de todos los productos insertados anteriormente.
+
+      ¿Cómo se logra esto? Una forma sencilla de realizar la mezcla es utilizando la función <kbd>shuffle</kbd> de la librería <kbd>random</kbd>.
+
+      El resultado es que al usuario se le muestra una lista de productos para comprar desordenada."
+      codeURL='../code/JAMZ_Lawea.py'
+      client:load
+    />
+
+  </section>
+
+  <Title
+    title="Previsualización y descarga del código (completo)"
+    size="2xl"
+    center={true}
+  />
+
+  {/* ! Place here code snippet */}
+
+  <Info
+    content="El código tiene como dependencia la libreria <kbd>colorama</kbd>, si el programa falla al ejecutarse, puedes instalar la libreria utilizando el siguiente comando: <kbd>pip install colorama</kbd>."
+    additionalStyleClasses="bg-[#faebd7] rounded-md text-red-500"
+  />
+
+  <a download={"JAMZ-TDA-ListaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-primary-100 p-2 w-fit items-center gap-2 text-lg" type="button">
+    Descargar código
+    <span class="fas fa-arrow-down fa-xl"></span>
+  </a>
+  
+  <Title title="Capturas de ejecución" size="2xl" />
+  
+  <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start">
+    <Capture title="Inserción" content='El programa pregunta al usuario, que producto desea añadir a su lista de compras.' imageURL='/images/Insercion.png' />
+    <Capture title="Recorrido" content='El programa le muestra al usuario su lista de compras actualizada elemento por elemento.' imageURL='/images/Recorrer.png' />
+    <Capture title="Búsqueda" content='Pregunta al usuario el nombre de un objeto para buscarlo en la lista de compras, si encuentra el objeto retornara el indice donde se encuentra este, caso contario emite un mensaje.' imageURL='/images/Busqueda.png' />
+    <Capture title="Eliminación" content='El usuario puede eliminar un elemento de su lista utilizando su nombre, nuevamente si no existe se le hará saber al usuario.' imageURL='/images/Eliminar.png' />
+    <Capture title="Ordenamiento" content='El programa ordena la lista de compras en orden alfabetico para posteriormente mostrar.' imageURL='/images/Ordenar.png' />
+    <Capture title="Mezcla" content='Nuevamente, para mezclar utilizamos la funcion suffle de la libreria random, esta funcion recibe una lista como parámetro, y modifica la lista moviendo los elementos de forma aleatoria, luego el programa muestra la mezcla al usuario.' imageURL='/images/Mezcla.png' />
+  </section>
+
+  <Title title="Referencias" size="4xl" />
+
+  <section class="flex flex-col gap-2">
+    <Reference
+      text="UA2-TDA Estáticas Recuperado 1 de febrero de 2023, de"
+      url="https://sites.google.com/academicos.udg.mx/drlizcano/il354-estructura-datos/ua2-tda-est%C3%A1ticas?authuser=0"
+    />
+  </section>
+</section>
+
+<section class="content" data-section-title="Pila" id="Pile">
+  <Title title="Pila estática" size="2xl" center={true} />
+
+  <Title title="Actividad de clase - Pila estática" size="2xl" />
+
+  El alumno deberá ingresar una serie de elementos en una TDA pila estática y se aplicará las sigueintes operaciones utilizando el lenguaje de Python.
+
+  <Title title="Planteamiento" size="2xl" />
+
+  Una persona tiene diferentes cantidades de dinero en su bolsillo, cartera y su cuenta de banco por lo que al querrer depositar/retirar dinero entre cuentas/lugar donde este el dinero.
+
+  <Title title="Operaciones" size="2xl" />
+
+  <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start">
+
+  </section>
+
+  <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start">
+  </section>
+</section>
+
+<section class="content" data-section-title="Cola" id="Queue"></section>
