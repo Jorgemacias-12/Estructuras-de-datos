@@ -1,0 +1,36 @@
+---
+---
+
+<ul class="list bg-surface-300 p-2"></ul>
+
+<style></style>
+
+<script>
+
+  let listElement = document.querySelector('.list');
+
+  let contentContainers = document.querySelectorAll('.content');
+
+  contentContainers.forEach(el => {
+    let liEl = document.createElement('li');
+    let contentLinkEl = document.createElement('a');
+
+    const contentLinkStylesClasses = [
+      "block",
+      "p-2",
+      "font-bold",
+      "text-xl",
+      "hover:bg-surface-400",
+      "w-full"
+    ]
+
+    contentLinkEl.classList.add(...contentLinkStylesClasses);
+
+    contentLinkEl.href = `#${el.id}`;
+    contentLinkEl.text = el.getAttribute('data-section-title')!;
+
+    liEl.appendChild(contentLinkEl);
+
+    listElement!.appendChild(liEl);
+  });
+</script>
