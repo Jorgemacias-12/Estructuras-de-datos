@@ -6,9 +6,10 @@ type OperationProps = {
   title: string,
   description: string,
   codeURL: string
+  desiredLine?: number
 }
 
-export const Operation = ({ title, description, codeURL }: OperationProps) => {
+export const Operation = ({ title, description, codeURL, desiredLine }: OperationProps) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [code, setCode] = useState('');
@@ -57,7 +58,7 @@ export const Operation = ({ title, description, codeURL }: OperationProps) => {
       </button>
 
       {
-        isOpen && <CodeView language={'python'} code={code} readonly={true} fileName={getFileName(codeURL)} handleClick={handleClick} />
+        isOpen && <CodeView language={'python'} code={code} readonly={true} fileName={getFileName(codeURL)} handleClick={handleClick} line={desiredLine} />
       }
     </article>
   )
