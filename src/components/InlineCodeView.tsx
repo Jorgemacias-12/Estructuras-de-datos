@@ -1,14 +1,17 @@
 import { Editor } from '@monaco-editor/react'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { type Monaco } from '@monaco-editor/react'
+import type monaco from 'monaco-editor'
 
 type InlineCodeViewProps = {
   language: string,
   readonly?: boolean,
   codeURL?: string | null
+  line?: number
 }
 
-export const InlineCodeView = ({language, readonly, codeURL}: InlineCodeViewProps) => {
-  
+export const InlineCodeView = ({ language, readonly, codeURL, line }: InlineCodeViewProps) => {
+
   const InlineCodeViewOptions = {
     readOnly: !readonly ? true : readonly,
     minimap: {
@@ -16,8 +19,17 @@ export const InlineCodeView = ({language, readonly, codeURL}: InlineCodeViewProp
     }
   }
 
+  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const [code, setCode] = useState('');
-  
+
+  const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor, monaco: Monaco) => {
+    editorRef.current = editor;
+
+    if (line && line > 0) {
+      editor.revealLineInCenter(line);
+    }
+  }
+
   useEffect(() => {
     const fetchCodeData = async () => {
       try {
@@ -49,6 +61,7 @@ export const InlineCodeView = ({language, readonly, codeURL}: InlineCodeViewProp
       theme='vs-dark'
       options={InlineCodeViewOptions}
       value={code}
+      onMount={handleEditorDidMount}
     />
   )
 }
