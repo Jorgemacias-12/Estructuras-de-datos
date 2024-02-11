@@ -13,6 +13,7 @@ import ContentList from '@/components/ContentList.astro'
 import Info from '@/components/Info.astro'
 import { Operation } from '@/components/Operation'
 import { Capture } from '@/components/Capture'
+import { InlineCodeView } from '@/components/InlineCodeView'
 
 <Title title="Lista de Contenido" size="4xl" center={true} />
 
@@ -105,6 +106,12 @@ import { Capture } from '@/components/Capture'
     title="Previsualización y descarga del código (completo)"
     size="2xl"
     center={true}
+  />
+
+  <InlineCodeView 
+    codeURL="../code/JAMZ-TDA-ListaEstatica.py"
+    language='python'
+    client:load  
   />
 
   <Info
@@ -231,6 +238,12 @@ import { Capture } from '@/components/Capture'
     center={true}
   />
 
+  <InlineCodeView 
+    codeURL="../code/JAMZ-TDA-PilaEstatica.py"
+    language='python'
+    client:load  
+  />
+
   <a download={"JAMZ-TDA-ColaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-primary-100 p-2 w-fit items-center gap-2 text-lg" type="button">
     Descargar código
     <span class="fas fa-download"></span>
@@ -344,6 +357,12 @@ El programa emula como la persona conta su dinero en la cartera, para posteriorm
     title="Previsualización y descarga del código (completo)"
     size="2xl"
     center={true}
+  />
+
+  <InlineCodeView 
+    codeURL="../code/JAMZ-TDA-ColaEstatica.py"
+    language='python'
+    client:load  
   />
 
   <a download={"JAMZ-TDA-ListaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-primary-100 p-2 w-fit items-center gap-2 text-lg" type="button">
