@@ -25,7 +25,7 @@ export const CodeView: React.FC<CodeViewProps> = ({ language, code, readonly, fi
   }
 
   return (
-    <section className="fixed top-0 left-0 flex flex-col justify-center w-full bg-surface-100">
+    <section className="fixed top-0 left-0 flex flex-col justify-center w-full bg-surface-100 z-10">
       
       <section className="flex justify-between items-center p-4 bg-primary-100">
         <h3 className="flex items-center justify-center font-bold text-center flex-grow gap-2">
