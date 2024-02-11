@@ -40,8 +40,10 @@ import { Capture } from '@/components/Capture'
 
       Por último se muestra la lista de compras al usuario (en mi caso la lista ya se encuentra llena, por lo que, habrá más contenido que el que se inserto.#"
       codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={12}
       client:load
     />
+
     <Operation 
       title="Recorrido" 
       description="Para la funcionalidad de recorrido, utilice un bucle for, donde obtuve el valor y el índice de este dentro de la lista, podemos observarlo en la línea <kbd>18</kbd> del código en el editor.#
@@ -50,8 +52,10 @@ import { Capture } from '@/components/Capture'
 
       Ahora con algo más real sería: <kbd>El producto Pasta de dientes se encuentra en la posición 12 de la lista.</kbd>"
       codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={50}
       client:load
     />
+
     <Operation 
       title="Búsqueda"
       description="Para este caso en particular, existen dos opciones de búsqueda: por índice y por valor. En mi implementación, opté por la búsqueda por valor, ya que utilizo strings.#
@@ -59,7 +63,8 @@ import { Capture } from '@/components/Capture'
       Nuestro programa solicita al usuario el nombre de un producto para buscarlo dentro de su lista de compras. Si encuentra el producto, el resultado es: <kbd>El producto {producto} existe en la lista con índice {índice}.</kbd>
 
       Un ejemplo práctico sería: <kbd>El producto Pollo existe en el índice 4 de la lista.</kbd>"
-      codeURL='../code/JAMZ-BusquedaProducto.py'
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={65}
       client:load
     />
 
@@ -68,7 +73,8 @@ import { Capture } from '@/components/Capture'
       description="El programa muestra primero la lista de compras actual, posteriormente pregunta al usuario si necesita eliminar un producto.#
       Después de esto, el programa esperara 5 segundos imprimiendo el caracter <kbd>.</kbd>, y por último se confirmará si se elimino.#
       De hecho el método <kbd>remove</kbd> permite remover un elemento de la lista. En mi caso utiliznando <kbd>valor/índice</kbd>.#"
-      codeURL='../code/JAMZ-EliminacionProducto.py'
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={83}
       client:load
     />
 
@@ -76,7 +82,8 @@ import { Capture } from '@/components/Capture'
       title="Ordenación"
       description="El programa informa al usuario que la lista se va a ordenar y ejecuta el método <kbd>sort</kbd>. Dado que la lista contiene valores de tipo string, la ordenación se realiza alfabéticamente.
       Después, se imprime la lista ordenada alfabéticamente, destacando cada elemento con colores diferentes."
-      codeURL='../code/JAMZ-OrdenacionLista.py'
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={112}
       client:load
     />
 
@@ -87,7 +94,8 @@ import { Capture } from '@/components/Capture'
       ¿Cómo se logra esto? Una forma sencilla de realizar la mezcla es utilizando la función <kbd>shuffle</kbd> de la librería <kbd>random</kbd>.
 
       El resultado es que al usuario se le muestra una lista de productos para comprar desordenada."
-      codeURL='../code/JAMZ_Lawea.py'
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={130}
       client:load
     />
 
@@ -98,8 +106,6 @@ import { Capture } from '@/components/Capture'
     size="2xl"
     center={true}
   />
-
-  {/* ! Place here code snippet */}
 
   <Info
     content="El código tiene como dependencia la libreria <kbd>colorama</kbd>, si el programa falla al ejecutarse, puedes instalar la libreria utilizando el siguiente comando: <kbd>pip install colorama</kbd>."
