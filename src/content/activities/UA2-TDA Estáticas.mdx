@@ -114,7 +114,7 @@ import { Capture } from '@/components/Capture'
 
   <a download={"JAMZ-TDA-ListaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-primary-100 p-2 w-fit items-center gap-2 text-lg" type="button">
     Descargar código
-    <span class="fas fa-arrow-down fa-xl"></span>
+    <span class="fas fa-download"></span>
   </a>
   
   <Title title="Capturas de ejecución" size="2xl" />
@@ -138,7 +138,7 @@ import { Capture } from '@/components/Capture'
   </section>
 </section>
 
-<section class="content" data-section-title="Pila" id="Pile">
+<section class="content gap-2 flex flex-col" data-section-title="Pila" id="Pile">
   <Title title="Pila estática" size="2xl" center={true} />
 
   <Title title="Actividad de clase - Pila estática" size="2xl" />
@@ -152,11 +152,112 @@ import { Capture } from '@/components/Capture'
   <Title title="Operaciones" size="2xl" />
 
   <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start">
+    <Operation 
+      title="Inserción" 
+      description="La operación consta en utilizar dos pilas con nombres 
+        <kbd>DinerEnCuenta</kbd> y <kbd>DineroEnCartera</kbd> al 
+        usuario le es mostrado el dinero disponible en las dos pilas.#
+        Cuenta con validaciones en caso de no encontrar una cantidad dada o dar como un número no válido o string.#
+        Para el proceso de insersión se pregunta al usuario cuanto se va a depositar al banco, posteriormente.# Utilizando un <kbd>for in</kbd>
+        se recorre cada elemento disponible en la pila, donde es comprobado si la cantidad en la pila actual es igual a la que se va a depositar, se remueve ese dinero de la pila <kbd>DineroEnCartera</kbd> para insertarlo en <kbd>DineroEnCuenta</kbd>"
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={24}
+      client:load
+    />
+    
+    <Operation 
+      title="Recorrido" 
+      description="Para implementar el recorrido, utilice la pila <kbd>DineroEnCartera</kbd>.#
+      Mediante la ejecución de un bucle while ejecuté la operación (método) <kbd>pop</kbd>.#
+      Esto con la finalidad de sacar el último elemento de la pila, posteriormente guardando este valor
+      en una variable llamada <kbd>dinero</kbd>, en una pila auxiliar, para después imprimir el/los valor(es) 
+      al usuario junto con el total de dinero en la cartera."
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={80}
+      client:load
+    />
+    
+    <Operation 
+      title="Búsqueda" 
+      description="Utilizando la enumeración en un for, esto para obtener el elemento y el índice de la posición
+      dinero en la pila <kbd>DineroEnCuenta</kbd>.#
+      
+      El criterio de búsqueda utilizado fue preguntar al usuario la cantidad de dinero a buscar, para posteriormente 
+      mostrarle si está, se encuentra disponible.#
+      
+      Una vez hecho esto, el programa comprueba si el dinero es el mismo que la canitdad buscada."
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={113}
+      client:load
+    />
+    
+    <Operation 
+      title="Eliminación" 
+      description="Para este proceso, concebido como retirar dinero del banco, consiste en sacar de la pila
+      la cantidad deseada a retirar por el usuario.#
+      
+      Para este proceso declare una variable auxiliar, antes validando la entrada, además de los fondos disponibles.#
+      
+      Para concretar la transacción utilice un bucle <kbd>for in</kbd> utilizando las variables <kbd>DineroEnCuenta</kbd>, esta es la pila de la cual se retira el dinero, para insertar la cantidad deseada (encontrada) en la 'cartera', utilizando el método <kbd>append()</kbd>."
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={149}
+      client:load
+    />
+    
+    <Operation 
+      title="Ordenación" 
+      description="Esto fue logrado mediante la utilización del método <kbd>sort</kbd> disponible para esta estructura de datos.#
+      
+      Ordenando las cantidades de menor a mayor"
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={199}
+      client:load
+    />
+
+    <Operation 
+      title="Mezcla" 
+      description="Para desordenar el dinero las cantidades disponbles en <kbd>DineroEnCartera</kbd> y en <kbd>DineroEnCuenta</kbd>
+      utilice el método <kbd>suffle()</kbd> importado desde <kbd>random</kbd>."
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={219}
+      client:load
+    />
 
   </section>
+
+  <Title
+    title="Previsualización y descarga del código (completo)"
+    size="2xl"
+    center={true}
+  />
+
+  <a download={"JAMZ-TDA-ListaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-primary-100 p-2 w-fit items-center gap-2 text-lg" type="button">
+    Descargar código
+    <span class="fas fa-download"></span>
+  </a>
+
+  <Title title="Capturas de ejecución" size="2xl" />
 
   <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start">
+    <Capture title="Menú" content='Este es el menú del programa donde el usuario interactúa, aquí se utilizando dos pilas para llevar a cabo la transacción.' imageURL='/images/pila/Menu.png' />
+    <Capture title="Inserción" content='Emula una transacción entre una persona depositando dinero físico en una cuenta bancaria.' imageURL='/images/pila/Insercion.png' />
+    <Capture title="Recorrido" content='Recorrido
+El programa emula como la persona conta su dinero en la cartera, para posteriormente sumarlo y decir la cantidad total de dinero.' imageURL='/images/pila/Recorrer.png' />
+    <Capture title="Búsqueda" content='El programa simula la acción donde el usuario busca una cantidad de dinero en la cuenta bancaria, si se encuentra, se emite un mensaje donde se confirma su existencia, y en que posicion de la pila o en este caso "cuenta bancaria".' imageURL='/images/pila/Busqueda.png' />
+    <Capture title="Eliminación" content='En esta operación el programa emula que la persona, utilizando su cuenta bancaria puede retirar dinero y comprar cosas, para esto se imprime la pila "cuenta bancaria", si la cantidad coincide con algún elemento disponible en la cuenta del usuario se procede a continuar la "transacción", y se muestra el nuevo saldo.' />
+    <Capture title="Ordenamiento" content='El programa emula una persona ordenando su dinero por cantidad, primero muestra su cartera con el dinero sin ordenar, para posteriormente ordenarlo y mostrar el resultado.' imageURL='/images/pila/Ordenar.png' />
+    <Capture title="Mezcla" content='Aquí el programa emula nuevamente que la cartera de nuestro usuario se revuelve, y como consecuencia el dinero se desordena, primero se imprime en buen estado para posteriormente mostrarse desordenado o mezclado.' imageURL='/images/pila/Mezcla.png' />
   </section>
+  
+  <Title title="Referencias" size="4xl" />
+
+  <section class="flex flex-col gap-2">
+    <Reference
+      text="UA2-TDA Estáticas Recuperado 1 de febrero de 2023, de"
+      url="https://sites.google.com/academicos.udg.mx/drlizcano/il354-estructura-datos/ua2-tda-est%C3%A1ticas?authuser=0"
+    />
+  </section>
+
 </section>
 
 <section class="content" data-section-title="Cola" id="Queue"></section>
