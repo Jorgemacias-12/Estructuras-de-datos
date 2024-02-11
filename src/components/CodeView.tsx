@@ -1,6 +1,7 @@
-import React from 'react';
-import { Editor, type OnMount } from '@monaco-editor/react';
+import React, { useRef } from 'react';
+import { Editor, type Monaco, type OnMount } from '@monaco-editor/react';
 import { getLangIcon } from '../utils';
+import type monaco from 'monaco-editor'
 
 type CodeViewProps = {
   fileName?: string;
@@ -8,9 +9,20 @@ type CodeViewProps = {
   code: string;
   readonly?: boolean;
   handleClick?: () => void
+  line?: number
 };
 
-export const CodeView: React.FC<CodeViewProps> = ({ language, code, readonly, fileName, handleClick }: CodeViewProps) => {
+export const CodeView: React.FC<CodeViewProps> = ({ language, code, readonly, fileName, handleClick, line }: CodeViewProps) => {
+
+  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
+
+  const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor , monaco: Monaco) => {
+    editorRef.current = editor;
+
+    if (line && line > 0 ) {
+      editor.revealLineInCenter(line);
+    }
+  }
 
   return (
     <section className="fixed top-0 left-0 flex flex-col justify-center w-full bg-surface-100">
@@ -38,6 +50,7 @@ export const CodeView: React.FC<CodeViewProps> = ({ language, code, readonly, fi
               enabled: false
             }
           }}
+          onMount={handleEditorDidMount}
         />
       </section>
     </section>
