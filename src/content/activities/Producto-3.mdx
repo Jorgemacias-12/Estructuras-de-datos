@@ -13,3 +13,180 @@ import { Operation } from '@/components/Operation'
 import { Capture } from '@/components/Capture'
 import { InlineCodeView } from '@/components/InlineCodeView'
 
+<Title title="Lista de Contenido" size="4xl" center={true}/>
+
+<ContentList />
+
+<section class="flex flex-col gap-4">
+
+  <section class="content flex flex-col gap-2" data-section-title="Para empezar" id="concepts">
+    <Title title="Conceptos básicos" size="4xl" center={true} />
+    
+    <Title title="¿Qué es un algoritmo?" size="2xl" />
+
+    <p>
+      Es un conjunto de reglas a seguir para realizar una tarea o resolver un problema.
+    </p>
+
+    <Title title="¿Qué es un algoritmo de búsqueda?" size="2xl" />
+    
+    <p>
+      Nos permite localizar elementos con ciertas propiedades dentro de una estructura
+      de datos; por ejemplo, ubicar el registro correspondiente a cierta persona en una
+      base de datos, o el mejor movimiento de una partida de ajedrez.
+    </p>
+
+    <Title title="¿Qué es un algoritmo de ordenamiento?" size="2xl" />
+
+    <p>
+      Conjunto de instrucciones que toman una estructura de datos y organizan los elementos en un orden, (numerico, alfabético, etc).
+    </p>
+  </section>
+
+  <section class="content flex flex-col gap-2" data-section-title="Búsqueda lineal" id="lineal-search">
+    <Title title="Búsqueda lineal" size="4xl" center={true}/>
+
+    <p>Caracterizado por recorrer una estructura de datos, elemento por elemento, de inicio a fin comparando cada valor existente con el valor que se busca.</p>
+    
+    <p>
+      Cuándo el valor buscado es encontrado, se devuelve la posición de este en la estructura de datos, si esto no se cumple, el usuario verá el siguiente aviso:
+      <kbd>El valor no ha sido encontrado</kbd>
+    </p>
+    
+    <p>
+      Como desventaja, la complejidad de tiempo en <kbd>O(n)</kbd>, esto nos dice que entre más elementos existan en la estrctura de datos, más tiempo le tomará encontrar el dato.
+    </p>
+
+    <Title title="Ejemplo: " size="2xl" />
+
+    <InlineCodeView 
+      codeURL="../code/SearchMethods.py"
+      language="python"
+      line={1}
+      client:load
+    />
+
+  </section>
+
+  <section class="content flex flex-col gap-2" data-section-title="Búsqueda binaria" id="binary-search">
+    <Title title="Búsqueda binaria" size="4xl" center={true}/>
+
+    <p>
+      El algoritmo de búsqueda binario es eficiente en estructuras de datos ordenadas; por ejemplo, arreglos, listas, etc.
+    </p>
+    
+    <p>
+      El algoritmo primero ordena la lista de elementos, posteriormente parte la lista en dos mitades, la izquierda y la derecha.
+
+      Posteriormente dentro de cada sub lista hace una busqueda del elemento, si el valor/elemento a búscar se encuentra en la mitad superior o en la mitad inferior (se descarta su contraparte).
+    </p>
+
+    <p>
+      Esto úlitimo permite que este método de búsqueda sea más eficiente en comparación con el lineal, esto gracias a la reducción en la comparaciones necesarias para encontrar un valor.
+    </p>
+
+    <Title title="Ejemplo: " size="2xl" />
+
+    <InlineCodeView 
+      codeURL="../code/SearchMethods.py"
+      language="python"
+      line={13}
+      client:load
+    />
+
+  </section>
+
+  <section class="content flex flex-col gap-2" data-section-title="Ordenamiento selectivo" id="selective-sort">
+    <Title title="Ordenamiento selectivo" size="4xl" center={true}/>
+
+    <p>
+      Ordenar seleccionando cuales son los elementos menores de la lista e ir reordenandola (insertando los elementos menores)
+    </p>
+
+    <p>
+      El método toma como argumento la estructura de datos, utilizando dos bucles anidados 
+      para encontrar el elemento de la lista no ordenada, y así colocarlo en una posición correcta, en la misma lista pero reordenando los valores.
+    </p>
+
+    <InlineCodeView 
+      codeURL="../code/SearchMethods.py"
+      language="python"
+      line={13}
+      client:load
+    />
+  </section>
+
+  <section class="content flex flex-col gap-2" data-section-title="Ordenamiento selectivo por insersión" id="sec-iter-sort">
+    <Title title="Ordenamiento iterativo por inserción" size="4xl" center={true}/>
+
+    <p>
+      Compara cada elemento de la lista con los anteriores preguntandose cual es menor, si esta condición se cumple su posición es ordenada.
+    </p>
+
+    <InlineCodeView 
+      codeURL="../code/SortMethods.py"
+      language="python"
+      client:load
+    />
+  </section>
+
+  <section class="content flex flex-col gap-2" data-section-title="Ordenamiento recursivo" id="recursive-sort">
+    <Title title="Ordenamiento recursivo" size="4xl" center={true}/>
+
+    <p>
+      Es un algoritmo de ordenamiento recursivo que sigue el principio de "dividir y conquistar". En resumen, divide la lista a ordenar en mitades cada vez más pequeñas hasta que cada mitad solo tenga un elemento. Luego, combina las mitades de forma ordenada, creando sublistas cada vez más grandes, hasta que la lista completa esté ordenada.
+    </p>
+
+    <p>
+      El proceso de división se realiza de forma recursiva hasta que cada mitad contenga solo un elemento. Luego, se utiliza el proceso de combinación para fusionar cada par de mitades ordenadas en una sola lista ordenada, que se fusiona con la siguiente mitad ordenada hasta que la lista completa esté ordenada.
+    </p>
+
+    <InlineCodeView 
+      codeURL="../code/SortMethods.py"
+      language="python"
+      line={15}
+      client:load
+    />
+  </section>
+
+  <section class="content flex flex-col gap-2" data-section-title="Ordenamiento iterativo burbuja" id="bubble-sort">
+    <Title title="Ordenamiento iterativo burbuja" size="4xl" center={true}/>
+
+    <p>
+      Algoritmo de ordenamiento iterativo, en donde se compara un elemento de una lista dada con su vecino (n + 1), y los intercambia si el vecino es menor.
+    </p>
+
+    <p>
+      Este proceso se repite hasta que los elementos están en orden.
+
+      En Python el método de burbuja puede ser implementado utilizando un bucle anidado de for, donde el primero recorre cada elemento en la lista, y el segundo se encarga de comparar e intercambiar los índices logrando así el ordenamiento deseado.
+    </p>
+
+    <InlineCodeView 
+      codeURL="../code/SortMethods.py"
+      language="python"
+      line={15}
+      client:load
+    />
+  </section>
+
+  <section class="content flex flex-col gap-2" data-section-title="Referencias" id="references">
+    <Title title="Referencias" size="4xl" center={true}/>
+
+    <Reference
+      text="Algoritmo de Ordenación. (n.d.)"
+      url="http://cidecame.uaeh.edu.mx/lcc/mapa/PROYECTO/libro9/algoritmo_de_ordenacin.html"
+    />
+    
+    <Reference
+      text="Team, D. (2024, January 4). ¿Qué es un algoritmo y por qué es esencial en Data Science? Formación En Ciencia De Datos | DataScientest.com. "
+      url="https://datascientest.com/es/que-es-un-algoritmo"
+    />
+    
+    <Reference
+      text="BlackeyeB. (2023, May 1). Algoritmos de ordenación explicados con ejemplos en JavaScript, Python, Java y C++. freeCodeCamp.org."
+      url="https://www.freecodecamp.org/espanol/news/algoritmos-de-ordenacion-explicados-con-ejemplos-en-javascript-python-java-y-c/"
+    />
+
+  </section>
+</section>
