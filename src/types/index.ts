@@ -3,3 +3,8 @@ export type SocialMedia = {
   icon: string,
   url: string,
 }
+
+export interface Image {
+  url: string,
+  caption: string
+}
