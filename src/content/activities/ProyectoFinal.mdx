@@ -4,3 +4,38 @@ description: 'Proyecto final, donde se condensan los conocimientos aprendidos en
 pubDate: '2023-01-17'
 heroImage: '/images/defaultHeroImage.jpg'
 ---
+
+import Title from '@/components/Title.astro'
+import { Carrousel } from '@/components/Carrousel'
+import { FinalProjectImages } from '@/consts'
+
+<Title title="Orientador vocacional" size="4xl" center={true}/>
+
+El proyecto final del equipo consistio en la creación de un chatbot, que permite determinar que carrera universitaria elegir en base a tus intereses. 
+
+Esto al contestar un cuestionario con preguntas decisivas que permitirán delimitar que carreras son más afines a tí.
+
+La aplicación fue desarrollada con lo siguiente:
+ 
+<ul class="list-disc pl-4">
+  <li>Python</li>
+  <li>Tkinter</li>
+</ul>
+
+El equipo detrás del proyecto son:
+
+<ul class="list-disc pl-4">
+  <li>Jorge Macias</li>
+  <li>Christian Contreras</li>
+  <li>Nestor Carrillo</li>
+</ul>
+
+El código fuente del proyecto se encuentra en GitHub y esta disponible para
+su descarga.
+
+<a class="text-teal-300 hover:underline" href="https://github.com/Jorgemacias-12/Orientador-Vocacional" target="_blank">Github</a>
+
+
+<Title title="Capturas de pantalla" size="2xl" center={true} />
+
+<Carrousel imageList={FinalProjectImages} client:load/>
