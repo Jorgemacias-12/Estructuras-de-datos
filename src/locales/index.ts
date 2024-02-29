@@ -1,4 +1,4 @@
-import type { SocialMedia } from "types"
+import type { SocialMedia } from "@/types"
 
 export const LANGS = [
   "es",
