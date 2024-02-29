@@ -1,0 +1,21 @@
+---
+type Props = {
+  name: string
+  icon: string
+  url: string
+}
+
+const { name, icon, url } = Astro.props
+---
+
+<li>
+  <a
+    href={url}
+    class="hover:text-primary-100 flex items-center gap-2 max-h-full"
+  >
+    <span class={`text-white ${icon} fa-2xl`}></span>
+    {name}
+  </a>
+</li>
+
+<style></style>

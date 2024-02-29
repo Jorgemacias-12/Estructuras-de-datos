@@ -1,0 +1,19 @@
+---
+type Props = {
+  content?: string
+  textSize?: string
+  additionalStyleClasses?: string
+}
+
+const { content, textSize: textSize, additionalStyleClasses } = Astro.props
+---
+
+{
+  content !== null && content !== undefined &&
+   (
+    <p
+      set:html={content}
+      class={` text-${textSize} p-2 ${additionalStyleClasses || ''}`}
+    />
+  )
+}

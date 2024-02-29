@@ -1,0 +1,31 @@
+---
+import Activity from '@/components/Activity.astro';
+import { getI18N } from '@/i18n'
+import Layout from '@/layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const posts = (await getCollection('activities')).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+)
+
+const { currentLocale } = Astro
+const lang = getI18N({ currentLocale })
+
+const { ACTIVITITES_PAGE_TITLE } = lang
+---
+
+<Layout title="" description="" keywords="">
+  <main class="flex flex-col content p-4 max-w-4xl mx-auto gap-4">
+    <h2 class="text-center font-bold text-4xl">{ACTIVITITES_PAGE_TITLE}</h2>
+
+    <section class="grid grid-cols-2 items-center justify-center gap-4 max-sm:grid-cols-1">
+      {
+        posts.map(({slug, data}) => {
+          const {title, description, pubDate, updatedDate, heroImage} = data;
+
+          return <Activity id={slug} title={title} description={description} pubDate={pubDate} updatedDate={updatedDate} heroImage={heroImage} />
+        })  
+      }
+    </section>
+  </main>
+</Layout>

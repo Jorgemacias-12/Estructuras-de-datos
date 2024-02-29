@@ -1,0 +1,42 @@
+{
+  "SEO_TITLE": "JAMZ - Portafolio de Estructuras de datos",
+  "SEO_DESCRIPTION": "Portafolio de actividades de la matería de estructuras de datos de la carrera Ingeniería en computación del Centro Universitario de la Costa (CUCOSTA), Universidad de Guadalajara",
+  "WELCOME_MESSAGE": "¡Bienvenido a mí portafolio de evidencias!",
+  "PAGE_DESCRIPTION": [
+    "En esta página podrás encontrar las actividades que hice en la matería de Estructuras de datos.",
+    "En el periodo 2023A, con el Docente Miguel Lizcano.",
+    "Esto estudiando, Ingeniería en Computación, en la Universidad de Guadalajara en el Campus CUCOSTA."
+  ],
+  "PAGE_CREATOR": "╰(*°▽°*)╯ Soy Jorge Macias ╰(*°▽°*)╯",
+  "PAGE_CALL_TO_ACTION_TITLE": "¿Búscas algo más?",
+  "PAGE_CALL_TO_ACTIONS": [
+    {
+      "title": "Explora mis repositorios en GitHub",
+      "description": "Descubre más sobre mis proyectos y contribuciones, para explorar el código fuente y las actividades que he realizado.",
+      "icon": "fa-brands fa-github",
+      "url": "https://github.com/Jorgemacias-12?tab=repositories"
+    },
+    {
+      "title": "Conéctate en LinkedIn",
+      "description": "Conécta conmigo para seguir de cerga mis actividades y logros tanto personales y profesionales.",
+      "icon": "fa-brands fa-linkedin",
+      "url": "https://www.linkedin.com/in/JAMZ3"
+    }
+  ],
+  "SEO_KEYWORDS": "estructuras de datos, cucosta, udg,",
+  "HEADER_LINKS": [
+    {
+      "title": "Inicio",
+      "url": "/"
+    },
+    {
+      "title": "Actividades",
+      "url": "/activities"
+    }
+  ],
+  "ACTIVITITES_PAGE_TITLE": "Actividades",
+  "ACTIVITIES_PAGE_CALL_TO_ACTION": "Ver actividad",
+  "ACTIVITY_LINK_CAPTION": "Ver más",
+  "FOOTER_TITLE": "Hecho con ❤️ por Jorge Macias",
+  "FOOTER_SOCIAL_MEDIA_SECTION_TITLE": "Redes sociales"
+}

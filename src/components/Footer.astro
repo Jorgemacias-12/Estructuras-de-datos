@@ -1,0 +1,41 @@
+---
+import { getI18N } from '@/i18n'
+import SocialMedia from './SocialMedia.astro'
+import { SOCIAL_MEDIA } from '@/locales'
+
+const { currentLocale } = Astro
+
+const lang = getI18N({ currentLocale })
+
+const { FOOTER_TITLE, FOOTER_SOCIAL_MEDIA_SECTION_TITLE } = lang
+---
+
+<footer class="bg-surface-100 flex items-center p-4 max-md:p-10">
+  <section
+    class="container mx-auto flex items-center justify-between
+    max-md:flex-col gap-5"
+  >
+    <section class="px-4 h-full">
+      <p>
+        {FOOTER_TITLE}
+      </p>
+    </section>
+    <section class="px-4 h-full flex items-center">
+      <p>&copy; {new Date().getFullYear()} Jorge Macias</p>
+    </section>
+    <section class="flex flex-col px-4 gap-4">
+
+      <h2 class="font-bold text-xl">{FOOTER_SOCIAL_MEDIA_SECTION_TITLE}</h2>
+
+      <ul class="flex flex-col gap-4">
+        {
+          SOCIAL_MEDIA.map(({ name, icon, url }) => {
+            return <SocialMedia name={name} icon={icon} url={url} />
+          })
+        }
+      </ul>
+    </section>
+  </section>
+</footer>
+
+<style></style>

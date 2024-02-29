@@ -1,0 +1,393 @@
+---
+title: 'Estructuras de datos estáticas'
+description: 'Entregable #2 para la matería de estructuras de datos.'
+pubDate: '2023-01-21'
+heroImage: '/images/defaultHeroImage.jpg'
+---
+
+import Title from '@/components/Title.astro'
+import Reference from '@/components/Reference.astro'
+import ContentList from '@/components/ContentList.astro'
+import Info from '@/components/Info.astro'
+import { Operation } from '@/components/Operation'
+import { Capture } from '@/components/Capture'
+import { InlineCodeView } from '@/components/InlineCodeView'
+
+<Title title="Lista de Contenido" size="4xl" center={true} />
+
+<ContentList />
+
+<section class="content gap-2 flex flex-col" data-section-title="Lista" id="list">
+  <Title title="Lista estática" size="2xl" center={true} />
+
+  <Title title="Actividad de clase - Lista estática" size="2xl" />
+
+  El alumno deberá ingresar una serie de elementos en una lista estática y aplicará las siguientes operaciónes: insersión, recorrido, búsqueda, eliminación, ordenación mezcla. utilizando el lenguaje de programación python.
+
+  <Title title="Planteamiento" size="2xl" />
+
+  En este programa me base en un supermercado, donde la persona tiene un carrito de compras donde va depositando los productos.
+
+  <Title title="Operaciones" size="2xl" />
+
+  <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start" id="operations">
+    <Operation 
+      title="Inserción" 
+      description="Para insertar un elemento dentro de una lista, lo primero que necesitamos es una lista, por lo que, observando el editor de código debajo de este texto, en la línea 8, podemos observar una lista definida de nombre <kbd>shopping_list</kbd>.#
+
+      Para posteriormente en la función insertar preguntar al usuario que producto desea incluir en su lista, luego insertar ese producto a la lista utilizando el metodo <kbd>append</kbd>.#
+
+      Por último se muestra la lista de compras al usuario (en mi caso la lista ya se encuentra llena, por lo que, habrá más contenido que el que se inserto.#"
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={12}
+      client:load
+    />
+
+    <Operation 
+      title="Recorrido" 
+      description="Para la funcionalidad de recorrido, utilice un bucle for, donde obtuve el valor y el índice de este dentro de la lista, podemos observarlo en la línea <kbd>18</kbd> del código en el editor.#
+      
+      Por ejemplo, el programa dice lo siguiente <kbd>El producto (producto)</kbd> se encuentra en la posición <kbd>(posición)</kbd> de la lista.#
+
+      Ahora con algo más real sería: <kbd>El producto Pasta de dientes se encuentra en la posición 12 de la lista.</kbd>"
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={50}
+      client:load
+    />
+
+    <Operation 
+      title="Búsqueda"
+      description="Para este caso en particular, existen dos opciones de búsqueda: por índice y por valor. En mi implementación, opté por la búsqueda por valor, ya que utilizo strings.#
+
+      Nuestro programa solicita al usuario el nombre de un producto para buscarlo dentro de su lista de compras. Si encuentra el producto, el resultado es: <kbd>El producto {producto} existe en la lista con índice {índice}.</kbd>
+
+      Un ejemplo práctico sería: <kbd>El producto Pollo existe en el índice 4 de la lista.</kbd>"
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={65}
+      client:load
+    />
+
+    <Operation 
+      title="Eliminación"
+      description="El programa muestra primero la lista de compras actual, posteriormente pregunta al usuario si necesita eliminar un producto.#
+      Después de esto, el programa esperara 5 segundos imprimiendo el caracter <kbd>.</kbd>, y por último se confirmará si se elimino.#
+      De hecho el método <kbd>remove</kbd> permite remover un elemento de la lista. En mi caso utiliznando <kbd>valor/índice</kbd>.#"
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={83}
+      client:load
+    />
+
+    <Operation 
+      title="Ordenación"
+      description="El programa informa al usuario que la lista se va a ordenar y ejecuta el método <kbd>sort</kbd>. Dado que la lista contiene valores de tipo string, la ordenación se realiza alfabéticamente.
+      Después, se imprime la lista ordenada alfabéticamente, destacando cada elemento con colores diferentes."
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={112}
+      client:load
+    />
+
+    <Operation 
+      title="Mezcla"
+      description="Antes de finalizar el programa, se realiza una mezcla de la lista de compras del usuario. La mezcla cambia los índices de todos los productos insertados anteriormente.
+
+      ¿Cómo se logra esto? Una forma sencilla de realizar la mezcla es utilizando la función <kbd>shuffle</kbd> de la librería <kbd>random</kbd>.
+
+      El resultado es que al usuario se le muestra una lista de productos para comprar desordenada."
+      codeURL='../code/JAMZ-TDA-ListaEstatica.py'
+      desiredLine={130}
+      client:load
+    />
+
+  </section>
+
+  <Title
+    title="Previsualización y descarga del código (completo)"
+    size="2xl"
+    center={true}
+  />
+
+  <InlineCodeView 
+    codeURL="../code/JAMZ-TDA-ListaEstatica.py"
+    language='python'
+    client:load  
+  />
+
+  <Info
+    content="El código tiene como dependencia la libreria <kbd>colorama</kbd>, si el programa falla al ejecutarse, puedes instalar la libreria utilizando el siguiente comando: <kbd>pip install colorama</kbd>."
+    additionalStyleClasses="bg-[#faebd7] rounded-md text-red-500"
+  />
+
+  <a download={"JAMZ-TDA-PilaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-primary-100 p-2 w-fit items-center gap-2 text-lg" type="button">
+    Descargar código
+    <span class="fas fa-download"></span>
+  </a>
+  
+  <Title title="Capturas de ejecución" size="2xl" />
+  
+  <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start">
+    <Capture title="Inserción" content='El programa pregunta al usuario, que producto desea añadir a su lista de compras.' imageURL='/images/Insercion.png' />
+    <Capture title="Recorrido" content='El programa le muestra al usuario su lista de compras actualizada elemento por elemento.' imageURL='/images/Recorrer.png' />
+    <Capture title="Búsqueda" content='Pregunta al usuario el nombre de un objeto para buscarlo en la lista de compras, si encuentra el objeto retornara el indice donde se encuentra este, caso contario emite un mensaje.' imageURL='/images/Busqueda.png' />
+    <Capture title="Eliminación" content='El usuario puede eliminar un elemento de su lista utilizando su nombre, nuevamente si no existe se le hará saber al usuario.' imageURL='/images/Eliminar.png' />
+    <Capture title="Ordenamiento" content='El programa ordena la lista de compras en orden alfabetico para posteriormente mostrar.' imageURL='/images/Ordenar.png' />
+    <Capture title="Mezcla" content='Nuevamente, para mezclar utilizamos la funcion suffle de la libreria random, esta funcion recibe una lista como parámetro, y modifica la lista moviendo los elementos de forma aleatoria, luego el programa muestra la mezcla al usuario.' imageURL='/images/Mezcla.png' />
+  </section>
+
+  <Title title="Referencias" size="4xl" />
+
+  <section class="flex flex-col gap-2">
+    <Reference
+      text="UA2-TDA Estáticas Recuperado 1 de febrero de 2023, de"
+      url="https://sites.google.com/academicos.udg.mx/drlizcano/il354-estructura-datos/ua2-tda-est%C3%A1ticas?authuser=0"
+    />
+  </section>
+</section>
+
+<section class="content gap-2 flex flex-col" data-section-title="Pila" id="Pile">
+  <Title title="Pila estática" size="2xl" center={true} />
+
+  <Title title="Actividad de clase - Pila estática" size="2xl" />
+
+  El alumno deberá ingresar una serie de elementos en una TDA pila estática y se aplicará las sigueintes operaciones utilizando el lenguaje de Python.
+
+  <Title title="Planteamiento" size="2xl" />
+
+  Una persona tiene diferentes cantidades de dinero en su bolsillo, cartera y su cuenta de banco por lo que al querrer depositar/retirar dinero entre cuentas/lugar donde este el dinero.
+
+  <Title title="Operaciones" size="2xl" />
+
+  <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start">
+    <Operation 
+      title="Inserción" 
+      description="La operación consta en utilizar dos pilas con nombres 
+        <kbd>DinerEnCuenta</kbd> y <kbd>DineroEnCartera</kbd> al 
+        usuario le es mostrado el dinero disponible en las dos pilas.#
+        Cuenta con validaciones en caso de no encontrar una cantidad dada o dar como un número no válido o string.#
+        Para el proceso de insersión se pregunta al usuario cuanto se va a depositar al banco, posteriormente.# Utilizando un <kbd>for in</kbd>
+        se recorre cada elemento disponible en la pila, donde es comprobado si la cantidad en la pila actual es igual a la que se va a depositar, se remueve ese dinero de la pila <kbd>DineroEnCartera</kbd> para insertarlo en <kbd>DineroEnCuenta</kbd>"
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={24}
+      client:load
+    />
+    
+    <Operation 
+      title="Recorrido" 
+      description="Para implementar el recorrido, utilice la pila <kbd>DineroEnCartera</kbd>.#
+      Mediante la ejecución de un bucle while ejecuté la operación (método) <kbd>pop</kbd>.#
+      Esto con la finalidad de sacar el último elemento de la pila, posteriormente guardando este valor
+      en una variable llamada <kbd>dinero</kbd>, en una pila auxiliar, para después imprimir el/los valor(es) 
+      al usuario junto con el total de dinero en la cartera."
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={80}
+      client:load
+    />
+    
+    <Operation 
+      title="Búsqueda" 
+      description="Utilizando la enumeración en un for, esto para obtener el elemento y el índice de la posición
+      dinero en la pila <kbd>DineroEnCuenta</kbd>.#
+      
+      El criterio de búsqueda utilizado fue preguntar al usuario la cantidad de dinero a buscar, para posteriormente 
+      mostrarle si está, se encuentra disponible.#
+      
+      Una vez hecho esto, el programa comprueba si el dinero es el mismo que la canitdad buscada."
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={113}
+      client:load
+    />
+    
+    <Operation 
+      title="Eliminación" 
+      description="Para este proceso, concebido como retirar dinero del banco, consiste en sacar de la pila
+      la cantidad deseada a retirar por el usuario.#
+      
+      Para este proceso declare una variable auxiliar, antes validando la entrada, además de los fondos disponibles.#
+      
+      Para concretar la transacción utilice un bucle <kbd>for in</kbd> utilizando las variables <kbd>DineroEnCuenta</kbd>, esta es la pila de la cual se retira el dinero, para insertar la cantidad deseada (encontrada) en la 'cartera', utilizando el método <kbd>append()</kbd>."
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={149}
+      client:load
+    />
+    
+    <Operation 
+      title="Ordenación" 
+      description="Esto fue logrado mediante la utilización del método <kbd>sort</kbd> disponible para esta estructura de datos.#
+      
+      Ordenando las cantidades de menor a mayor"
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={199}
+      client:load
+    />
+
+    <Operation 
+      title="Mezcla" 
+      description="Para desordenar el dinero las cantidades disponbles en <kbd>DineroEnCartera</kbd> y en <kbd>DineroEnCuenta</kbd>
+      utilice el método <kbd>suffle()</kbd> importado desde <kbd>random</kbd>."
+      codeURL='../code/JAMZ-TDA-PilaEstatica.py'
+      desiredLine={219}
+      client:load
+    />
+
+  </section>
+
+  <Title
+    title="Previsualización y descarga del código (completo)"
+    size="2xl"
+    center={true}
+  />
+
+  <InlineCodeView 
+    codeURL="../code/JAMZ-TDA-PilaEstatica.py"
+    language='python'
+    client:load  
+  />
+
+  <a download={"JAMZ-TDA-ColaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-primary-100 p-2 w-fit items-center gap-2 text-lg" type="button">
+    Descargar código
+    <span class="fas fa-download"></span>
+  </a>
+
+  <Title title="Capturas de ejecución" size="2xl" />
+
+  <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start">
+    <Capture title="Menú" content='Este es el menú del programa donde el usuario interactúa, aquí se utilizando dos pilas para llevar a cabo la transacción.' imageURL='/images/pila/Menu.png' />
+    <Capture title="Inserción" content='Emula una transacción entre una persona depositando dinero físico en una cuenta bancaria.' imageURL='/images/pila/Insercion.png' />
+    <Capture title="Recorrido" content='Recorrido
+El programa emula como la persona conta su dinero en la cartera, para posteriormente sumarlo y decir la cantidad total de dinero.' imageURL='/images/pila/Recorrer.png' />
+    <Capture title="Búsqueda" content='El programa simula la acción donde el usuario busca una cantidad de dinero en la cuenta bancaria, si se encuentra, se emite un mensaje donde se confirma su existencia, y en que posicion de la pila o en este caso "cuenta bancaria".' imageURL='/images/pila/Busqueda.png' />
+    <Capture title="Eliminación" content='En esta operación el programa emula que la persona, utilizando su cuenta bancaria puede retirar dinero y comprar cosas, para esto se imprime la pila "cuenta bancaria", si la cantidad coincide con algún elemento disponible en la cuenta del usuario se procede a continuar la "transacción", y se muestra el nuevo saldo.' />
+    <Capture title="Ordenamiento" content='El programa emula una persona ordenando su dinero por cantidad, primero muestra su cartera con el dinero sin ordenar, para posteriormente ordenarlo y mostrar el resultado.' imageURL='/images/pila/Ordenar.png' />
+    <Capture title="Mezcla" content='Aquí el programa emula nuevamente que la cartera de nuestro usuario se revuelve, y como consecuencia el dinero se desordena, primero se imprime en buen estado para posteriormente mostrarse desordenado o mezclado.' imageURL='/images/pila/Mezcla.png' />
+  </section>
+  
+  <Title title="Referencias" size="4xl" />
+
+  <section class="flex flex-col gap-2">
+    <Reference
+      text="UA2-TDA Estáticas Recuperado 1 de febrero de 2023, de"
+      url="https://sites.google.com/academicos.udg.mx/drlizcano/il354-estructura-datos/ua2-tda-est%C3%A1ticas?authuser=0"
+    />
+  </section>
+
+</section>
+
+<section class="content gap-2 flex flex-col" data-section-title="Cola" id="Queue">
+  <Title title="Cola Estática" size="2xl" center={true} />
+
+  <Title title="Actividad de clase - Pila estática" size="2xl" />
+
+  El alumno deberá ingresar una serie de elementos en una TDA cola estática y se aplicará las sigueintes operaciones utilizando el lenguaje de Python.
+
+  <Title title="Planteamiento" size="2xl" />
+
+  Para este entregable como propuesta he decidido programar un emulador de cola. En este caso una cola de atención al cliente de una empresa, donde pueden ser atendidos conforme al orden en el que llegaron, pero también existen opciones para priorizar clientes VIP o emergencias.
+
+  <Title title="Operaciones" size="2xl" />
+  
+  <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start">
+    <Operation 
+      title="Inserción" 
+      description="Para esta funcionalidad, el programa primero generá un tope de clientes aleatorio (entre 4 y 6).#
+      Posteriormente, genero un cliente utilizando este valor e insertarlo en la cola <kbd>clientes</kbd>.#
+      Por último, la insersión es realizada cuando se muestra en pantalla los datos del cliente, y a que cola de prioridad es asignado(a)."
+      codeURL='../code/JAMZ-TDA-ColaEstatica.py'
+      desiredLine={488}
+      client:load
+    />
+
+    <Operation 
+      title="Recorrido" 
+      description="Se imprime la cantidad de clientes, el máximo que pueden ser generados, además de mostrar las colas de prioridad, y la relación entre las colas y los clientes."
+      codeURL='../code/JAMZ-TDA-ColaEstatica.py'
+      desiredLine={539}
+      client:load
+    />
+
+    <Operation 
+      title="Búsqueda" 
+      description="En base a un 'Turno' mediante el uso de condicionales.#
+      Pero primero, verificar que las colas tengan clientes, sino, generar algunos.#
+      Posteriormente preguntar por el nombre del cliente para buscarlo en las colas, pero sin saber que turno tiene este.#
+      Para lograr esto utilice una enumeración para obtener el valor, y finalizando obteniendo el nombre del cliente y su turno
+      junto al nombre de la cola."
+      codeURL='../code/JAMZ-TDA-ColaEstatica.py'
+      desiredLine={591}
+      client:load
+    />
+    
+    <Operation 
+      title="Eliminación" 
+      description="Esto basado en la simulación de una 'Transacción' a la cual un cliente puede pertenecer, el programa antes de eliminar al cliente (dado por concretada la transacción) imprime lo siguiente:
+      <kbd>Nombre, operación realizada, tipo de cliente </kbd>."
+      codeURL='../code/JAMZ-TDA-ColaEstatica.py'
+      desiredLine={646}
+      client:load
+    />
+    
+    <Operation 
+      title="Ordenación" 
+      description="Para ordenar la cola principal (donde se encuentran todos los clientes), se utilizó como criterio el orden alfabético de los nombres.
+      Mediante el uso del método <kbd>sort()</kbd>, esta vez teniendo que hacer una modificación a llamada.#
+      
+      Esto provocado por los argumentos necesarios por la función para poder implementar lo que yo requeria, debido a que la lista esta conformada por
+      objetos y no tipos de datos básicos.#
+      
+      Para esto utilice el argumento <kbd>key</kbd> en la función <kbd>sort</kbd>, y como valor de key envie el nombre del cliente usando el siguiente
+      código: <kbd>operator.attrgetter('nombre')</kbd>."
+      codeURL='../code/JAMZ-TDA-ColaEstatica.py'
+      desiredLine={684}
+      client:load
+    />
+
+    <Operation 
+      title="Mezclar" 
+      description="El concepto de mezclar puede ser aplicado en la cola principal.#
+      
+      Para esta funcionalidad obté alterar el orden mediante el atributo de membresia (premium/platinum), mediante el uso de <kbd>shuffle()</kbd> de random."
+      codeURL='../code/JAMZ-TDA-ColaEstatica.py'
+      desiredLine={712}
+      client:load
+    />
+
+  </section>
+  
+  <Title
+    title="Previsualización y descarga del código (completo)"
+    size="2xl"
+    center={true}
+  />
+
+  <InlineCodeView 
+    codeURL="../code/JAMZ-TDA-ColaEstatica.py"
+    language='python'
+    client:load  
+  />
+
+  <a download={"JAMZ-TDA-ListaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-primary-100 p-2 w-fit items-center gap-2 text-lg" type="button">
+    Descargar código
+    <span class="fas fa-download"></span>
+  </a>
+
+  <Title title="Capturas de ejecución" size="2xl" />
+
+  <section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4 my-4 items-start">
+    <Capture title="Menú" content='Este es el menú del programa donde el usuario interactúa, aquí se utilizando dos pilas para llevar a cabo la transacción.' imageURL='/images/cola/Menu.png' />
+    <Capture title="Inserción" content='Emula una transacción entre una persona depositando dinero físico en una cuenta bancaria.' imageURL='/images/cola/Insercion.png' />
+    <Capture title="Recorrido" content='Recorrido
+El programa emula como la persona conta su dinero en la cartera, para posteriormente sumarlo y decir la cantidad total de dinero.' imageURL='/images/cola/Recorrer.png' />
+    <Capture title="Búsqueda" content='El programa simula la acción donde el usuario busca una cantidad de dinero en la cuenta bancaria, si se encuentra, se emite un mensaje donde se confirma su existencia, y en que posicion de la pila o en este caso "cuenta bancaria".' imageURL='/images/cola/Busqueda.png' />
+    <Capture title="Eliminación" content='En esta operación el programa emula que la persona, utilizando su cuenta bancaria puede retirar dinero y comprar cosas, para esto se imprime la pila "cuenta bancaria", si la cantidad coincide con algún elemento disponible en la cuenta del usuario se procede a continuar la "transacción", y se muestra el nuevo saldo.' />
+    <Capture title="Ordenamiento" content='El programa emula una persona ordenando su dinero por cantidad, primero muestra su cartera con el dinero sin ordenar, para posteriormente ordenarlo y mostrar el resultado.' imageURL='/images/cola/Ordenar.png' />
+    <Capture title="Mezcla" content='Aquí el programa emula nuevamente que la cartera de nuestro usuario se revuelve, y como consecuencia el dinero se desordena, primero se imprime en buen estado para posteriormente mostrarse desordenado o mezclado.' imageURL='/images/cola/Mezcla.png' />
+  </section>
+
+  <Title title="Referencias" size="4xl" />
+
+  <section class="flex flex-col gap-2">
+    <Reference
+      text="UA2-TDA Estáticas Recuperado 1 de febrero de 2023, de"
+      url="https://sites.google.com/academicos.udg.mx/drlizcano/il354-estructura-datos/ua2-tda-est%C3%A1ticas?authuser=0"
+    />
+  </section>
+
+</section>
