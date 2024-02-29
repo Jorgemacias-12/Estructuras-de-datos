@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "C:/Users/rbmk-/OneDrive/Documentos/programacion/Estructuras-de-datos",
+    "baseUrl": "./",
     "paths": {
       "@/*": [
         "src/*"
