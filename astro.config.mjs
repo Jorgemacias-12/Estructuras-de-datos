@@ -8,7 +8,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   site: 'https://jorgemacias12.github.io/Estructura-de-datos',
-  //base: isProduction ? 'Estructuras-de-datos' : '/',
+  base: isProduction ? 'Estructuras-de-datos' : '/',
   integrations: [react(), mdx(), sitemap(), tailwind()],
   i18n: {
     defaultLocale: 'es',
