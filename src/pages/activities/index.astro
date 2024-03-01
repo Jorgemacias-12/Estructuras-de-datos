@@ -23,7 +23,12 @@ const { ACTIVITITES_PAGE_TITLE } = lang
         posts.map(({slug, data}) => {
           const {title, description, pubDate, updatedDate, heroImage} = data;
 
-          return <Activity id={slug} title={title} description={description} pubDate={pubDate} updatedDate={updatedDate} heroImage={heroImage} />
+          return <Activity id={slug} 
+                           title={title}
+                          description={description} 
+                          pubDate={pubDate} 
+                          updatedDate={updatedDate} 
+                          heroImage={`${import.meta.env.BASE_URL}/${heroImage}`} />
         })  
       }
     </section>
