@@ -8,3 +8,5 @@ export interface Image {
   url: string,
   caption: string
 }
+
+export type Theme = "light" | "dark";
