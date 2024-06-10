@@ -1,5 +1,6 @@
 ---
-import Activity from '@/components/Activity.astro';
+import { Activity } from '@/components/Activity'
+import { Header } from '@/components/Header'
 import { getI18N } from '@/i18n'
 import Layout from '@/layouts/Layout.astro'
 import { getCollection } from 'astro:content'
@@ -14,22 +15,20 @@ const lang = getI18N({ currentLocale })
 const { ACTIVITITES_PAGE_TITLE } = lang
 ---
 
+<!-- TODO: include title, description, keywords here -->
 <Layout title="" description="" keywords="">
+  <Header client:only />
   <main class="flex flex-col content p-4 max-w-4xl mx-auto gap-4">
     <h2 class="text-center font-bold text-4xl">{ACTIVITITES_PAGE_TITLE}</h2>
 
-    <section class="grid grid-cols-2 items-center justify-center gap-4 max-sm:grid-cols-1">
+    <section class="grid grid-cols-2 gap-4 max-sm:grid-cols-1 items-center">
       {
-        posts.map(({slug, data}) => {
-          const {title, description, pubDate, updatedDate, heroImage} = data;
+        posts.map(({ slug, data }) => {
+          const { title, description, pubDate, updatedDate, heroImage } = data
+          const id = slug as string
 
-          return <Activity id={slug} 
-                           title={title}
-                          description={description} 
-                          pubDate={pubDate} 
-                          updatedDate={updatedDate} 
-                          heroImage={`${import.meta.env.BASE_URL}/${heroImage}`} />
-        })  
+          return <Activity client:only id={id} title={title} description={description} pubDate={pubDate} updatedDate={updatedDate} heroImage={heroImage} currentLocale={currentLocale!} />
+        })
       }
     </section>
   </main>
