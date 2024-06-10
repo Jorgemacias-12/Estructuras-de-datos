@@ -1,5 +1,6 @@
 {
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": "file:///c%3A/Users/rbmk-/OneDrive/Documentos/programacion/Estructuras-de-datos/.github/workflows/deploy.yml"
-  }
+  },
+  "css.customData": [".vscode/tailwind.json"]
 }
