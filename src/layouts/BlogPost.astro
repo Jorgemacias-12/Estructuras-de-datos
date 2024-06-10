@@ -11,14 +11,14 @@ type Props = CollectionEntry<'activities'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="es">
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
 
-	<body class="app dark:bg-surface-200 min-h-screen dark:text-white">
+	<body class="">
 		<Header client:only />
-
+		
 		<FloatingActions client:only />
 
 		<main class="p-4">
