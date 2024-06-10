@@ -9,9 +9,9 @@ type Props = {
 const { title, description, icon, url } = Astro.props
 ---
 
-<article class="w-full p-4 rounded-md flex flex-col gap-4">
+<article class="w-full p-2 rounded-md flex flex-col gap-4">
   <a
-    class="inline-flex gap-2 items-center bg-primary-100 p-2 rounded-md focus:bg-primary-300 hover:bg-primary-300 w-fit"
+    class="inline-flex gap-2 items-center bg-primary-100 p-2 rounded-md focus:bg-primary-300 border border-indigo-200 hover:bg-indigo-500 w-fit hover:text-white duration-300 transition-all"
     target="_blank"
     href={url}><span class={`${icon}`}></span>{title}</a
   >
