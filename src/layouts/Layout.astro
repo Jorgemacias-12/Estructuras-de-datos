@@ -23,4 +23,36 @@ const { currentLocale } = Astro
   <body class="app">
     <slot />
   </body>
+
+  <script>
+    import { $theme } from '@/stores/theme'
+
+    const darkBgClassNames = 'bg-raisin-black'
+    const darkFgClassNames = 'text-white'
+    const lightBgClassNames = 'bg-white'
+    const lightFgClassNames = 'text-black'
+
+    $theme.subscribe((value, oldValue) => {
+      if (!oldValue) return
+
+      const oldBg = oldValue === 'light' ? lightBgClassNames : darkBgClassNames;
+      const oldFg = oldValue === 'light' ? lightFgClassNames : darkFgClassNames;
+      const bg = value === 'light' ? lightBgClassNames : darkBgClassNames;
+      const fg = $theme.get() === 'light' ? lightFgClassNames : darkFgClassNames;
+
+      if (!bg) return
+      if (!fg) return
+
+      document.body.classList.remove(oldBg)
+      document.body.classList.remove(oldFg)
+      document.body.classList.add(bg)
+      document.body.classList.add(fg)
+    })
+
+    const bg = $theme.get() === 'light' ? lightBgClassNames : darkBgClassNames;
+    const fg = $theme.get() === 'light' ? lightFgClassNames : darkFgClassNames;
+
+    document.body.classList.add(bg)
+    document.body.classList.add(fg)
+  </script>
 </html>
