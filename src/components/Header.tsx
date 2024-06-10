@@ -2,6 +2,7 @@ import { $theme } from "@/stores/theme"
 import { useStore } from "@nanostores/react"
 import { useState } from "react";
 import { getI18N } from "@/i18n";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const lang = getI18N({ currentLocale: "" })
 const { HEADER_LINKS } = lang
@@ -52,6 +53,8 @@ export const Header = () => {
                 </li>
               })
             }
+
+            <ThemeSwitcher />
           </ul>
         </nav>
       </section>
