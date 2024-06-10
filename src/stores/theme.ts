@@ -1,11 +1,14 @@
 import type { Theme } from "@/types";
 import { persistentAtom } from "@nanostores/persistent";
 
-export const $theme = persistentAtom<Theme>("theme", "light");
+
+let defaultTheme: Theme = 'light';
 
 if (typeof window !== 'undefined') {
   const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const defaultTheme = userPrefersDark ? 'dark' : 'light';
-
-  $theme.set(defaultTheme);
+  defaultTheme = userPrefersDark ? 'dark' : 'light';
 }
+
+export const $theme = persistentAtom<Theme>("theme", defaultTheme);
+
+
