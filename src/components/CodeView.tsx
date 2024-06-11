@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Editor, type Monaco, type OnMount } from '@monaco-editor/react';
+import { Editor, type Monaco } from '@monaco-editor/react';
 import { getLangIcon } from '../utils';
 import type monaco from 'monaco-editor'
 import { useStore } from '@nanostores/react';
