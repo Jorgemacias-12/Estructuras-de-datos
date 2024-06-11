@@ -1,9 +1,12 @@
 ---
 title: 'Producto 1'
 description: 'Entregable #1 para la matería de estructuras de datos.'
-pubDate: '2023-01-17'
+pubDate: '2023-01-17 12:00'
+updatedDate: '2024-06-10 12:00'
 heroImage: '/images/defaultHeroImage.jpg'
 ---
+
+{/* text-center font-bold text-6xl max-md:text-xl max-sm:text-xl */}
 
 import Question from '@/components/Question.astro'
 import Title from '@/components/Title.astro'
@@ -34,12 +37,8 @@ Existen dos tipos de estructuras de datos y son las siguientes:
 
 <Title title="Estructuras de datos" size="2xl" />
 
-<section class="grid grid-cols-2 max-sm:grid-cols-1 gap-4">
-  <Card
-    title="Arreglo"
-    description="Son una estructura que almacena los datos un elemento al lado del otro, de tamaño fijo y no puede guardar datos de diferentes tipos, es decir no puedo guardar valores numéricos y booleanos al mismo tiempo."
-    image="/images/array.jpg"
-  />
+
+<section class="operations">
   <Card
     title="Lista enlazada"
     description="Similar a los arrays con la diferencia de que por defecto no tenemos por qué saber la cantidad de lementos que va a contener."
@@ -57,7 +56,7 @@ Existen dos tipos de estructuras de datos y son las siguientes:
   />
   <Card
     title="Arbol binario"
-    description="Se componen de un nodo, donde cada uno contiene un ítem o un valor, una referencia a un nodo que será el hijo izquierdo y otra referencia para el nodo derecho.."
+    description="Se componen de un nodo, donde cada uno contiene un ítem o un valor, una referencia a un nodo que será el hijo izquierdo y otra referencia para el nodo derecho."
     image="/images/arbolBinario.png"
   />
   <Card
@@ -76,7 +75,7 @@ Implica el acceder a cada registro una única vez, aunque uno o más ítems del 
 Implica la localización de un registro caracterizado por una determinada clave o
 también el acceso a todos los registros que cumplan una o más condiciones.
 
-<Title title="Insersión" size="2xl"/>
+<Title title="Inserción" size="2xl"/>
 Cuando añadimos nuevos registros a la estructura.
 
 <Title title="Eliminación" size="2xl"/>
@@ -89,7 +88,7 @@ acuerdo con alguna clave de número).
 
 <Title title="Referencias" size="4xl" />
 
-<section class="flex flex-col gap-2">
+<section class="content">
   <Reference
     text="Contenedores. (2018, 8 enero). [PDF] Contenedores - Free Download PDF. Recuperado 16 de enero de 2023, de"
     url="https://nanopdf.com/download/contenedores_pdf"
@@ -109,5 +108,4 @@ acuerdo con alguna clave de número).
     text="Henry, R. Recuperado 16 de enero de 2023, de"
     url="https://blog.soyhenry.com/que-es-una-estructura-de-datos-en-programacion/"
   />
-
 </section>
