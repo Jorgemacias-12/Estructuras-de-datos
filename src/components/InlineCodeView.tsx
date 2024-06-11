@@ -1,7 +1,9 @@
-import { Editor } from '@monaco-editor/react'
-import React, { useEffect, useRef, useState } from 'react'
+import { Editor, useMonaco } from '@monaco-editor/react'
+import { useEffect, useRef, useState } from 'react'
 import { type Monaco } from '@monaco-editor/react'
-import type monaco from 'monaco-editor'
+import type { editor } from "monaco-editor";
+import { useStore } from '@nanostores/react';
+import { $theme } from '@/stores/theme';
 
 type InlineCodeViewProps = {
   language: string,
@@ -11,6 +13,8 @@ type InlineCodeViewProps = {
 }
 
 export const InlineCodeView = ({ language, readonly, codeURL, line }: InlineCodeViewProps) => {
+  const monaco = useMonaco();
+  const theme = useStore($theme);
 
   const InlineCodeViewOptions = {
     readOnly: !readonly ? true : readonly,
@@ -19,10 +23,10 @@ export const InlineCodeView = ({ language, readonly, codeURL, line }: InlineCode
     }
   }
 
-  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
+  const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
   const [code, setCode] = useState('');
 
-  const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor, monaco: Monaco) => {
+  const handleEditorDidMount = (editor: editor.IStandaloneCodeEditor, monaco: Monaco) => {
     editorRef.current = editor;
 
     if (line && line > 0) {
@@ -31,6 +35,21 @@ export const InlineCodeView = ({ language, readonly, codeURL, line }: InlineCode
   }
 
   useEffect(() => {
+    if (monaco) {
+      monaco.editor.defineTheme("jamz", {
+        base: 'vs-dark',
+        inherit: true,
+        colors: {
+          'editor.background': '#1a202c',
+        },
+        rules: []
+      })
+    
+      if (monaco && theme === 'dark') {
+        monaco.editor.setTheme('jamz');
+      }
+    }
+
     const fetchCodeData = async () => {
       try {
         if (!codeURL) return;
@@ -52,13 +71,13 @@ export const InlineCodeView = ({ language, readonly, codeURL, line }: InlineCode
     }
 
     fetchCodeData();
-  }, [code])
+  }, [code, monaco])
 
   return (
     <Editor
       height="400px"
       language={language}
-      theme='vs-dark'
+      theme={theme === 'light' ? 'light' : 'jamz'}
       options={InlineCodeViewOptions}
       value={code}
       onMount={handleEditorDidMount}
