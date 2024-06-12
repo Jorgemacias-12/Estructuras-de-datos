@@ -1,14 +1,19 @@
 ---
-import CallToAction from '../../components/CallToAction.astro'
-import Layout from '../../layouts/Layout.astro'
+import CallToAction from '@/components/CallToAction.astro'
 
-import { getI18N } from '../../i18n'
+import { getI18N } from '@/i18n'
+import { Header } from '@/components/Header'
+import Footer from '@/components/Footer.astro'
+import Layout from '@/layouts/Layout.astro'
 
 const { currentLocale } = Astro
 
 const lang = getI18N({ currentLocale })
 
 const {
+  SEO_TITLE,
+  SEO_DESCRIPTION,
+  SEO_KEYWORDS,
   WELCOME_MESSAGE,
   PAGE_CREATOR,
   PAGE_DESCRIPTION,
@@ -19,41 +24,34 @@ const {
 
 <!-- prettier-ignore -->
 <Layout
-  title={lang.SEO_TITLE}
-  description={lang.SEO_DESCRIPTION}
-  keywords={lang.SEO_KEYWORDS}
+  title={SEO_TITLE}
+  description={SEO_DESCRIPTION}
+  keywords={SEO_KEYWORDS}
 >
-  <main class="flex flex-col relative">  
-
-    <section class="landing-background"></section>
-
-    <section class="relative top-0 left-1/2 -translate-x-1/2 p-4 text-center w-full gap-36 flex flex-col max-md:gap-20 max-sm:gap-10 items-center">
-      <h2 class="text-6xl font-bold max-md:text-md max-sm:text-sm">
-        {WELCOME_MESSAGE}
-      </h2>
-
-      <h3 class="text-6xl font-bold max-md:text-md max-sm:text-sm">
-        {PAGE_CREATOR}
-      </h3>
-      
-      <section class="flex flex-col gap-2">
-        {PAGE_DESCRIPTION.map(description =>{
-          return <p class="font-bold text-balance text-justify text-2xl max-md:text-md max-sm:text-sm">{description}</p>
-        })}
+  <Header client:only="react" />
+  <main class="flex flex-col gap-16 relative landing-background p-2">
+    <section class=" mx-auto p-2 max-w-screen-lg items-center flex flex-col gap-10 md:gap-20 md:flex-row">
+      <section class="flex flex-col gap-10 md:gap-20">
+        <h2 class="title">{WELCOME_MESSAGE}</h2>
+        <h3 class="subtitle">{PAGE_CREATOR}</h3>
       </section>
 
-      <section class="flex flex-col gap-4">
-        <h3 class="font-bold text-balance text-2xl max-md:text-md max-sm:text-sm text-center">{PAGE_CALL_TO_ACTION_TITLE}</h3>
+      <img class="rounded-md aspect-square h-96 w-full" src="images/code.png" alt="code image" width="300" height="100">
+    </section>
 
-        <section class="grid grid-cols-2 gap-4 max-lg:grid-cols-1 justify-center">
-            {PAGE_CALL_TO_ACTIONS.map(({title, description, icon,
+    <section class="mx-auto p-2 max-w-screen-lg items-center flex flex-col gap-10">
+      <h3 class="title">{PAGE_CALL_TO_ACTION_TITLE}</h3>
+
+      <section class="grid grid-cols-2 gap-2 max-lg:grid-cols-1 justify-center">
+        {PAGE_CALL_TO_ACTIONS.map(({title, description, icon,
           url}) =>{
             return <CallToAction title={title} description={description} icon={icon} url={url} />
           })}
-        </section>
       </section>
     </section>
+
   </main>
+  <Footer/>
 </Layout>
 
 <style></style>

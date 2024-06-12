@@ -5,10 +5,9 @@ import Layout from '../layouts/Layout.astro'
 import { getI18N } from '@/i18n'
 import { Header } from '@/components/Header'
 import Footer from '@/components/Footer.astro'
+import { $lang } from '@/stores/lang'
 
-const { currentLocale } = Astro
-
-const lang = getI18N({ currentLocale })
+const lang = getI18N({currentLocale:$lang.get()});
 
 const {
   SEO_TITLE,
