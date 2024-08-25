@@ -16,10 +16,10 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<BaseHead title={title} description={description} />
 	</head>
 
-	<body class="">
-		<Header client:only />
+	<body class="scroll-smooth">
+		<Header client:only="react" />
 		
-		<FloatingActions client:only />
+		<FloatingActions client:only="react" />
 
 		<main class="p-4">
 			<article class="flex flex-col max-w-4xl gap-4 text-justify mx-auto">
