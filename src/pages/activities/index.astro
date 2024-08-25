@@ -17,7 +17,7 @@ const { ACTIVITITES_PAGE_TITLE } = lang
 
 <!-- TODO: include title, description, keywords here -->
 <Layout title="" description="" keywords="">
-  <Header client:only />
+  <Header client:only="react" />
   <main class="flex flex-col content p-4 max-w-4xl mx-auto gap-4">
     <h2 class="text-center font-bold text-4xl">{ACTIVITITES_PAGE_TITLE}</h2>
 
@@ -27,7 +27,7 @@ const { ACTIVITITES_PAGE_TITLE } = lang
           const { title, description, pubDate, updatedDate, heroImage } = data
           const id = slug as string
 
-          return <Activity client:only id={id} title={title} description={description} pubDate={pubDate} updatedDate={updatedDate} heroImage={heroImage} currentLocale={currentLocale!} />
+          return <Activity client:only="react" id={id} title={title} description={description} pubDate={pubDate} updatedDate={updatedDate} heroImage={heroImage} currentLocale={currentLocale!} />
         })
       }
     </section>
