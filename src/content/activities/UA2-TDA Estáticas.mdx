@@ -40,7 +40,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       Por último se muestra la lista de compras al usuario (en mi caso la lista ya se encuentra llena, por lo que, habrá más contenido que el que se inserto.#"
       codeURL='../code/JAMZ-TDA-ListaEstatica.py'
       desiredLine={12}
-      client:only
+      client:only="react"
     />
 
     <Operation 
@@ -52,7 +52,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       Ahora con algo más real sería: <kbd>El producto Pasta de dientes se encuentra en la posición 12 de la lista.</kbd>"
       codeURL='../code/JAMZ-TDA-ListaEstatica.py'
       desiredLine={50}
-      client:only
+      client:only="react"
     />
 
     <Operation 
@@ -64,7 +64,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       Un ejemplo práctico sería: <kbd>El producto Pollo existe en el índice 4 de la lista.</kbd>"
       codeURL='../code/JAMZ-TDA-ListaEstatica.py'
       desiredLine={65}
-      client:only
+      client:only="react"
     />
 
     <Operation 
@@ -74,7 +74,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       De hecho el método <kbd>remove</kbd> permite remover un elemento de la lista. En mi caso utiliznando <kbd>valor/índice</kbd>.#"
       codeURL='../code/JAMZ-TDA-ListaEstatica.py'
       desiredLine={83}
-      client:only
+      client:only="react"
     />
 
     <Operation 
@@ -83,7 +83,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       Después, se imprime la lista ordenada alfabéticamente, destacando cada elemento con colores diferentes."
       codeURL='../code/JAMZ-TDA-ListaEstatica.py'
       desiredLine={112}
-      client:only
+      client:only="react"
     />
 
     <Operation 
@@ -95,7 +95,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       El resultado es que al usuario se le muestra una lista de productos para comprar desordenada."
       codeURL='../code/JAMZ-TDA-ListaEstatica.py'
       desiredLine={130}
-      client:only
+      client:only="react"
     />
   </section>
 
@@ -108,7 +108,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
   <InlineCodeView 
     codeURL="../code/JAMZ-TDA-ListaEstatica.py"
     language='python'
-    client:only  
+    client:only="react"  
   />
 
   <Info
@@ -124,12 +124,12 @@ import { InlineCodeView } from '@/components/InlineCodeView'
   <Title title="Capturas de ejecución" size="2xl" />
   
   <section class="captures">
-    <Capture client:only title="Inserción" content='El programa pregunta al usuario, que producto desea añadir a su lista de compras.' imageURL='/images/Insercion.png' />
-    <Capture client:only title="Recorrido" content='El programa le muestra al usuario su lista de compras actualizada elemento por elemento.' imageURL='/images/Recorrer.png' />
-    <Capture client:only title="Búsqueda" content='Pregunta al usuario el nombre de un objeto para buscarlo en la lista de compras, si encuentra el objeto retornara el indice donde se encuentra este, caso contario emite un mensaje.' imageURL='/images/Busqueda.png' />
-    <Capture client:only title="Eliminación" content='El usuario puede eliminar un elemento de su lista utilizando su nombre, nuevamente si no existe se le hará saber al usuario.' imageURL='/images/Eliminar.png' />
-    <Capture client:only title="Ordenamiento" content='El programa ordena la lista de compras en orden alfabetico para posteriormente mostrar.' imageURL='/images/Ordenar.png' />
-    <Capture client:only title="Mezcla" content='Nuevamente, para mezclar utilizamos la funcion suffle de la libreria random, esta funcion recibe una lista como parámetro, y modifica la lista moviendo los elementos de forma aleatoria, luego el programa muestra la mezcla al usuario.' imageURL='/images/Mezcla.png' />
+    <Capture client:only="react" title="Inserción" content='El programa pregunta al usuario, que producto desea añadir a su lista de compras.' imageURL='/images/Insercion.png' />
+    <Capture client:only="react" title="Recorrido" content='El programa le muestra al usuario su lista de compras actualizada elemento por elemento.' imageURL='/images/Recorrer.png' />
+    <Capture client:only="react" title="Búsqueda" content='Pregunta al usuario el nombre de un objeto para buscarlo en la lista de compras, si encuentra el objeto retornara el indice donde se encuentra este, caso contario emite un mensaje.' imageURL='/images/Busqueda.png' />
+    <Capture client:only="react" title="Eliminación" content='El usuario puede eliminar un elemento de su lista utilizando su nombre, nuevamente si no existe se le hará saber al usuario.' imageURL='/images/Eliminar.png' />
+    <Capture client:only="react" title="Ordenamiento" content='El programa ordena la lista de compras en orden alfabetico para posteriormente mostrar.' imageURL='/images/Ordenar.png' />
+    <Capture client:only="react" title="Mezcla" content='Nuevamente, para mezclar utilizamos la funcion suffle de la libreria random, esta funcion recibe una lista como parámetro, y modifica la lista moviendo los elementos de forma aleatoria, luego el programa muestra la mezcla al usuario.' imageURL='/images/Mezcla.png' />
   </section>
 
   <Title title="Referencias" size="4xl" />
@@ -166,7 +166,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
         se recorre cada elemento disponible en la pila, donde es comprobado si la cantidad en la pila actual es igual a la que se va a depositar, se remueve ese dinero de la pila <kbd>DineroEnCartera</kbd> para insertarlo en <kbd>DineroEnCuenta</kbd>"
       codeURL='../code/JAMZ-TDA-PilaEstatica.py'
       desiredLine={24}
-      client:only
+      client:only="react"
     />
 
      <Operation 
@@ -178,7 +178,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       al usuario junto con el total de dinero en la cartera."
       codeURL='../code/JAMZ-TDA-PilaEstatica.py'
       desiredLine={80}
-      client:only
+      client:only="react"
     />
     
     <Operation 
@@ -192,7 +192,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       Una vez hecho esto, el programa comprueba si el dinero es el mismo que la canitdad buscada."
       codeURL='../code/JAMZ-TDA-PilaEstatica.py'
       desiredLine={113}
-      client:only
+      client:only="react"
     />
     
     <Operation 
@@ -205,7 +205,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       Para concretar la transacción utilice un bucle <kbd>for in</kbd> utilizando las variables <kbd>DineroEnCuenta</kbd>, esta es la pila de la cual se retira el dinero, para insertar la cantidad deseada (encontrada) en la 'cartera', utilizando el método <kbd>append()</kbd>."
       codeURL='../code/JAMZ-TDA-PilaEstatica.py'
       desiredLine={149}
-      client:only
+      client:only="react"
     />
     
     <Operation 
@@ -215,7 +215,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       Ordenando las cantidades de menor a mayor"
       codeURL='../code/JAMZ-TDA-PilaEstatica.py'
       desiredLine={199}
-      client:only
+      client:only="react"
     />
 
     <Operation 
@@ -224,7 +224,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       utilice el método <kbd>suffle()</kbd> importado desde <kbd>random</kbd>."
       codeURL='../code/JAMZ-TDA-PilaEstatica.py'
       desiredLine={219}
-      client:only
+      client:only="react"
     />
   </section>
 
@@ -237,7 +237,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
   <InlineCodeView 
     codeURL="../code/JAMZ-TDA-PilaEstatica.py"
     language='python'
-    client:only  
+    client:only="react"  
   />
 
   <a download={"JAMZ-TDA-ColaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-indigo-500 text-white p-2 w-fit items-center gap-2 text-lg" type="button">
@@ -249,48 +249,48 @@ import { InlineCodeView } from '@/components/InlineCodeView'
 
   <section class="captures">
     <Capture 
-      client:only 
+      client:only="react" 
       title="Menú"
       content='Este es el menú del programa donde el usuario interactúa, aquí se utilizando dos pilas para llevar a cabo la transacción.'
       imageURL='/images/pila/Menu.png'
     />
 
     <Capture 
-      client:only 
+      client:only="react" 
       title="Inserción" 
       content='Emula una transacción entre una persona depositando dinero físico en una cuenta bancaria.' 
       imageURL='/images/pila/Insercion.png'
     />
     
     <Capture 
-      client:only 
+      client:only="react" 
       title="Recorrido" 
       content='El programa emula como la persona conta su dinero en la cartera, para posteriormente sumarlo y decir la cantidad total de dinero.' 
       imageURL='/images/pila/Recorrer.png'
     />
     
     <Capture 
-      client:only 
+      client:only="react" 
       title="Búsqueda"
       content='El programa simula la acción donde el usuario busca una cantidad de dinero en la cuenta bancaria, si se encuentra, se emite un mensaje donde se confirma su existencia, y en que posicion de la pila o en este caso "cuenta bancaria".' 
       imageURL='/images/pila/Busqueda.png'
     />
     
     <Capture 
-      client:only 
+      client:only="react" 
       title="Eliminación" content='En esta operación el programa emula que la persona, utilizando su cuenta bancaria puede retirar dinero y comprar cosas, para esto se imprime la pila "cuenta bancaria", si la cantidad coincide con algún elemento disponible en la cuenta del usuario se procede a continuar la "transacción", y se muestra el nuevo saldo.'
       imageURL='/images/pila/Eliminar.png'
     />
     
     <Capture 
-      client:only 
+      client:only="react" 
       title="Ordenamiento" 
       content='El programa emula una persona ordenando su dinero por cantidad, primero muestra su cartera con el dinero sin ordenar, para posteriormente ordenarlo y mostrar el resultado.'
       imageURL='/images/pila/Ordenar.png'
     />
     
     <Capture 
-      client:only 
+      client:only="react" 
       title="Mezcla" 
       content='Aquí el programa emula nuevamente que la cartera de nuestro usuario se revuelve, y como consecuencia el dinero se desordena, primero se imprime en buen estado para posteriormente mostrarse desordenado o mezclado.'
       imageURL='/images/pila/Mezcla.png'
@@ -328,7 +328,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       Por último, la insersión es realizada cuando se muestra en pantalla los datos del cliente, y a que cola de prioridad es asignado(a)."
       codeURL='../code/JAMZ-TDA-ColaEstatica.py'
       desiredLine={488}
-      client:only
+      client:only="react"
     />
 
     <Operation 
@@ -336,7 +336,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       description="Se imprime la cantidad de clientes, el máximo que pueden ser generados, además de mostrar las colas de prioridad, y la relación entre las colas y los clientes."
       codeURL='../code/JAMZ-TDA-ColaEstatica.py'
       desiredLine={539}
-      client:only
+      client:only="react"
     />
 
     <Operation
@@ -348,7 +348,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       junto al nombre de la cola."
       codeURL='../code/JAMZ-TDA-ColaEstatica.py'
       desiredLine={591}
-      client:only
+      client:only="react"
     />
 
     <Operation 
@@ -357,7 +357,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       <kbd>Nombre, operación realizada, tipo de cliente </kbd>."
       codeURL='../code/JAMZ-TDA-ColaEstatica.py'
       desiredLine={646}
-      client:only
+      client:only="react"
     />
     
     <Operation 
@@ -372,7 +372,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       código: <kbd>operator.attrgetter('nombre')</kbd>."
       codeURL='../code/JAMZ-TDA-ColaEstatica.py'
       desiredLine={684}
-      client:only
+      client:only="react"
     />
 
     <Operation 
@@ -382,7 +382,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
       Para esta funcionalidad obté alterar el orden mediante el atributo de membresia (premium/platinum), mediante el uso de <kbd>shuffle()</kbd> de random."
       codeURL='../code/JAMZ-TDA-ColaEstatica.py'
       desiredLine={712}
-      client:only
+      client:only="react"
     />
   </section>
 
@@ -395,7 +395,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
   <InlineCodeView 
     codeURL="../code/JAMZ-TDA-ColaEstatica.py"
     language='python'
-    client:only  
+    client:only="react"  
   />
 
   <a download={"JAMZ-TDA-ListaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-indigo-500 text-white p-2 w-fit items-center gap-2 text-lg" type="button">
@@ -406,14 +406,14 @@ import { InlineCodeView } from '@/components/InlineCodeView'
   <Title title="Capturas de ejecución" size="2xl" />
 
   <section class="captures">
-    <Capture client:only title="Menú" content='Este es el menú del programa donde el usuario interactúa, aquí se utilizando dos pilas para llevar a cabo la transacción.' imageURL='/images/cola/Menu.png' />
-    <Capture client:only title="Inserción" content='Emula una transacción entre una persona depositando dinero físico en una cuenta bancaria.' imageURL='/images/cola/Insercion.png' />
-    <Capture client:only title="Recorrido" content='Recorrido
+    <Capture client:only="react" title="Menú" content='Este es el menú del programa donde el usuario interactúa, aquí se utilizando dos pilas para llevar a cabo la transacción.' imageURL='/images/cola/Menu.png' />
+    <Capture client:only="react" title="Inserción" content='Emula una transacción entre una persona depositando dinero físico en una cuenta bancaria.' imageURL='/images/cola/Insercion.png' />
+    <Capture client:only="react" title="Recorrido" content='Recorrido
 El programa emula como la persona conta su dinero en la cartera, para posteriormente sumarlo y decir la cantidad total de dinero.' imageURL='/images/cola/Recorrer.png' />
-    <Capture client:only title="Búsqueda" content='El programa simula la acción donde el usuario busca una cantidad de dinero en la cuenta bancaria, si se encuentra, se emite un mensaje donde se confirma su existencia, y en que posicion de la pila o en este caso "cuenta bancaria".' imageURL='/images/cola/Busqueda.png' />
-    <Capture client:only title="Eliminación" content='En esta operación el programa emula que la persona, utilizando su cuenta bancaria puede retirar dinero y comprar cosas, para esto se imprime la pila "cuenta bancaria", si la cantidad coincide con algún elemento disponible en la cuenta del usuario se procede a continuar la "transacción", y se muestra el nuevo saldo.' imageURL='/images/cola/Eliminar.png' />
-    <Capture client:only title="Ordenamiento" content='El programa emula una persona ordenando su dinero por cantidad, primero muestra su cartera con el dinero sin ordenar, para posteriormente ordenarlo y mostrar el resultado.' imageURL='/images/cola/Ordenar.png' />
-    <Capture client:only title="Mezcla" content='Aquí el programa emula nuevamente que la cartera de nuestro usuario se revuelve, y como consecuencia el dinero se desordena, primero se imprime en buen estado para posteriormente mostrarse desordenado o mezclado.' imageURL='/images/cola/Mezcla.png' />
+    <Capture client:only="react" title="Búsqueda" content='El programa simula la acción donde el usuario busca una cantidad de dinero en la cuenta bancaria, si se encuentra, se emite un mensaje donde se confirma su existencia, y en que posicion de la pila o en este caso "cuenta bancaria".' imageURL='/images/cola/Busqueda.png' />
+    <Capture client:only="react" title="Eliminación" content='En esta operación el programa emula que la persona, utilizando su cuenta bancaria puede retirar dinero y comprar cosas, para esto se imprime la pila "cuenta bancaria", si la cantidad coincide con algún elemento disponible en la cuenta del usuario se procede a continuar la "transacción", y se muestra el nuevo saldo.' imageURL='/images/cola/Eliminar.png' />
+    <Capture client:only="react" title="Ordenamiento" content='El programa emula una persona ordenando su dinero por cantidad, primero muestra su cartera con el dinero sin ordenar, para posteriormente ordenarlo y mostrar el resultado.' imageURL='/images/cola/Ordenar.png' />
+    <Capture client:only="react" title="Mezcla" content='Aquí el programa emula nuevamente que la cartera de nuestro usuario se revuelve, y como consecuencia el dinero se desordena, primero se imprime en buen estado para posteriormente mostrarse desordenado o mezclado.' imageURL='/images/cola/Mezcla.png' />
   </section>
 
   <Title title="Referencias" size="4xl" />
