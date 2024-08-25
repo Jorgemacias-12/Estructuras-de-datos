@@ -30,17 +30,17 @@ export const Carrousel = ({ imageList }: CarrouselProps) => {
 
   return (
     <section className="p-2 flex gap-2 flex-grow-0 items-center">
-      <button className="bg-slate-700 rounded-md p-2" onClick={handleDecrementButtonClick}>
+      <button className="bg-slate-700 rounded-md p-2 text-white" onClick={handleDecrementButtonClick}>
         <span className="fas fa-arrow-left fa-2xl"></span>
       </button>
       <section className='relative'>
-        <p className='absolute flex items-center justify-center -top-5 -left-5 p-2 bg-red-500 w-[48px] h-[48px] font-bold rounded-full'>{currentImage + 1}</p>
+        <p className='text-white absolute flex items-center justify-center -top-5 -left-5 p-2 bg-red-500 w-[48px] h-[48px] font-bold rounded-full'>{currentImage + 1}</p>
         <img src={imageList[currentImage].url} alt="" />
-        <p className='absolute w-full bg-black/30 bottom-0 p-2 text-center'>
+        <p className='absolute w-full bg-black/30 bottom-0 p-2 text-center text-white'>
           {imageList[currentImage].caption}
         </p>
       </section>
-      <button className='bg-slate-700 rounded-md p-2' onClick={handleIncrementButtonClick}>
+      <button className='bg-slate-700 rounded-md p-2 text-white' onClick={handleIncrementButtonClick}>
         <span className="fas fa-arrow-right fa-2xl"></span>
       </button>
     </section>
