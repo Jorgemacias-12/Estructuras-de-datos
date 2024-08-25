@@ -3,14 +3,16 @@ type Props = {
   name: string
   icon: string
   url: string
+  openInOtherTab: boolean
 }
 
-const { name, icon, url } = Astro.props
+const { name, icon, url, openInOtherTab } = Astro.props
 ---
 
 <li>
   <a
     href={url}
+    target={openInOtherTab ? "_blank" : ""}
     class="hover:text-primary-100 flex items-center gap-2 max-h-full"
   >
     <span class={`text-white ${icon} fa-2xl`}></span>
