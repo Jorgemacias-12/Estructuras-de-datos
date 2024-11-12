@@ -43,3 +43,9 @@ export const getLangIcon = (url: string): string => {
 
   return icons[getExtension(url)].icon ?? "";
 }
+
+export const appendbaseUrl = (url: string) => {
+  const baseUrl = import.meta.env.PUBLIC_BASE_URL || '';
+  
+  return `${baseUrl}${url}`
+}
