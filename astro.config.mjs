@@ -4,11 +4,9 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import react from "@astrojs/react";
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 export default defineConfig({
-  site: 'https://jorgemacias12.github.io/Estructura-de-datos',
-  base: isProduction ? 'Estructuras-de-datos' : '/',
+  site: 'https://jorgemacias12.github.io/',
+  base: `${process.env.PUBLIC_BASE_URL || ''}`,
   integrations: [react(), mdx(), sitemap(), tailwind()],
   i18n: {
     defaultLocale: 'es',
