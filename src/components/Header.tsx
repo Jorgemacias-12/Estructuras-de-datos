@@ -1,60 +1,102 @@
-import { $theme } from "@/stores/theme"
-import { useStore } from "@nanostores/react"
-import { useState } from "react";
-import { getI18N } from "@/i18n";
-import { ThemeSwitcher } from "./ThemeSwitcher";
+import { $theme } from '@/stores/theme'
+import { useStore } from '@nanostores/react'
+import { useState, type MouseEvent } from 'react'
+import { getI18N } from '@/i18n'
+import { ThemeSwitcher } from './ThemeSwitcher'
+import { Link } from './Link'
+import type { Link as LinkT } from '@/types'
+interface Props {
+  lang: string
+}
 
-const lang = getI18N({ currentLocale: "" })
-const { HEADER_LINKS } = lang
+export const Header = ({ lang }: Props) => {
+  const theme = useStore($theme)
+  const [showMenu, setShowMenu] = useState(false)
 
-export const Header = () => {
-  const theme = useStore($theme);
+  const menuHiddenClasses = 'pointer-events-none opacity-0 translate-x-[1rem]'
+  const menuShownClasses = 'opacity-100 translate-x-0 pointer-events-auto'
 
-  const headerDarkClassNames = "bg-raisin-black border-b border-raisin-black-600 ";
-  const headerLightClassNames = "bg-raisin-black text-white";
-  const headerCommmonClassNames = "relative flex justify-between h-full mx-auto mx-auto max-w-screen-xl p-2 items-center";
+  const menuBackgroundSolid =
+    theme === 'light'
+      ? 'bg-white'
+      : 'bg-raisin-black border-b border-raisin-black-600'
 
-  const [showMobileMenu, setshowMobileMenu] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setshowMobileMenu(!showMobileMenu);
+  const handleMenuShow = () => {
+    setShowMenu((prev) => !prev)
   }
 
-  const showMenuClassNames = "pointer-events-auto scale-100 translate-y-0 opacity-100 mt-0.5";
-  const hideMenuClassNames = "pointer-events-none scale-80 translate-y-[-1rem] opacity-0";
-  const menuDefaultClasses = "border border-raisin-black-600 transition-all duration-300 z-50 bg-raisin-black rounded-md h-fit p-4 absolute top-16 right-0 mr-2 md:bg-transparent md:static md:translate-y-0 md:opacity-100 md:pointer-events-auto md:border-0";
+  const handleMenuHide = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target != event.currentTarget) return
+
+    setShowMenu(false)
+  }
+
+  const { COMPONENTS } = getI18N(lang)
+  const { HEADER } = COMPONENTS
+  const { HEADER_MENU_CAPTION, LINKS } = HEADER
 
   return (
-    <header className={`h-16 px-2 ${theme === 'light' ? headerLightClassNames : headerDarkClassNames}`}>
-      <section className={`${headerCommmonClassNames}`}>
-        <section className="flex items-center h-full gap-2">
-          <img
-            alt="Logo Universidad de Guadalajara"
-            src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Escudo_UdeG.svg"
-            width="32"
-            height="40"
-            className="aspect-square"
-          />
+    <header
+      className={`h-16 flex justify-center relative w-full ${menuBackgroundSolid}`}
+    >
+      <section
+        className={`flex fixed w-full h-16 justify-between p-2 max-w-screen-lg px-4 ${menuBackgroundSolid}`}
+      >
+        <section className="flex items-center gap-2">
+          <span className="fas fa-graduation-cap"></span>
           <h1>Estructuras de datos</h1>
         </section>
 
-        <button onClick={toggleMobileMenu} className="md:hidden">
-          <span className="fas fa-bars fa-dw text-white fa-xl"></span>
-        </button>
+        <section className="flex items-center gap-2 md:hidden">
+          <ThemeSwitcher />
 
-        <nav className={`${menuDefaultClasses} ${showMobileMenu ? showMenuClassNames : hideMenuClassNames}`}>
-          <ul className="flex gap-2 flex-col md:flex-row items-center h-full">
-            {
-              HEADER_LINKS.map(({ title, url }, index) => {
-                return <li key={index}>
-                  <a href={url} className="transition-all duration-300 flex cursor-pointer hover:bg-raisin-black-600 h-full p-2 rounded-md w-full">
-                    {title}
-                  </a>
-                </li>
-              })
-            }
+          <button type="button" onClick={handleMenuShow}>
+            <span className="fas fa-bars fa-xl"></span>
+          </button>
+        </section>
 
-            <ThemeSwitcher />
+        {/* Mobile */}
+
+        <nav
+          onClick={handleMenuHide}
+          className={`fixed top-0 right-0 w-full h-full flex flex-col gap-1 z-10 transition-all duration-300 transform-cpu bg-black/50 ${
+            showMenu ? menuShownClasses : menuHiddenClasses
+          }`}
+        >
+          <section
+            className={`flex fle items-center justify-between p-4 ${menuBackgroundSolid}`}
+          >
+            <h2 className="transition-none">{HEADER_MENU_CAPTION as string}</h2>
+
+            <div className="flex gap-2 items-center">
+              <ThemeSwitcher />
+
+              <button
+                title="Close navigation button (mobile)"
+                type="button"
+                onClick={handleMenuShow}
+              >
+                <span className="fas fa fa-xl fa-fw fa-times md:hidden gap-2"></span>
+              </button>
+            </div>
+          </section>
+
+          <ul className={`m-4 p-2 rounded-md ${menuBackgroundSolid}`}>
+            {(LINKS as LinkT[]).map(({ title, url }, index) => {
+              return <Link key={index} label={title} url={url} />
+            })}
+          </ul>
+        </nav>
+
+        {/* Desktop */}
+
+        <nav className="hidden md:flex md:items-center md:gap-1">
+          <ThemeSwitcher />
+          
+          <ul className="flex h-full">
+            {(LINKS as LinkT[]).map(({ title, url }, index) => {
+              return <Link key={index} label={title} url={url} />
+            })}
           </ul>
         </nav>
       </section>
