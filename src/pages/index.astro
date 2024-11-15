@@ -1,56 +1,162 @@
 ---
-import CallToAction from '@/components/CallToAction.astro'
-import Layout from '../layouts/Layout.astro'
-
-import { getI18N } from '@/i18n'
+import { Card } from '@/components/Card'
 import { Header } from '@/components/Header'
-import Footer from '@/components/Footer.astro'
-import { $lang } from '@/stores/lang'
+import { LinkButton } from '@/components/LinkButton'
+import { Section } from '@/components/Section'
+import { getI18N } from '@/i18n'
+import Layout from '@/layouts/Layout.astro'
 
-const lang = getI18N({currentLocale:$lang.get()});
+import { appendbaseUrl } from '@/utils'
 
-const {
-  SEO_TITLE,
-  SEO_DESCRIPTION,
-  SEO_KEYWORDS,
-  WELCOME_MESSAGE,
-  PAGE_CREATOR,
-  PAGE_DESCRIPTION,
-  PAGE_CALL_TO_ACTIONS,
-  PAGE_CALL_TO_ACTION_TITLE,
-} = lang
+const { currentLocale } = Astro
+
+const { PAGES } = getI18N(currentLocale!)
+const { index } = PAGES
+const { title, description } = index
 ---
 
-<!-- prettier-ignore -->
-<Layout
-  title={SEO_TITLE}
-  description={SEO_DESCRIPTION}
-  keywords={SEO_KEYWORDS}
->
-  <Header client:only="react" />
-  <main class="flex flex-col gap-16 relative landing-background p-2">
-    <section class=" mx-auto p-2 max-w-screen-lg items-center flex flex-col gap-10 md:gap-20 md:flex-row">
-      <section class="flex flex-col gap-10 md:gap-20">
-        <h2 class="title">{WELCOME_MESSAGE}</h2>
-        <h3 class="subtitle">{PAGE_CREATOR}</h3>
+<Layout title={title} description={description} keywords={''}>
+  <Header client:only="react" lang={currentLocale!} />
+  <main class="flex flex-col gap-10 mt-[70px] md:mt-0">
+    <Section
+      id="intro"
+      className=""
+      innerContainerClassName="flex flex-col gap-4"
+    >
+      <h2 class="font-bold text-2xl lg:text-4xl text-center">
+        Portafolio de actividades
+      </h2>
+
+      <p class="text-balance text-center text-sm">
+        Explora los proyectos y trabajos realizados por mí durante el curso de
+        Estructura de datos.
+      </p>
+
+      <section class="flex p-2 gap-4 justify-center">
+        <LinkButton
+          client:only="react"
+          id=""
+          className="p-2 rounded-md text-sm"
+          lightThemeClassNames="bg-raisin-black text-white"
+          darkThemeClassnames="bg-persimmon"
+          href={appendbaseUrl('/activities')}
+        >
+          Explorar actividades
+        </LinkButton>
+
+        <LinkButton
+          client:only="react"
+          id=""
+          className="p-2 rounded-md text-sm"
+          lightThemeClassNames="border bg-white"
+          darkThemeClassnames="bg-black_rain-900"
+          href={appendbaseUrl('#studyPlan')}
+        >
+          Ver plan de estudios
+        </LinkButton>
       </section>
+    </Section>
 
-      <img class="rounded-md aspect-square h-96 w-full" src="images/code.png" alt="code image" width="300" height="100">
-    </section>
+    <Section
+      id="studyPlan"
+      className=""
+      innerContainerClassName="flex flex-col gap-4"
+    >
+      <h3 class="font-bold text-2xl lg:text-4xl text-center">
+        Plan de estudios
+      </h3>
 
-    <section class="mx-auto p-2 max-w-screen-lg items-center flex flex-col gap-10">
-      <h3 class="title">{PAGE_CALL_TO_ACTION_TITLE}</h3>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 justify-center gap-2"
+      >
+        <Card
+          iconClassName="fa-graduation-cap text-green-500"
+          title="Tipo de UA"
+          description="Curso"
+        />
+        <Card
+          iconClassName="fa-book text-blue-500"
+          title="Valor de créditos"
+          description="11"
+        />
+        <Card
+          iconClassName="fa-hourglass-start text-indigo-500"
+          title="Horas Semana"
+          description="4"
+        />
+        <Card
+          iconClassName="fa-hourglass-end text-red-500"
+          title="Horas teoría/semestre"
+          description="80"
+        />
+        <Card
+          iconClassName="fa-graduation-cap text-yellow-500"
+          title="Horas práctica/semestre"
+          description="0"
+        />
+      </div>
+    </Section>
 
-      <section class="grid grid-cols-2 gap-2 max-lg:grid-cols-1 justify-center">
-        {PAGE_CALL_TO_ACTIONS.map(({title, description, icon,
-          url}) =>{
-            return <CallToAction title={title} description={description} icon={icon} url={url} />
-          })}
-      </section>
-    </section>
+    <Section
+      id="studyPlan-develop"
+      className="flex flex-col gap-10"
+      innerContainerClassName="flex flex-col gap-4"
+    >
+      <h3 class="font-bold text-2xl lg:text-4xl text-center">
+        Objetivos de aprendizaje
+      </h3>
 
+      <p class="text-sm">
+        El alumno desarrollará estructuras de datos y algoritmos de búsqueda y
+        de clasificación para solucionar problemas específicos que evaluan la
+        comprención de estructuras de datos clásicas.
+      </p>
+
+      <h3 class="font-bold text-2xl lg:text-4xl text-center">
+        Competencia de la UA
+      </h3>
+
+      <p class="text-sm">
+        C.3 Capacidad intelectual para el reconocimiento del papel central de
+        algoritmos y estructuras de datos. (AIS/ACM/IEEE C.3)
+      </p>
+    </Section>
+
+    <Section
+      id="studyPlan-finish"
+      className=""
+      innerContainerClassName="flex flex-col gap-4 "
+    >
+      <h3 class="font-bold text-2xl lg:text-4xl text-center">Contenidos</h3>
+
+      <ol class="list-inside list-decimal flex flex-col gap-4">
+        <li>
+          Contenedores de datos: Tipos de datos Estructurados, objetos y
+          anidaciones estructurales
+        </li>
+        <li>TDA Lista, implementación estática</li>
+        <li>TDA Pila, implementación estática</li>
+        <li>TDA Cola, implementación estática</li>
+        <li>Búsquedas: lineal y búsqueda binaria</li>
+        <li>Ordenamientos: Iterativo y recursivos</li>
+        <li>Memoria dinámica</li>
+        <li>Apuntadores en estructuras de datos</li>
+        <li>TDA Lista, implementación dinámica</li>
+        <li>TDA Pila, implementación dinámica</li>
+        <li>TDA Cola, implementación dinámica</li>
+        <li>TDA Árbol, implementación dinámica</li>
+      </ol>
+
+      <h4 class="font-bold text-xl lg:text-2xl text-center">
+        Productos de aprendizaje
+      </h4>
+
+      <p>
+        Sistema computacional para la solucióndeun
+        problemarealoficticioquehagausodediversas estructuras de datos como
+        listas, pila, cola y árboles binarios haciendo uso de almacenamiento
+        secundario.
+      </p>
+    </Section>
   </main>
-  <Footer/>
 </Layout>
-
-<style></style>
