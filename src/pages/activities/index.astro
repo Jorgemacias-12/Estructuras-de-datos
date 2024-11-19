@@ -1,35 +1,53 @@
 ---
 import { Activity } from '@/components/Activity'
 import { Header } from '@/components/Header'
+import { Section } from '@/components/Section'
 import { getI18N } from '@/i18n'
 import Layout from '@/layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 
-const posts = (await getCollection('activities')).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
-)
-
 const { currentLocale } = Astro
-const lang = getI18N({ currentLocale })
 
-const { ACTIVITITES_PAGE_TITLE } = lang
+const { PAGES } = getI18N(currentLocale!)
+const { activities } = PAGES
+const { title, description, heading_content } = activities
+
+const posts = (await getCollection('activities')).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+)
 ---
 
-<!-- TODO: include title, description, keywords here -->
-<Layout title="" description="" keywords="">
-  <Header client:only="react" />
-  <main class="flex flex-col content p-4 max-w-4xl mx-auto gap-4">
-    <h2 class="text-center font-bold text-4xl">{ACTIVITITES_PAGE_TITLE}</h2>
+<Layout title={title} description={description} keywords="">
+  <Header client:only="react" lang={currentLocale!} />
+  <main class="flex flex-col content p-4 max-w-4xl mx-auto gap-4 mt-[70px]">
+    <h2 class="font-bold text-2xl lg:text-4xl text-center">
+      {heading_content}
+    </h2>
 
-    <section class="grid grid-cols-2 gap-4 max-sm:grid-cols-1 items-center">
+    <Section
+      id="activities"
+      className="lg:py-6"
+      innerContainerClassName="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl lg:py-0"
+    >
       {
         posts.map(({ slug, data }) => {
           const { title, description, pubDate, updatedDate, heroImage } = data
           const id = slug as string
 
-          return <Activity client:only="react" id={id} title={title} description={description} pubDate={pubDate} updatedDate={updatedDate} heroImage={heroImage} currentLocale={currentLocale!} />
+          return (
+            <Activity
+              client:only="react"
+              id={id}
+              title={title}
+              description={description}
+              publicationDate={pubDate}
+              updatedDate={updatedDate!}
+              heroImage={heroImage!}
+              lang={currentLocale!}
+            />
+          )
         })
       }
-    </section>
+    </Section>
   </main>
 </Layout>
