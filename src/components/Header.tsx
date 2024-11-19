@@ -19,7 +19,7 @@ export const Header = ({ lang }: Props) => {
   const menuBackgroundSolid =
     theme === 'light'
       ? 'bg-white'
-      : 'bg-raisin-black border-b border-raisin-black-600'
+      : 'bg-bunker-900 border-b border-black_rain-600'
 
   const handleMenuShow = () => {
     setShowMenu((prev) => !prev)
@@ -37,10 +37,10 @@ export const Header = ({ lang }: Props) => {
 
   return (
     <header
-      className={`h-16 flex justify-center relative w-full ${menuBackgroundSolid}`}
+      className={`h-16 fixed flex justify-center w-full ${menuBackgroundSolid} border-b`}
     >
       <section
-        className={`flex fixed w-full h-16 justify-between p-2 max-w-screen-lg px-4 ${menuBackgroundSolid}`}
+        className={`flex w-full h-16 justify-between p-2 max-w-screen-lg px-4 ${menuBackgroundSolid} w-full border-b`}
       >
         <section className="flex items-center gap-2">
           <span className="fas fa-graduation-cap"></span>
