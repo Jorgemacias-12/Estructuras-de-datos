@@ -1,62 +1,169 @@
-import { getI18N } from "@/i18n";
-import { $theme } from "@/stores/theme";
-import { buildURL } from "@/utils";
-import { useStore } from "@nanostores/react";
-import { useState } from "react";
+import { $theme } from '@/stores/theme'
+import { appendbaseUrl } from '@/utils'
+import { useStore } from '@nanostores/react'
+import { useRef, useState } from 'react'
+import { type MouseEvent } from 'react'
 
-interface ActivityProps {
+interface Props {
   id: string
-  title: string;
-  description: string;
-  pubDate: Date;
-  updatedDate?: Date;
-  heroImage?: string;
-  currentLocale: string;
+  title: string
+  description: string
+  publicationDate: Date
+  updatedDate: Date
+  heroImage: string
+  lang: string
 }
 
-export const Activity = ({ id, title, description, pubDate, updatedDate, heroImage, currentLocale }: ActivityProps) => {
-  const [isDescriptionOpen, setIsOpenDescription] = useState(false);
+export const Activity = ({
+  id,
+  title,
+  description,
+  publicationDate,
+  updatedDate,
+  heroImage,
+  lang,
+}: Props) => {
+  const theme = useStore($theme)
 
-  const handleOpenDescription = () => {
-    setIsOpenDescription(!isDescriptionOpen);
+  const lightClassNames = 'bg-white'
+  const darkClassNames = 'bg-black_rain-800 border border-black_rain-900'
+  const themeClassNames = theme === 'light' ? lightClassNames : darkClassNames
+
+  const detailsEl = useRef<HTMLDetailsElement | null>(null)
+  const summaryEl = useRef<HTMLElement | null>(null)
+  const contentEl = useRef<HTMLDivElement | null>(null)
+
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  let animation: Animation | null = null
+
+  const onAnimationEnd = (expanded: boolean) => {
+    setIsAnimating(false)
+    setIsOpen(expanded)
+
+    if (!detailsEl.current) return
+
+    detailsEl.current.open = expanded
+    detailsEl.current.style.height = expanded ? 'auto' : ''
   }
 
-  const theme = useStore($theme);
+  const expand = () => {
+    if (!detailsEl.current || !summaryEl.current || !contentEl.current) return
 
-  const { ACTIVITIES_PAGE_CALL_TO_ACTION, ACTIVITY_LINK_CAPTION } = getI18N({ currentLocale });
+    const startHeight = `${detailsEl.current.offsetHeight}px`
+    const endHeight = `${
+      summaryEl.current.offsetHeight + contentEl.current.offsetHeight
+    }px`
 
-  const containerDefaultClassNames = "flex flex-col items-center rounded-lg border p-2 gap-2 self-start";
-  const containerDarkClassNames = "border-raisin-black-600 bg-raisin-black-400";
-  const containerLightClassNames = "bg-white-smoke-700";
+    if (animation) animation.cancel()
 
-  const descriptionCommonClassNames = "overflow-hidden flex flex-col transition-all duration-300 gap-2";
-  const descriptionEnabledClassNames = "h-auto opacity-100";
-  const descriptionDisabledClassNames = "h-0 opacity-0";
+    animation = detailsEl.current.animate(
+      { height: [startHeight, endHeight] },
+      { duration: 400, easing: 'ease-out' }
+    )
+
+    animation.onfinish = () => onAnimationEnd(true)
+    animation.oncancel = () => setIsAnimating(false)
+  }
+
+  const collapse = () => {
+    if (!detailsEl.current || !summaryEl.current) return
+
+    setIsAnimating(true)
+    const startHeight = `${detailsEl.current.offsetHeight}px`
+    const endHeight = `${summaryEl.current.offsetHeight}px`
+
+    if (animation) animation.cancel()
+
+    detailsEl.current.style.overflow = 'hidden'
+
+    animation = detailsEl.current.animate(
+      { height: [startHeight, endHeight] },
+      { duration: 400, easing: 'ease-out' }
+    )
+
+    animation.onfinish = () => onAnimationEnd(false)
+    animation.oncancel = () => setIsAnimating(false)
+  }
+
+  const handleClick = (e: MouseEvent<HTMLElement>) => {
+    if (e.target !== e.currentTarget) {
+      return
+    }
+    e.preventDefault()
+
+    if (isAnimating) return
+
+    if (!isOpen) {
+      expand()
+    } else {
+      collapse()
+    }
+  }
+
+  const summaryLangText = lang === 'es' ? 'Más detalles' : 'More details'
+
+  const createdLabel = lang === 'es' ? 'Fecha de creación: ' : ''
+  const updatedLabel = lang === 'es' ? 'Actualizado el: ' : ''
+
+  const visitLabel = lang === 'es' ? 'Ir al documento' : ''
 
   return (
-    <article className={`${containerDefaultClassNames} ${theme === 'light' ? containerLightClassNames : containerDarkClassNames}`}>
-      <img className="rounded-md w-full" width={300} src={heroImage} alt="article image header" />
-      <h3 className="text-center text-xl font-semibold mt-2 px-2">{title}</h3>
+    <article
+      className={`flex flex-col items-center rounded-lg border p-2 gap-2 self-start ${themeClassNames}`}
+    >
+      <img
+        alt="Activity/project card image"
+        className="rounded-md w-full"
+        width={300}
+        height={300}
+        src={heroImage}
+      />
 
-      <section className="text-white w-full flex gap-2 p-2 items-center justify-between">
+      <h3 className="font-bold text-xl text-center text-balance">{title}</h3>
+
+      <p className="text-xs text-balance text-center">{description}</p>
+
+      <section>
+        <span
+          onClick={handleClick}
+          className={`hover:text-blue-500 hover:underline border px-2 py-1 rounded-md cursor-pointer ${
+            theme === 'light' ? '' : 'border-gray-500'
+          }`}
+        >
+          {summaryLangText}
+        </span>
+
         <a
-          className="w-1/2 text-center bg-indigo-500 p-2 rounded-md hover:bg-primary-200 transition"
-          href={buildURL(currentLocale!, id, 'activities')}
-        >{ACTIVITIES_PAGE_CALL_TO_ACTION}</a>
-
-        <button
-          onClick={handleOpenDescription}
-          className="w-1/2 border-none bg-indigo-500 p-2 rounded-md hover:bg-primary-200 transition active:bg-indigo-600"
-        >{ACTIVITY_LINK_CAPTION}</button>
+          className="bg-persimmon active:bg-persimmon-100 active:text-persimmon-800 px-2 py-1 rounded-md text-white m-2 w-full"
+          href={appendbaseUrl(`/activities/${id}`)}
+        >
+          {visitLabel}
+        </a>
       </section>
 
-      <section className={`${descriptionCommonClassNames} ${isDescriptionOpen ? descriptionEnabledClassNames : descriptionDisabledClassNames}`}>
-        <p className="text-balance text-center">{description}</p>
-        <div className="flex justify-between">
-          <p className="rounded-md p-2 bg-indigo-200 text-indigo-800">created:    {pubDate.toLocaleDateString()}</p>
-          {updatedDate && <p className="rounded-md p-2 bg-teal-200 text-teal-800">updated: {updatedDate?.toLocaleDateString()}</p>}
+      <details className="flex flex-col gap-2 w-full" ref={detailsEl}>
+        <summary
+          className={`justify-between items-center gap-2 cursor-pointer p-2 border-b hidden ${
+            theme === 'light' ? '' : 'border-black_rain-900 border-b-2'
+          }`}
+          onClick={handleClick}
+          ref={summaryEl}
+        >
+        </summary>
+        <div className="flex justify-between gap-2 p-2" ref={contentEl}>
+          <p className="bg-indigo-200 text-indigo-900 p-2 w-full rounded-md text-xs text-wrap text-center ">
+            {createdLabel}
+            {publicationDate.toLocaleDateString()}
+          </p>
+          {updatedDate && (
+            <p className="bg-rose-200 text-rose-900 p-2 w-full rounded-md text-xs text-wrap text-center">
+              {updatedLabel}
+              {updatedDate.toLocaleDateString()}
+            </p>
+          )}
         </div>
-      </section>
+      </details>
     </article>
   )
 }
