@@ -17,7 +17,7 @@ export const ThemeSwitcher = () => {
       title="Theme switcher"
       type="button"
       onClick={handleThemeChange}
-      className={`inline-flex rounded-2xl w-16 relative h-8 border border-raisin-black-600`}
+      className={`inline-flex rounded-2xl w-16 relative h-8 border border-gray-500`}
     >
       <span
         className={`absolute left-0 top-1/2 transform -translate-y-1/2 transition-transform duration-300 ease-in-out ${commonIconClasses} ${
