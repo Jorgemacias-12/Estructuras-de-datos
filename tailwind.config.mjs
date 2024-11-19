@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       colors: {
@@ -14,7 +14,7 @@ export default {
           600: '#3b4964',
           700: '#5b719c',
           800: '#90a0be',
-          900: '#c8cfdf'
+          900: '#c8cfdf',
         },
         'white-smoke': {
           DEFAULT: '#f5f5f5',
@@ -26,9 +26,9 @@ export default {
           600: '#f7f7f7',
           700: '#f9f9f9',
           800: '#fbfbfb',
-          900: '#fdfdfd'
+          900: '#fdfdfd',
         },
-        'tekhelet': {
+        tekhelet: {
           DEFAULT: '#3d348b',
           100: '#0c0a1c',
           200: '#181437',
@@ -38,9 +38,9 @@ export default {
           600: '#5044b9',
           700: '#7b72cb',
           800: '#a7a1dc',
-          900: '#d3d0ee'
+          900: '#d3d0ee',
         },
-        'persimmon': {
+        persimmon: {
           DEFAULT: '#f35b04',
           100: '#301201',
           200: '#602401',
@@ -50,9 +50,34 @@ export default {
           600: '#fc792e',
           700: '#fd9b62',
           800: '#fdbc97',
-          900: '#fedecb'
-        }
-      }
+          900: '#fedecb',
+        },
+        black_rain: {
+          DEFAULT: '#212529',
+          100: '#030404',
+          200: '#070708',
+          300: '#0a0b0c',
+          400: '#0d0f10',
+          500: '#111315',
+          600: '#141619',
+          700: '#171a1d',
+          800: '#212529',
+          900: '#373b3e',
+        },
+        bunker: {
+          50: '#f4f6f7',
+          100: '#e3e7ea',
+          200: '#cad1d7',
+          300: '#a6b2ba',
+          400: '#7a8a96',
+          500: '#5f6e7b',
+          600: '#515c69',
+          700: '#464e58',
+          800: '#3e454c',
+          900: '#212529',
+          950: '#141619',
+        },
+      },
     },
   },
   plugins: [],
