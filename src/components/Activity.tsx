@@ -122,7 +122,7 @@ export const Activity = ({
 
       <h3 className="font-bold text-xl text-center text-balance">{title}</h3>
 
-      <p className="text-xs text-balance text-center">{description}</p>
+      <p className="text-xs text-center text-balance mb-2">{description}</p>
 
       <section>
         <span
