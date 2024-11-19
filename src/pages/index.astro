@@ -60,7 +60,7 @@ const { title, description } = index
     <Section
       id="studyPlan"
       className=""
-      innerContainerClassName="flex flex-col gap-4"
+      innerContainerClassName="flex flex-col gap-4 max-w-4xl"
     >
       <h3 class="font-bold text-2xl lg:text-4xl text-center">
         Plan de estudios
@@ -70,26 +70,31 @@ const { title, description } = index
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 justify-center gap-2"
       >
         <Card
+          client:only="react"
           iconClassName="fa-graduation-cap text-green-500"
           title="Tipo de UA"
           description="Curso"
         />
         <Card
+          client:only="react"
           iconClassName="fa-book text-blue-500"
           title="Valor de créditos"
           description="11"
         />
         <Card
+          client:only="react"
           iconClassName="fa-hourglass-start text-indigo-500"
           title="Horas Semana"
           description="4"
         />
         <Card
+          client:only="react"
           iconClassName="fa-hourglass-end text-red-500"
           title="Horas teoría/semestre"
           description="80"
         />
         <Card
+          client:only="react"
           iconClassName="fa-graduation-cap text-yellow-500"
           title="Horas práctica/semestre"
           description="0"
