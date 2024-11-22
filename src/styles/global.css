@@ -29,14 +29,14 @@ body {
 }
 
 kbd {
-	@apply bg-slate-800 dark:bg-raisin-black-600 text-white rounded-md p-1 inline-flex mt-1;
+	@apply bg-bunker-900 text-white rounded-md px-2 py-1;
 }
 
 .app {
 	min-height: 100vh;
 	min-height: 100dvh;
 	display: grid;
-	/* grid-template-rows: auto 1fr auto; */
+	grid-template-rows: auto 1fr;
 	overflow-x: hidden;
 	@apply transition-all duration-300;
 }
