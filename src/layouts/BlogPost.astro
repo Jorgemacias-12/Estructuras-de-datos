@@ -1,83 +1,89 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import { Header } from '../components/Header';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import { FloatingActions } from '@/components/FloatingActions';
+import BaseHead from '@/components/BaseHead.astro'
+import { FloatingActions } from '@/components/FloatingActions'
+import FormattedDate from '@/components/FormattedDate.astro'
+import { Header } from '@/components/Header'
+import type { CollectionEntry } from 'astro:content'
 
-type Props = CollectionEntry<'activities'>['data'];
+type Props = CollectionEntry<'activities'>['data']
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, heroImage, updatedDate } = Astro.props
+const { currentLocale } = Astro
 ---
 
 <html lang="es">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
 
-	<body class="scroll-smooth">
-		<Header client:only="react" />
-		
-		<FloatingActions client:only="react" />
+  <body class="scroll-smooth">
+    <Header client:only="react" lang={currentLocale!} />
 
-		<main class="p-4">
-			<article class="flex flex-col max-w-4xl gap-4 text-justify mx-auto">
+    <FloatingActions client:only="react" />
 
-				<section class="post-header-image">
-					{
-						heroImage && <img width="1020" height="510" src={heroImage} alt="" />
-					}
-				</section>
-				
-				<section class="post-title">
-					<h1 class="text-4xl md:text-6xl text-center font-bold">{title}</h1>
-				</section>
+    <main class="pt-[70px] px-2">
+      <article class="flex flex-col max-w-4xl gap-4 mx-auto">
+        <!-- TODO: include alt image here later -->
+        <section class="post-header-image">
+          {
+            heroImage && <img width="1024" height="510" src={heroImage} alt="" />
+          }
+        </section>
 
-				<section class="post-date">
-					<FormattedDate date={pubDate}/>
-					{
-						updatedDate && <p>Last updated on <FormattedDate date={updatedDate} /></p>
-					}
-				</section>
+        <section class="post-title">
+          <h3 class="text-4xl text-center font-bold md:text-6xl">{title}</h3>
+        </section>
 
-				<hr class="border-primary-100">
+        <section class="flex justify-evenly">
+          <FormattedDate date={pubDate} />
 
-				<slot />
-			</article>
-		</main>
-		<Footer />
-	</body>
+          <!-- TODO: make this a component with options or see what to do in this case -->
+          {
+            updatedDate && (
+              <p>
+                Last updated on <FormattedDate date={updatedDate} />
+              </p>
+            )
+          }
+        </section>
 
-	<script>
-    import { $theme } from '@/stores/theme'
+        <!-- TODO: make this component according the theme of the page -->
+        <hr> 
+        
+        <slot />
+      </article>
+    </main>
+  </body>
+</html>
 
-    const darkBgClassNames = 'bg-raisin-black'
-    const darkFgClassNames = 'text-white'
-    const lightBgClassNames = 'bg-white'
-    const lightFgClassNames = 'text-black'
+<script>
+  import { $theme } from '@/stores/theme'
 
-    $theme.subscribe((value, oldValue) => {
-      if (!oldValue) return
+  const darkBgClassNames = 'bg-bunker-950'
+  const darkFgClassNames = 'text-white'
+  const lightBgClassNames = 'bg-white-smoke-500'
+  const lightFgClassNames = 'text-black'
 
-      const oldBg = oldValue === 'light' ? lightBgClassNames : darkBgClassNames;
-      const oldFg = oldValue === 'light' ? lightFgClassNames : darkFgClassNames;
-      const bg = value === 'light' ? lightBgClassNames : darkBgClassNames;
-      const fg = $theme.get() === 'light' ? lightFgClassNames : darkFgClassNames;
+  $theme.subscribe((value, oldValue) => {
+    if (!oldValue) return
 
-      if (!bg) return
-      if (!fg) return
+    const oldBg = oldValue === 'light' ? lightBgClassNames : darkBgClassNames
+    const oldFg = oldValue === 'light' ? lightFgClassNames : darkFgClassNames
+    const bg = value === 'light' ? lightBgClassNames : darkBgClassNames
+    const fg = $theme.get() === 'light' ? lightFgClassNames : darkFgClassNames
 
-      document.body.classList.remove(oldBg)
-      document.body.classList.remove(oldFg)
-      document.body.classList.add(bg)
-      document.body.classList.add(fg)
-    })
+    if (!bg) return
+    if (!fg) return
 
-    const bg = $theme.get() === 'light' ? lightBgClassNames : darkBgClassNames;
-    const fg = $theme.get() === 'light' ? lightFgClassNames : darkFgClassNames;
-
+    document.body.classList.remove(oldBg)
+    document.body.classList.remove(oldFg)
     document.body.classList.add(bg)
     document.body.classList.add(fg)
-  </script>
-</html>
+  })
+
+  const bg = $theme.get() === 'light' ? lightBgClassNames : darkBgClassNames
+  const fg = $theme.get() === 'light' ? lightFgClassNames : darkFgClassNames
+
+  document.body.classList.add(bg)
+  document.body.classList.add(fg)
+</script>
