@@ -3,26 +3,25 @@ type Props = {
   title: string
   image: string
   description: string
+  alt?: string
 }
 
-const { title, description, image } = Astro.props
+const { title, description, image, alt } = Astro.props
 ---
 
-<article class="card flex flex-col gap-2 p-2 rounded-md h-fit">
-  <section class="">
-    <img src={image} class="w-full bg-white rounded-sm" alt="" />
-  </section>
-  <section class="flex flex-col gap-2 mt-2">
-    <h3 class="font-bold">{title}</h3>
-    <p class="text-left">{description}</p>
+<article class="card flex flex-col rounded-md">
+  <img src={image} alt={alt!} class="p-2" />
+  <section class="flex flex-col p-2 gap-2">
+    <h3 class="font-bold ">{title}</h3>
+    <p class="">{description}</p>
   </section>
 </article>
 
 <script>
   import { $theme } from '@/stores/theme'
 
-  const light = ['bg-white-smoke-500', 'border']
-  const dark = ['bg-raisin-black-600', 'border-0']
+  const light = ['bg-white', 'border']
+  const dark = ['bg-black_rain-900', 'border-0']
 
   const cards = document.querySelectorAll('.card')
 
