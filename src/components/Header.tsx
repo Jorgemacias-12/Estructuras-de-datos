@@ -1,10 +1,11 @@
 import { $theme } from '@/stores/theme'
 import { useStore } from '@nanostores/react'
-import { useState, type MouseEvent } from 'react'
+import { useEffect, useState, type MouseEvent } from 'react'
 import { getI18N } from '@/i18n'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { Link } from './Link'
 import type { Link as LinkT } from '@/types'
+import { adjustLanguageInUrl, appendbaseUrl } from '@/utils'
 interface Props {
   lang: string
 }
@@ -12,6 +13,8 @@ interface Props {
 export const Header = ({ lang }: Props) => {
   const theme = useStore($theme)
   const [showMenu, setShowMenu] = useState(false)
+  const [flagUrl, setFlagUrl] = useState('')
+  const [langUrl, setLangUrl] = useState('')
 
   const menuHiddenClasses = 'pointer-events-none opacity-0 translate-x-[1rem]'
   const menuShownClasses = 'opacity-100 translate-x-0 pointer-events-auto'
@@ -35,6 +38,20 @@ export const Header = ({ lang }: Props) => {
   const { HEADER } = COMPONENTS
   const { HEADER_MENU_CAPTION, LINKS } = HEADER
 
+  useEffect(() => {
+    const flagImport = async () => {
+      const _flagUrl = appendbaseUrl(lang === 'es' ? '/usa.svg' : '/mexico.svg')
+
+      setFlagUrl(_flagUrl)
+    }
+
+    flagImport()
+    
+
+
+    setLangUrl(adjustLanguageInUrl(location.pathname, lang));
+  }, [lang])
+
   return (
     <header
       className={`h-16 fixed z-10 flex justify-center w-full ${menuBackgroundSolid} border-b`}
@@ -44,11 +61,29 @@ export const Header = ({ lang }: Props) => {
       >
         <section className="flex items-center gap-2">
           <span className="fas fa-graduation-cap"></span>
-          <h1>Estructuras de datos</h1>
+          <h1>{lang === 'es' ? 'Estructura de datos' : 'Data structures'}</h1>
         </section>
 
         <section className="flex items-center gap-2 md:hidden">
-          <ThemeSwitcher />
+          <section className="flex items-center gap-2 mr-2">
+            <ThemeSwitcher />
+
+            <a className="flex items-center gap-1" href={langUrl}>
+              <img
+                width={32}
+                height={32}
+                className="aspect"
+                loading="eager"
+                src={flagUrl}
+                alt={`${
+                  lang === 'es'
+                    ? 'usa flag for lang change'
+                    : 'mexico flag for lang change'
+                }`}
+              />
+              {lang === 'es' ? 'EN' : 'ES'}
+            </a>
+          </section>
 
           <button type="button" onClick={handleMenuShow}>
             <span className="fas fa-bars fa-xl"></span>
@@ -91,8 +126,26 @@ export const Header = ({ lang }: Props) => {
         {/* Desktop */}
 
         <nav className="hidden md:flex md:items-center md:gap-1">
-          <ThemeSwitcher />
-          
+          <section className="flex items-center gap-2 mr-2">
+            <ThemeSwitcher />
+
+            <a className="flex items-center gap-1" href={langUrl}>
+              <img
+                width={32}
+                height={32}
+                className="aspect"
+                loading="eager"
+                src={flagUrl}
+                alt={`${
+                  lang === 'es'
+                    ? 'usa flag for lang change'
+                    : 'mexico flag for lang change'
+                }`}
+              />
+              {lang === 'es' ? 'EN' : 'ES'}
+            </a>
+          </section>
+
           <ul className="flex h-full">
             {(LINKS as LinkT[]).map(({ title, url }, index) => {
               return <Link key={index} label={title} url={url} />
