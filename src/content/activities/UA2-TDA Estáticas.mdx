@@ -10,9 +10,11 @@ import Title from '@/components/Title.astro'
 import Reference from '@/components/Reference.astro'
 import ContentList from '@/components/ContentList.astro'
 import Info from '@/components/Info.astro'
+import Download from '@/components/Download.astro'
 import { Operation } from '@/components/Operation'
 import { Capture } from '@/components/Capture'
 import { InlineCodeView } from '@/components/InlineCodeView'
+import { appendbaseUrl } from '@/utils'
 
 <Title title="Lista de Contenido" size="4xl" center={true} />
 
@@ -112,14 +114,11 @@ import { InlineCodeView } from '@/components/InlineCodeView'
   />
 
   <Info
-    content="El código tiene como dependencia la libreria <kbd>colorama</kbd>, si el programa falla al ejecutarse, puedes instalar la libreria utilizando el siguiente comando: <kbd>pip install colorama</kbd>."
+    content="El código tiene como dependencia la libreria <kbd>colorama</kbd>, si el programa falla al ejecutarse, puedes instalar la libreria utilizando el siguiente comando: <kbd>pip instassll colorama</kbd>."
     additionalStyleClasses="bg-[#faebd7] rounded-md text-red-500"
   />
 
-  <a download={"JAMZ-TDA-PilaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md text-white bg-indigo-500 p-2 w-fit items-center gap-2 text-lg" type="button">
-    Descargar código
-    <span class="fas fa-download"></span>
-  </a>
+  <Download name="JAMZ-TDA-PilaEstatica.py" link="/code/JAMZ-TDA-ListaEstatica.py" />
   
   <Title title="Capturas de ejecución" size="2xl" />
   
@@ -240,10 +239,7 @@ import { InlineCodeView } from '@/components/InlineCodeView'
     client:only="react"  
   />
 
-  <a download={"JAMZ-TDA-ColaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-indigo-500 text-white p-2 w-fit items-center gap-2 text-lg" type="button">
-    Descargar código
-    <span class="fas fa-download"></span>
-  </a>
+  <Download name={"JAMZ-TDA-ColaEstatica.py"} link={'/code/JAMZ-TDA-ListaEstatica.py'} />
 
   <Title title="Capturas de ejecución" size="2xl" />
 
@@ -398,11 +394,8 @@ import { InlineCodeView } from '@/components/InlineCodeView'
     client:only="react"  
   />
 
-  <a download={"JAMZ-TDA-ListaEstatica.py"} href="/code/JAMZ-TDA-ListaEstatica.py" class="flex rounded-md bg-indigo-500 text-white p-2 w-fit items-center gap-2 text-lg" type="button">
-    Descargar código
-    <span class="fas fa-download"></span>
-  </a>
-
+  <Download name={"JAMZ-TDA-ListaEstatica.py"} link="/code/JAMZ-TDA-ListaEstatica.py" />
+  
   <Title title="Capturas de ejecución" size="2xl" />
 
   <section class="captures">
