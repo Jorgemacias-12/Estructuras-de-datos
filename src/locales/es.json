@@ -1,42 +1,32 @@
 {
-  "SEO_TITLE": "JAMZ - Portafolio de Estructuras de datos",
-  "SEO_DESCRIPTION": "Portafolio de actividades de la matería de estructuras de datos de la carrera Ingeniería en computación del Centro Universitario de la Costa (CUCOSTA), Universidad de Guadalajara",
-  "WELCOME_MESSAGE": "¡Bienvenido a mí portafolio de evidencias!",
-  "PAGE_DESCRIPTION": [
-    "Estas son la actividades que hice en la matería de Estructuras de Datos",
-    "Impartida por el Dr. Miguel Lizcano, en el periodo 2023A",
-    "En la carrera de Ingeniería en Computación en la UDG campus CUCOSTA."
-  ],
-  "PAGE_CREATOR": "╰(*°▽°*)╯ Soy Jorge Macias ╰(*°▽°*)╯",
-  "PAGE_CALL_TO_ACTION_TITLE": "Enlaces útiles",
-  "PAGE_CALL_TO_ACTIONS": [
-    {
-      "title": "Explora mis repositorios en GitHub",
-      "description": "Descubre más sobre mis proyectos y contribuciones, para explorar el código fuente y las actividades que he realizado.",
-      "icon": "fa-brands fa-github",
-      "url": "https://github.com/Jorgemacias-12?tab=repositories"
+  "PAGES": {
+    "index": {
+      "title": "Portafolio de Estructura de Datos - Ingeniería en Computación | UdeG CUCOSTA",
+      "description": "Explora mi portafolio de evidencias para la materia de Estructura de Datos en Ingeniería en Computación en el campus CUCOSTA de la UdeG. Descubre proyectos y aprendizajes clave."
     },
-    {
-      "title": "Conéctate en LinkedIn",
-      "description": "Conécta conmigo para seguir de cerga mis actividades y logros tanto personales y profesionales.",
-      "icon": "fa-brands fa-linkedin",
-      "url": "https://www.linkedin.com/in/jamz3"
-    }
-  ],
-  "SEO_KEYWORDS": "estructuras de datos, cucosta, udg,",
-  "HEADER_LINKS": [
-    {
-      "title": "Inicio",
-      "url": "/"
+    "activities": {
+      "title": "Portafolio de Estructura de Datos -  Actividades",
+      "description": "",
+      "heading_content": "Actividades"
     },
-    {
-      "title": "Actividades",
-      "url": "/activities"
+    "activities_slug": {
+      "creationDateLabel": "Creado el ",
+      "updatedDateLabel": "Actualizado el "
     }
-  ],
-  "ACTIVITITES_PAGE_TITLE": "Actividades",
-  "ACTIVITIES_PAGE_CALL_TO_ACTION": "Ver actividad",
-  "ACTIVITY_LINK_CAPTION": "Acerca de",
-  "FOOTER_TITLE": "Hecho con ❤️ por Jorge Macias",
-  "FOOTER_SOCIAL_MEDIA_SECTION_TITLE": "Redes sociales"
+  },
+  "COMPONENTS": {
+    "HEADER": {
+      "HEADER_MENU_CAPTION": "Menú de navegación",
+      "LINKS": [
+        {
+          "title": "Inicio",
+          "url": "/"
+        },
+        {
+          "title": "Actividades",
+          "url": "/activities"
+        }
+      ]
+    }
+  }
 }
