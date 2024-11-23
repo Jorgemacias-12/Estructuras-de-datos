@@ -49,3 +49,29 @@ export const appendbaseUrl = (url: string) => {
   
   return `${baseUrl}${url}`
 }
+
+export const adjustLanguageInUrl = (url: string, lang: string, staticSegment: string = "activities") => {
+  let parts = url.split("/").filter(e => e !== '')
+
+  const staticIndexOfSegment = staticSegment ? parts.indexOf(staticSegment) : -1;
+
+  const langIndex = parts.indexOf("en");
+  
+  if (langIndex !== -1) {
+    parts.splice(langIndex, 1);
+  }
+
+  if (lang === "es") {
+    if (staticIndexOfSegment !== -1) {
+      parts.splice(staticIndexOfSegment + 1, 0, "en");
+    } else {
+      parts.push("en");
+    }
+  }
+
+  return `/${parts.join("/")}`
+}
+
+export const filterByLanguage = (lang: string, defaultSlug: string, filePath: string) => {
+
+}
