@@ -1,0 +1,20 @@
+---
+import { appendbaseUrl } from '@/utils'
+
+type Props = {
+  name: string
+  link: string
+  lang: string
+}
+
+const { name, link, lang } = Astro.props
+---
+
+<a
+  download={name}
+  href={appendbaseUrl(link)}
+  class="mt-2 bg-emerald-700 p-2 w-fit rounded-md"
+>
+  {lang === 'es' ? 'Descargar código' : 'Download code'}
+  <span class="fas fa-download fa-dw"></span>
+</a>

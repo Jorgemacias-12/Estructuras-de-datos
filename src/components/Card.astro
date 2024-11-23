@@ -1,4 +1,6 @@
 ---
+import { appendbaseUrl } from '@/utils'
+
 type Props = {
   title: string
   image: string
@@ -10,7 +12,7 @@ const { title, description, image, alt } = Astro.props
 ---
 
 <article class="card flex flex-col rounded-md">
-  <img src={image} alt={alt!} class="p-2" />
+  <img src={appendbaseUrl(image)} alt={alt!} class="p-2" />
   <section class="flex flex-col p-2 gap-2">
     <h3 class="font-bold ">{title}</h3>
     <p class="">{description}</p>

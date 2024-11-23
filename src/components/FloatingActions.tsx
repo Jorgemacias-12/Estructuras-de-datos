@@ -30,14 +30,15 @@ export const FloatingActions = () => {
   }, [])
 
   const showFixedActions = useFixedActions ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-  const light = "bg-white-smoke-500 border";
-  const dark = "bg-raisin-black border border-raisin-black-600";
+  const light = "bg-white border";
+  const dark = "bg-black_rain-800 border border-black_rain-900";
 
   return (
     <section className={`fixed right-4 bottom-4 flex items-center border gap-4 p-2 z-10 rounded-md ${theme === 'light' ? light : dark} ${showFixedActions}`}>
       <ThemeSwitcher />
-      <button onClick={scrollToTop} className="w-10 h-10 bg-indigo-500 rounded-full" aria-label="Volver al principio">
-        <span className="fas fa-arrow-up text-white fa-fd fa-lg"></span>
+
+      <button className='w-10 h-10 bg-persimmon-500 rounded-full' onClick={scrollToTop} aria-label=''>
+        <span className="fas fa-arrow-up text-white fa-dw"></span>
       </button>
     </section>
   );

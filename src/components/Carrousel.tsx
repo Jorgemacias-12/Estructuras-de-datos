@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { type Image } from '@/types'
+import { appendbaseUrl } from '@/utils'
 
 type CarrouselProps = {
   imageList: Image[]
@@ -35,7 +36,7 @@ export const Carrousel = ({ imageList }: CarrouselProps) => {
       </button>
       <section className='relative'>
         <p className='text-white absolute flex items-center justify-center -top-5 -left-5 p-2 bg-red-500 w-[48px] h-[48px] font-bold rounded-full'>{currentImage + 1}</p>
-        <img src={imageList[currentImage].url} alt="" />
+        <img src={appendbaseUrl(imageList[currentImage].url)} alt="" />
         <p className='absolute w-full bg-black/30 bottom-0 p-2 text-center text-white'>
           {imageList[currentImage].caption}
         </p>

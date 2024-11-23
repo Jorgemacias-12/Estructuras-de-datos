@@ -37,7 +37,7 @@ export const Header = ({ lang }: Props) => {
 
   return (
     <header
-      className={`h-16 fixed flex justify-center w-full ${menuBackgroundSolid} border-b`}
+      className={`h-16 fixed z-10 flex justify-center w-full ${menuBackgroundSolid} border-b`}
     >
       <section
         className={`flex w-full h-16 justify-between p-2 max-w-screen-lg px-4 ${menuBackgroundSolid} w-full border-b`}

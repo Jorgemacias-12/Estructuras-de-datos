@@ -4,6 +4,7 @@ import { type Monaco } from '@monaco-editor/react'
 import type { editor } from "monaco-editor";
 import { useStore } from '@nanostores/react';
 import { $theme } from '@/stores/theme';
+import { appendbaseUrl } from '@/utils';
 
 type InlineCodeViewProps = {
   language: string,
@@ -54,7 +55,8 @@ export const InlineCodeView = ({ language, readonly, codeURL, line }: InlineCode
       try {
         if (!codeURL) return;
 
-        const response = await fetch(codeURL);
+        const url = appendbaseUrl(codeURL).replaceAll("..", "")
+        const response = await fetch(url);
 
         if (!response.ok) {
           console.error(response.status);
