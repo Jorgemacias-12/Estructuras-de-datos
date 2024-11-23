@@ -3,15 +3,21 @@ import BaseHead from '@/components/BaseHead.astro'
 import { FloatingActions } from '@/components/FloatingActions'
 import FormattedDate from '@/components/FormattedDate.astro'
 import { Header } from '@/components/Header'
+import { getI18N } from '@/i18n'
+import { appendbaseUrl } from '@/utils'
 import type { CollectionEntry } from 'astro:content'
 
 type Props = CollectionEntry<'activities'>['data']
 
 const { title, description, pubDate, heroImage, updatedDate } = Astro.props
 const { currentLocale } = Astro
+
+const { PAGES } = getI18N(currentLocale!)
+const { activities_slug } = PAGES
+const { creationDateLabel, updatedDateLabel } = activities_slug
 ---
 
-<html lang="es">
+<html lang={currentLocale!}>
   <head>
     <BaseHead title={title} description={description} />
   </head>
@@ -22,11 +28,15 @@ const { currentLocale } = Astro
     <FloatingActions client:only="react" />
 
     <main class="pt-[70px] px-2">
-      <article class="flex flex-col max-w-4xl gap-4 mx-auto">
+      <article
+        class="article-content flex flex-col max-w-4xl gap-4 mx-auto px-2 md:mb-2"
+      >
         <!-- TODO: include alt image here later -->
-        <section class="post-header-image">
+        <section class="post-header-image pt-2">
           {
-            heroImage && <img width="1024" height="510" src={heroImage} alt="" />
+            heroImage && (
+              <img width="1024" height="510" src={appendbaseUrl(heroImage)} alt="article thumbnail photo" />
+            )
           }
         </section>
 
@@ -35,21 +45,25 @@ const { currentLocale } = Astro
         </section>
 
         <section class="flex justify-evenly">
-          <FormattedDate date={pubDate} />
+          <FormattedDate
+            date={pubDate}
+            lang={currentLocale!}
+            text={creationDateLabel}
+          />
 
-          <!-- TODO: make this a component with options or see what to do in this case -->
           {
             updatedDate && (
-              <p>
-                Last updated on <FormattedDate date={updatedDate} />
-              </p>
+              <FormattedDate
+                date={updatedDate}
+                lang={currentLocale!}
+                text={updatedDateLabel}
+              />
             )
           }
         </section>
 
-        <!-- TODO: make this component according the theme of the page -->
-        <hr> 
-        
+        <hr />
+
         <slot />
       </article>
     </main>
@@ -64,26 +78,36 @@ const { currentLocale } = Astro
   const lightBgClassNames = 'bg-white-smoke-500'
   const lightFgClassNames = 'text-black'
 
+  const article = document.querySelector('.article-content')
+
   $theme.subscribe((value, oldValue) => {
     if (!oldValue) return
 
     const oldBg = oldValue === 'light' ? lightBgClassNames : darkBgClassNames
     const oldFg = oldValue === 'light' ? lightFgClassNames : darkFgClassNames
+    const oldArticleBg = oldValue === 'light' ? 'bg-white' : 'bg-black_rain-800'
+    const articleBg = value === 'light' ? 'bg-white' : 'bg-black_rain-800'
     const bg = value === 'light' ? lightBgClassNames : darkBgClassNames
-    const fg = $theme.get() === 'light' ? lightFgClassNames : darkFgClassNames
+    const fg = value === 'light' ? lightFgClassNames : darkFgClassNames
 
     if (!bg) return
     if (!fg) return
+    if (!article) return
 
     document.body.classList.remove(oldBg)
     document.body.classList.remove(oldFg)
+    article.classList.remove(oldArticleBg)
+
     document.body.classList.add(bg)
     document.body.classList.add(fg)
+    article.classList.add(articleBg)
   })
 
   const bg = $theme.get() === 'light' ? lightBgClassNames : darkBgClassNames
   const fg = $theme.get() === 'light' ? lightFgClassNames : darkFgClassNames
+  const articleBg = $theme.get() === 'light' ? 'bg-white' : 'bg-black_rain-800'
 
   document.body.classList.add(bg)
   document.body.classList.add(fg)
+  if (article) article.classList.add(articleBg)
 </script>
