@@ -13,10 +13,9 @@ const { PAGES } = getI18N(currentLocale!)
 const { activities } = PAGES
 const { title, description, heading_content } = activities
 
-
-const posts = (await getCollection('activities')).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-).filter(post => post.data.lang !== 'en')
+const posts = (await getCollection('activities'))
+  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+  .filter((post) => post.data.lang === 'en')
 ---
 
 <Layout title={title} description={description} keywords="">
