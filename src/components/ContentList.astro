@@ -1,8 +1,13 @@
 ---
+type Props = {
+  lang: string
+}
 
+const { lang } = Astro.props
 ---
 
 <ul
+  data-lang={lang}
   class={`list p-2 transition-all duration-300 rounded-sm w-full max-w-screen-sm mx-auto`}
 >
 </ul>
@@ -15,9 +20,9 @@
   const contentListLightClassNames = ['bg-white-smoke-600', 'border']
 
   const contentListDarkClassNames = [
-    'bg-raisin-black-600',
+    'bg-black_rain-900',
     'border',
-    'border-raisin-black-700',
+    'border-white-smoke-200'
   ]
 
   const light = ['hover:bg-indigo-200', 'hover:text-indigo-800']
@@ -26,9 +31,20 @@
   const listElement = document.querySelector('.list')
   const contentTags = document.querySelectorAll('.content')
 
+  const listEl = document.querySelector('ul')
+  let lang: string | null = null
+
+  if (listEl) {
+    lang = listEl.getAttribute('data-lang')
+  }
+
+  const contentNotFoundLabel =
+    lang && lang === 'es'
+      ? 'No hay contenido para listar.'
+      : `There's no content available to be shown.`
+
   if (contentTags.length === 0 && listElement) {
-    listElement.innerHTML =
-      '<span class="bg-red-200 p-2 text-red-800 mx-auto w-full flex">No hay contenido para listar.</span>'
+    listElement.innerHTML = `<span class="bg-red-200 p-2 text-red-800 mx-auto w-full flex">${contentNotFoundLabel}</span>`
   }
 
   contentTags.forEach((el) => {
@@ -36,12 +52,6 @@
 
     let liEl = document.createElement('li')
     let contentLinkEl = document.createElement('a')
-
-    // const contentLinkLight = [
-    //   ""
-    // ]
-
-    // const contentLinkDark = []
 
     const contentLinkStylesClasses = [
       'block',
@@ -55,12 +65,12 @@
 
     const theme = $theme.get() === 'light' ? light : dark
 
-    contentLinkEl.classList.add('link');
+    contentLinkEl.classList.add('link')
     contentLinkEl.classList.add(...contentLinkStylesClasses)
     contentLinkEl.classList.add(...theme)
 
     contentLinkEl.href = `${document.URL.split('#')[0]}#${el.id}`
-    contentLinkEl.text = el.getAttribute('data-section-title')!
+    contentLinkEl.text = el.getAttribute('data-section-title')! || 'Content'
 
     liEl.appendChild(contentLinkEl)
 
@@ -77,18 +87,17 @@
 
     if (!listElement) return
 
-    
     listElement.classList.remove(...oldClassNames)
     listElement.classList.add(...classNames)
-    
-    document.querySelectorAll('.link').forEach(tag => {
-      if (!tag) return;
-      
-      const oldTheme = oldValue === 'light' ? light : dark;
-      const theme = value === 'light' ? light : dark;
 
-      tag.classList.remove(...oldTheme);
-      tag.classList.add(...theme);
+    document.querySelectorAll('.link').forEach((tag) => {
+      if (!tag) return;
+
+      const oldTheme = oldValue === 'light' ? light : dark
+      const theme = value === 'light' ? light : dark
+
+      tag.classList.remove(...oldTheme)
+      tag.classList.add(...theme)
     })
   })
 
