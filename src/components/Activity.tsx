@@ -106,7 +106,7 @@ export const Activity = ({
   const createdLabel = lang === 'es' ? 'Fecha de creación: ' : ''
   const updatedLabel = lang === 'es' ? 'Actualizado el: ' : ''
 
-  const visitLabel = lang === 'es' ? 'Ir al documento' : ''
+  const visitLabel = lang === 'es' ? 'Ir al documento' : 'Go to article'
 
   return (
     <article
